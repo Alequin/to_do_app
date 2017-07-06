@@ -1,0 +1,87 @@
+
+## Project ##
+
+You are required to write an Android app which will allow the
+user to maintain a task list. The user should be able to enter
+tasks and display them in a list. The list should only show
+the bare details of each task. Selecting a task from the list
+should bring up another screen which shows full details of the
+task. Users should also be able to mark tasks as completed.
+
+## Project Extensions ##
+  - Allow the user to prioritise and/or categorise tasks
+  - Use the calendar to set due dates on tasks.
+
+## MVP ##
+
+  - Three activities
+
+    - main activity: List
+      - basic list showing task name and
+      due date of task for each.
+          -? Should a task name be limited in how much you may
+          type or should tasks have a name and description?
+
+    - Second activity: Task Details
+      - used to enter a new task in and set the due date
+
+    - Third activity: New Task
+      - presents details on a specific task.
+
+## List Activity ##
+
+  - Menu
+    - add button
+
+  - List View of tasks
+    - task_item.xml file for list layout
+      - checkbox on far left for complete / incomplete
+      - text of task to right of check box and extending to
+      parent right
+      - due date of task below
+
+## Task Details Activity ##
+
+  - Menu
+    - back button
+    - delete button
+
+  - Task name
+  - additional details (sort of description) edited in
+  this activity
+  - creation date
+  - due date
+  - complete / incomplete status and ability to change it
+
+## New Task Activity ##
+
+  - Menu
+    - back button
+
+  - Text box to put new tasks into
+  - a way to select the due date of a task
+  - button to submit new task with
+
+## Extensions ##
+
+  - Extra activity for summary of tasks
+    - Total tasks
+    - Incomplete tasks
+    - Total tasks completed ever
+
+  - Categories
+    - categories have a colour and a name
+    - category is presented on the Task details page as colour
+    and name
+    - able to set category on task creation
+    - A new activity to create categories
+
+  - Priority
+    - make 5 levels of priority
+    - each task has a priority which is presented on the
+    details page
+    - able to set priority of task creation
+
+  - due date as a calendar
+    - provide a calendar for users to select the due date of
+    a task
