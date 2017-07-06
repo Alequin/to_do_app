@@ -16,6 +16,10 @@ import static org.junit.Assert.*;
 public class DateManagerTest {
 
     @Test
+    public void canValidateInputDate(){
+        assertEquals(true, DateManager.isDateValid(1, 1, 2017));
+    }
+    @Test
     public void canValidateInputDate__DayWrong(){
         assertEquals(false, DateManager.isDateValid(0, 6, 2017));
         assertEquals(false, DateManager.isDateValid(32, 6, 2017));
