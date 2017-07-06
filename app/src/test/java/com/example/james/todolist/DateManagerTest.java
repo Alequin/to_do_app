@@ -26,7 +26,7 @@ public class DateManagerTest {
     }
 
     @Test
-    public void canValidateInputDate__YearWrong(){g
+    public void canValidateInputDate__YearWrong(){
         assertEquals(false, DateManager.isDateValid(1, 6, 999));
         assertEquals(false, DateManager.isDateValid(1, 6, 10_000));
     }

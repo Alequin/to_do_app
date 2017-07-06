@@ -1,5 +1,7 @@
 package com.example.james.todolist.model;
 
+import com.example.james.todolist.helper.DateManager;
+
 import java.util.Calendar;
 
 /**
@@ -56,6 +58,11 @@ public class Task {
     }
 
     public void setCreationDate(int day, int month, int year) {
+        if(!DateManager.isDateValid(day, month, year)){
+            String message = String.format("Invalid date entered: %s, %s, %s",
+                    day, month, year);
+            throw new IllegalArgumentException(message);
+        }
         this.creationDate.set(year, month, day);
     }
 
@@ -68,6 +75,11 @@ public class Task {
     }
 
     public void setDueDate(int day, int month, int year) {
+        if(!DateManager.isDateValid(day, month, year)){
+            String message = String.format("Invalid date entered: %s, %s, %s",
+                    day, month, year);
+            throw new IllegalArgumentException(message);
+        }
         this.dueDate.set(year, month, day);
     }
 
