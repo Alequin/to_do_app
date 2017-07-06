@@ -30,12 +30,26 @@ public class Task {
         this.status = status;
     }
 
+    public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
+        this.id = 0;
+        this.outline = outline;
+        this.extraDetails = extraDetails;
+        this.creationDate = creationDate;
+        this.dueDate = dueDate;
+        this.status = status;
+    }
+
     public static ArrayList<Task> get_all(){
         return FakeDatabase.queryDatabase();
     }
 
     public void save(){
+        this.id = FakeDatabase.size();
         FakeDatabase.add(this);
+    }
+
+    public void delete(){
+        FakeDatabase.remove_by_index(id);
     }
 
     public int getId(){
