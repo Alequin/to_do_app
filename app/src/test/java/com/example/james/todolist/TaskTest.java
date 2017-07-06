@@ -76,11 +76,39 @@ public class TaskTest {
 
     @Test
     public void cannotSetOutOfRangeMonth(){
+        boolean pass = false;
+        try{
+            task1.setCreationDate(1, 0, 2017);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
 
+        pass = false;
+        try{
+            task1.setDueDate(1, 32, 2017);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
     }
 
     @Test
     public void cannotSetOutOfRangeYear(){
+        boolean pass = false;
+        try{
+            task1.setCreationDate(1, 06, 999);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
 
+        pass = false;
+        try{
+            task1.setDueDate(1, 06, 10_000);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
     }
 }
