@@ -24,7 +24,7 @@ public class TaskTest {
         Calendar due = Calendar.getInstance();
         due.set(2017, 7, 13);
 
-        task1 = new Task("finish project", "complete the to do list app", today, due);
+        task1 = new Task("finish project", "complete the to do list app", today, due, false);
     }
 
     @Test
