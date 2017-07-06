@@ -20,11 +20,12 @@ public class TaskTest {
 
     @Before
     public void setup(){
-        Calendar today = Calendar.getInstance();
+        Calendar creationDate = Calendar.getInstance();
+        creationDate.set(2017, 7, 6);
         Calendar due = Calendar.getInstance();
         due.set(2017, 7, 13);
 
-        task1 = new Task("finish project", "complete the to do list app", today, due, false);
+        task1 = new Task("finish project", "complete the to do list app", creationDate, due, false);
     }
 
     @Test
