@@ -36,10 +36,16 @@ public class TaskTest {
     public void canCheckIfTaskIsDue__IsNotOverdue(){
         Calendar creationDate = Calendar.getInstance();
         Calendar dueDate = Calendar.getInstance();
-        creationDate.set(2017, 1, 1);
-        dueDate.set(2017, 2, 1);
-        task1.setCreationDate(creationDate);
-        task1.setDueDate(dueDate);
+        task1.setCreationDate(1, 1, 2017);
+        task1.setDueDate(1, 2, 2017);
         assertEquals(true, task1.isOverdue());
+    }
+
+    @Test
+    public void canGetCopiedDates(){
+        Calendar creationDateCopy = task1.getDueDate();
+        assertEquals(true, creationDateCopy != task1.getCreationDate());
+        Calendar dueDateCopy = task1.getDueDate();
+        assertEquals(true, dueDateCopy != task1.getDueDate());
     }
 }
