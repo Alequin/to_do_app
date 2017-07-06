@@ -46,7 +46,7 @@ task. Users should also be able to mark tasks as completed.
     - back button
     - delete button
 
-  - Task name
+  - Task outline
   - additional details (sort of description) edited in
   this activity
   - creation date
