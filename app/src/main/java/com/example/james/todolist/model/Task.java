@@ -52,4 +52,9 @@ public class Task {
     public void setDueDate(Calendar dueDate) {
         this.dueDate = dueDate;
     }
+
+    public boolean isOverdue() {
+        Calendar today = Calendar.getInstance();
+        return dueDate.before(today);
+    }
 }
