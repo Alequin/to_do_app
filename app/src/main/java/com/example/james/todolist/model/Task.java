@@ -48,7 +48,7 @@ public class Task {
     }
 
     public Calendar getCreationDate() {
-        return creationDate;
+        return this.copyCalendarObj(creationDate);
     }
 
     public void setCreationDate(Calendar creationDate) {
@@ -56,7 +56,7 @@ public class Task {
     }
 
     public Calendar getDueDate() {
-        return dueDate;
+        return this.copyCalendarObj(this.dueDate);
     }
 
     public void setDueDate(Calendar dueDate) {
@@ -66,5 +66,9 @@ public class Task {
     public boolean isOverdue() {
         Calendar today = Calendar.getInstance();
         return dueDate.before(today);
+    }
+
+    private Calendar copyCalendarObj(Calendar toCopy){
+        return (Calendar) toCopy.clone();
     }
 }
