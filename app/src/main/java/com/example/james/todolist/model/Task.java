@@ -51,16 +51,16 @@ public class Task {
         return this.copyCalendarObj(creationDate);
     }
 
-    public void setCreationDate(Calendar creationDate) {
-        this.creationDate = creationDate;
+    public void setCreationDate(int day, int month, int year) {
+        this.creationDate.set(year, month, day);
     }
 
     public Calendar getDueDate() {
         return this.copyCalendarObj(this.dueDate);
     }
 
-    public void setDueDate(Calendar dueDate) {
-        this.dueDate = dueDate;
+    public void setDueDate(int day, int month, int year) {
+        this.dueDate.set(year, month, day);
     }
 
     public boolean isOverdue() {
