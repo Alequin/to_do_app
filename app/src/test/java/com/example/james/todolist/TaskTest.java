@@ -55,4 +55,33 @@ public class TaskTest {
         expected = "06/07/2017";
         assertEquals(expected, task1.getFormattedCreationDate());
     }
+
+    @Test
+    public void cannotSetOutOfRangeDay(){
+        boolean pass = false;
+        try{
+            task1.setCreationDate(0, 06, 2017);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+
+        pass = false;
+        try{
+            task1.setDueDate(32, 06, 2017);
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+    }
+
+    @Test
+    public void cannotSetOutOfRangeMonth(){
+
+    }
+
+    @Test
+    public void cannotSetOutOfRangeYear(){
+
+    }
 }
