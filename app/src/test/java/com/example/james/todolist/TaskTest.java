@@ -26,4 +26,20 @@ public class TaskTest {
 
         task1 = new Task("finish project", "complete the to do list app", today, due);
     }
+
+    @Test
+    public void canCheckIfTaskIsDue__IsOverdue(){
+        assertEquals(false, task1.isOverdue());
+    }
+
+    @Test
+    public void canCheckIfTaskIsDue__IsNotOverdue(){
+        Calendar creationDate = Calendar.getInstance();
+        Calendar dueDate = Calendar.getInstance();
+        creationDate.set(2017, 1, 1);
+        dueDate.set(2017, 2, 1);
+        task1.setCreationDate(creationDate);
+        task1.setDueDate(dueDate);
+        assertEquals(true, task1.isOverdue());
+    }
 }
