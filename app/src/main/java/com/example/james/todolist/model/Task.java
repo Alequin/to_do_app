@@ -12,6 +12,7 @@ import java.util.Calendar;
 
 public class Task {
 
+    private int id;
     private String outline;
     private String extraDetails;
     private Calendar creationDate;
@@ -20,7 +21,8 @@ public class Task {
 
     private static String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
 
-    public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
+    public Task(int id, String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
+        this.id = id;
         this.outline = outline;
         this.extraDetails = extraDetails;
         this.creationDate = creationDate;
@@ -34,6 +36,10 @@ public class Task {
 
     public void save(){
         FakeDatabase.add(this);
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getOutline() {
