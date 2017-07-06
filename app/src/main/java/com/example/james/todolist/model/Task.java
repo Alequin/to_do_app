@@ -2,6 +2,7 @@ package com.example.james.todolist.model;
 
 import com.example.james.todolist.helper.DateManager;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -25,6 +26,14 @@ public class Task {
         this.creationDate = creationDate;
         this.dueDate = dueDate;
         this.status = status;
+    }
+
+    public static ArrayList<Task> get_all(){
+        return FakeDatabase.queryDatabase();
+    }
+
+    public void save(){
+        FakeDatabase.add(this);
     }
 
     public String getOutline() {

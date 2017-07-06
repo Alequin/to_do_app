@@ -18,7 +18,7 @@ public class FakeDatabase {
     public static void add(Task task){
         tasks.add(task);
     }
-    
+
     public static void buildDatabase(){
         Calendar date = Calendar.getInstance();
 
