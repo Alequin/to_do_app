@@ -13,12 +13,14 @@ public class Task {
     private String extraDetails;
     private Calendar creationDate;
     private Calendar dueDate;
+    private boolean status;
 
-    public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate){
+    public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
         this.outline = outline;
         this.extraDetails = extraDetails;
         this.creationDate = creationDate;
         this.dueDate = dueDate;
+        this.status = status;
     }
 
     public String getOutline() {
@@ -27,6 +29,14 @@ public class Task {
 
     public void setOutline(String outline) {
         this.outline = outline;
+    }
+
+    public boolean isComplete() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getExtraDetails() {
