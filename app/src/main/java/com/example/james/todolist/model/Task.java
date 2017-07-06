@@ -67,7 +67,7 @@ public class Task {
     }
 
     public Calendar getCreationDate() {
-        return this.copyCalendarObj(creationDate);
+        return copyCalendarObj(creationDate);
     }
 
     public String getFormattedCreationDate() {
@@ -79,11 +79,11 @@ public class Task {
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
-        this.creationDate.set(year, month, day);
+        creationDate.set(year, month, day);
     }
 
     public Calendar getDueDate() {
-        return this.copyCalendarObj(this.dueDate);
+        return copyCalendarObj(dueDate);
     }
 
     public String getFormattedDueDate() {
