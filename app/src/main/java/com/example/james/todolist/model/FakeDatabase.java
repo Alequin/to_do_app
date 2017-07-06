@@ -6,6 +6,6 @@ package com.example.james.todolist.model;
 
 public class FakeDatabase {
 
-    
+
 
 }
