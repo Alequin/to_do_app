@@ -51,12 +51,20 @@ public class Task {
         return this.copyCalendarObj(creationDate);
     }
 
+    public String getFormattedCreationDate() {
+        return this.formatCalendarDate(creationDate);
+    }
+
     public void setCreationDate(int day, int month, int year) {
         this.creationDate.set(year, month, day);
     }
 
     public Calendar getDueDate() {
         return this.copyCalendarObj(this.dueDate);
+    }
+
+    public String getFormattedDueDate() {
+        return this.formatCalendarDate(dueDate);
     }
 
     public void setDueDate(int day, int month, int year) {
@@ -66,6 +74,13 @@ public class Task {
     public boolean isOverdue() {
         Calendar today = Calendar.getInstance();
         return dueDate.before(today);
+    }
+
+    private String formatCalendarDate(Calendar cal){
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        return String.format("%02d/%02d/%s", day, month, year);
     }
 
     private Calendar copyCalendarObj(Calendar toCopy){
