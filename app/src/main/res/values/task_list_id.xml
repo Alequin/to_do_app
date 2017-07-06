@@ -3,4 +3,8 @@
 
     <item name="main_list_task_list_activity" type="id"/>
 
+    <item name="check_box_task_list_item" type="id"/>
+
+    <item name="task_outline_text_task_list_item" type="id"/>
+
 </resources>
