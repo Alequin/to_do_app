@@ -17,6 +17,8 @@ public class Task {
     private Calendar dueDate;
     private boolean status;
 
+    private static String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
+
     public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
         this.outline = outline;
         this.extraDetails = extraDetails;
@@ -59,8 +61,7 @@ public class Task {
 
     public void setCreationDate(int day, int month, int year) {
         if(!DateManager.isDateValid(day, month, year)){
-            String message = String.format("Invalid date entered: %s, %s, %s",
-                    day, month, year);
+            String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
         this.creationDate.set(year, month, day);
@@ -76,8 +77,7 @@ public class Task {
 
     public void setDueDate(int day, int month, int year) {
         if(!DateManager.isDateValid(day, month, year)){
-            String message = String.format("Invalid date entered: %s, %s, %s",
-                    day, month, year);
+            String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
         this.dueDate.set(year, month, day);
