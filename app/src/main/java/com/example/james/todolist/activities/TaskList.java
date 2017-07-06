@@ -1,7 +1,9 @@
-package com.example.james.todolist;
+package com.example.james.todolist.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.james.todolist.R;
 
 public class TaskList extends AppCompatActivity {
 

@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TaskList">
+        <activity android:name=".activities.TaskList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
