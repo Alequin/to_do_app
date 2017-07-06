@@ -5,6 +5,8 @@ import com.example.james.todolist.helper.DateManager;
 import org.junit.Test;
 import org.junit.Before;
 
+import java.util.Calendar;
+
 import static org.junit.Assert.*;
 
 /**
@@ -29,5 +31,13 @@ public class DateManagerTest {
     public void canValidateInputDate__YearWrong(){
         assertEquals(false, DateManager.isDateValid(1, 6, 999));
         assertEquals(false, DateManager.isDateValid(1, 6, 10_000));
+    }
+
+    @Test
+    public void canFormatDate(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(2017, 1, 1);
+        String expected = "01/01/2017";
+        assertEquals(expected, DateManager.formatDate(cal));
     }
 }
