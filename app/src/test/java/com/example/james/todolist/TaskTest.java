@@ -35,8 +35,6 @@ public class TaskTest {
 
     @Test
     public void canCheckIfTaskIsDue__IsNotOverdue(){
-        Calendar creationDate = Calendar.getInstance();
-        Calendar dueDate = Calendar.getInstance();
         task1.setCreationDate(1, 1, 2017);
         task1.setDueDate(1, 2, 2017);
         assertEquals(true, task1.isOverdue());
@@ -48,5 +46,13 @@ public class TaskTest {
         assertEquals(true, creationDateCopy != task1.getCreationDate());
         Calendar dueDateCopy = task1.getDueDate();
         assertEquals(true, dueDateCopy != task1.getDueDate());
+    }
+
+    @Test
+    public void canGetFormattedDates(){
+        String expected = "13/07/2017";
+        assertEquals(expected, task1.getFormattedDueDate());
+        expected = "06/07/2017";
+        assertEquals(expected, task1.getFormattedCreationDate());
     }
 }
