@@ -49,7 +49,7 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 task.setStatus(isChecked);
-                task.save();
+                task.update();
             }
         });
 
