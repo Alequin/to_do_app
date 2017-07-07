@@ -45,14 +45,6 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
                 getContext().getString(R.string.due_date), task.getFormattedDueDate());
         dueDate.setText(dueDateText);
 
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                task.setStatus(isChecked);
-                task.update();
-            }
-        });
-
         checkBox.setTag(task);
         view.setTag(task);
 
