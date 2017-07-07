@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">To Do List</string>
+    <string name="task_viewer_lable">Task</string>
 
     <string name="due_date">Due Date</string>
-    <string name="task_viewer_lable">Task</string>
+    <string name="creation_date">Creation Date</string>
 </resources>

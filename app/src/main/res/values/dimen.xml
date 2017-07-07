@@ -7,4 +7,6 @@
 
     <dimen name="due_date_margin_list_item">15dp</dimen>
 
+    <dimen name="date_title_text_size_task_viewer">18sp</dimen>
+
 </resources>
