@@ -13,6 +13,6 @@ public class TaskListApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DatabaseHandler.init();
+        DatabaseHandler.init(this);
     }
 }

@@ -27,8 +27,8 @@ public class DatabaseHandler {
         return dbHandler;
     }
 
-    public void addTask(Task task){
-        database.addTask(task);
+    public long addTask(Task task){
+        return database.addTask(task);
     }
     
 }

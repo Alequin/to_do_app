@@ -1,5 +1,8 @@
 package com.example.james.todolist.model;
 
+import android.app.Application;
+
+import com.example.james.todolist.database.DatabaseHandler;
 import com.example.james.todolist.helper.DateManager;
 
 import java.io.Serializable;
@@ -12,7 +15,7 @@ import java.util.Calendar;
 
 public class Task implements Serializable{
 
-    private int id;
+    private long id;
     private String outline;
     private String extraDetails;
     private Calendar creationDate;
@@ -44,19 +47,19 @@ public class Task implements Serializable{
     }
 
     public void save(){
-        this.id = FakeDatabase.size();
-        FakeDatabase.add(this);
+        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
+        id = dbHandler.addTask(this);
     }
 
     public void update(){
-        FakeDatabase.add(id, this);
+
     }
 
     public void delete(){
-        FakeDatabase.remove_by_index(id);
+
     }
 
-    public int getId(){
+    public long getId(){
         return id;
     }
 
