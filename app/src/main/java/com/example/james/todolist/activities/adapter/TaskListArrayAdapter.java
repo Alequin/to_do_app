@@ -53,6 +53,9 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
             }
         });
 
+        checkBox.setTag(task);
+        view.setTag(task);
+
         return view;
     }
 }
