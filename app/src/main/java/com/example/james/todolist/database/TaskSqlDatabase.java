@@ -13,9 +13,26 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String NAME = "TaskDb";
 
+    private static final String TASK_TABLE_NAME = "task_table_name";
+
+    // Columns
+    private static final String ID = "id";
+    private static final String OUTLINE = "outline";
+    private static final String EXTRA_DETAILS = "extra_details";
+    private static final String CREATION_DATE = "creation_date";
+    private static final String DUE_DATE = "due_date";
+    private static final String COMPLETE_STATE = "complete_state";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        String createTableCommand = String.format(
+                "CREATE TABLE %s(" +
+                    "%s INTEGER PRIMARY KEY AUTOINCREMENT)" +
+                    "%s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER",
+            ID, OUTLINE, EXTRA_DETAILS, CREATION_DATE, DUE_DATE, COMPLETE_STATE
+        );
+        db.execSQL(createTableCommand);
     }
 
     @Override
