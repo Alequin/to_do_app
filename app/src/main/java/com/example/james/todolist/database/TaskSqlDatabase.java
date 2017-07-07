@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteStatement;
 import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
+import java.util.ArrayList;
+
 /**
  * Created by james on 07/07/2017.
  */
@@ -50,8 +52,21 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         super(context, NAME, null, VERSION);
     }
 
+    public ArrayList<Task> getAllTasks(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM ?", new String[]{TASK_TABLE_NAME});
+        cursor.moveToFirst();
+
+
+        final int length = cursor.getCount();
+        ArrayList<Task> taskList = new ArrayList<>(length);
+        for(int j=0; j<length; j++){
+            
+        }
+    }
+
     public long addTask(Task task){
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(OUTLINE, task.getOutline());
