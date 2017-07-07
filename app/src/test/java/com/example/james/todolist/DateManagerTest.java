@@ -58,7 +58,6 @@ public class DateManagerTest {
         Calendar cal = Calendar.getInstance();
         cal.set(2017, 5, 1);
         String formattedDate = DateManager.formatDateForSQL(cal);
-        Calendar expected = Calendar.getInstance();
-        assertEquals(expected, DateManager.getCalendarFromSqlDate(formattedDate));
+        assert(cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
     }
 }

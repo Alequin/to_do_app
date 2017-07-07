@@ -42,10 +42,13 @@ public class DateManager {
         String[] splitDate = formattedDate.split("-");
         Calendar cal = Calendar.getInstance();
         cal.set(
-                Integer.parseInt(splitDate[2]),
+                Integer.parseInt(splitDate[0]),
                 Integer.parseInt(splitDate[1]),
-                Integer.parseInt(splitDate[0])
+                Integer.parseInt(splitDate[2])
         );
+        System.out.println(Integer.parseInt(splitDate[0]));
+        System.out.println(Integer.parseInt(splitDate[1]));
+        System.out.println(Integer.parseInt(splitDate[2]));
         return cal;
     }
 }
