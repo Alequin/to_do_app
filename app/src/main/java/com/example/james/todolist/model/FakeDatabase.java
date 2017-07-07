@@ -19,6 +19,10 @@ public class FakeDatabase {
         tasks.add(task);
     }
 
+    public static void add(int index, Task task){
+        tasks.add(index, task);
+    }
+
     public static void remove_by_index(int index){
         tasks.remove(index);
     }

@@ -48,6 +48,10 @@ public class Task {
         FakeDatabase.add(this);
     }
 
+    public void update(){
+        FakeDatabase.add(id, this);
+    }
+
     public void delete(){
         FakeDatabase.remove_by_index(id);
     }
