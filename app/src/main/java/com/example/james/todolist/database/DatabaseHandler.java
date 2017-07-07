@@ -39,7 +39,7 @@ public class DatabaseHandler {
         return database.addTask(task);
     }
 
-    public void seedDate(){
+    public void seed(){
         database.deleteAllTasks();
         FakeDatabase.buildDatabase();
         for(Task task : FakeDatabase.queryDatabase()){

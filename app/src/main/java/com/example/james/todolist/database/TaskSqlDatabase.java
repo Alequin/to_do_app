@@ -60,22 +60,28 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         final int length = cursor.getCount();
         ArrayList<Task> taskList = new ArrayList<>(length);
         for(int j=0; j<length; j++){
-            cursor.moveToPosition(j);
-            long id = cursor.getLong(cursor.getColumnIndex(TaskSqlDatabase.ID));
-            String outline = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.OUTLINE));
-            String extraDetails = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.EXTRA_DETAILS));
-
-            String creationDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.CREATION_DATE));
-            Calendar creationDate = DateManager.getCalendarFromSqlDate(creationDateText);
-            String dueDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.DUE_DATE));
-            Calendar dueDate = DateManager.getCalendarFromSqlDate(dueDateText);
-
-            int completeState = cursor.getInt(cursor.getColumnIndex(TaskSqlDatabase.COMPLETE_STATE));
-
-            taskList.add(new Task(id, outline, extraDetails, creationDate, dueDate, false));
+            Task task = mapCursorPositionToTask(j, cursor);
+            taskList.add(task);
         }
 
         return taskList;
+    }
+
+    private Task mapCursorPositionToTask(int position, Cursor cursor){
+        cursor.moveToPosition(position);
+        long id = cursor.getLong(cursor.getColumnIndex(TaskSqlDatabase.ID));
+        String outline = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.OUTLINE));
+        String extraDetails = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.EXTRA_DETAILS));
+
+        String creationDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.CREATION_DATE));
+        Calendar creationDate = DateManager.getCalendarFromSqlDate(creationDateText);
+        String dueDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.DUE_DATE));
+        Calendar dueDate = DateManager.getCalendarFromSqlDate(dueDateText);
+
+        int completeStateAsNum = cursor.getInt(cursor.getColumnIndex(TaskSqlDatabase.COMPLETE_STATE));
+        boolean completeState = completeStateAsNum == 1;
+
+        return new Task(id, outline, extraDetails, creationDate, dueDate, completeState);
     }
 
     public void deleteAllTasks(){

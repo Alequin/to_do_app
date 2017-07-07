@@ -37,7 +37,7 @@ public class FakeDatabase {
     public static void buildDatabase(){
         Calendar date = Calendar.getInstance();
 
-        Task task1 = new Task("buy food", "go to the shop", date, date, false);
+        Task task1 = new Task("buy food", "go to the shop", date, date, true);
         task1.setCreationDate(1, 1, 2017);
         task1.setDueDate(2, 1, 2017);
         task1.save();

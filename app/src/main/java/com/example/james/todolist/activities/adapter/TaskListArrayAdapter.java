@@ -44,7 +44,8 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
         checkBox.setChecked(task.isComplete());
         outline.setText(task.getOutline());
         String dueDateText = String.format("%s: %s",
-                getContext().getString(R.string.due_date), task.getFormattedDueDate());
+                getContext().getString(R.string.due_date), task.getFormattedDueDate()
+        );
         dueDate.setText(dueDateText);
 
         checkBox.setTag(task);

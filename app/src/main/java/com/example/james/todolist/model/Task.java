@@ -34,12 +34,7 @@ public class Task implements Serializable{
     }
 
     public Task(String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
-        this.id = 0;
-        this.outline = outline;
-        this.extraDetails = extraDetails;
-        this.creationDate = creationDate;
-        this.dueDate = dueDate;
-        this.status = status;
+        this(0, outline, extraDetails, creationDate, dueDate, status);
     }
 
     public static ArrayList<Task> get_all(){
