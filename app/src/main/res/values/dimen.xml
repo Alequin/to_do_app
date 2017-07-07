@@ -5,4 +5,6 @@
 
     <dimen name="element_margin_list_item">5dp</dimen>
 
+    <dimen name="due_date_margin_list_item">15dp</dimen>
+
 </resources>
