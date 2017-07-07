@@ -29,6 +29,7 @@
         android:text="This is a task"/>
 
     <TextView
+        android:id="@id/task_due_date_task_list_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="20dp"
