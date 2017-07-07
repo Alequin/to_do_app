@@ -3,6 +3,8 @@ package com.example.james.todolist.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.james.todolist.model.Task;
+
 /**
  * Created by james on 07/07/2017.
  */
@@ -25,5 +27,8 @@ public class DatabaseHandler {
         return dbHandler;
     }
 
+    public void addTask(Task task){
+        database.addTask(task);
+    }
     
 }

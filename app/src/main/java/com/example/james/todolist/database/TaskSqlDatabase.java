@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.james.todolist.model.Task;
+
 /**
  * Created by james on 07/07/2017.
  */
@@ -42,5 +44,18 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
 
     public TaskSqlDatabase(Context context){
         super(context, NAME, null, VERSION);
+    }
+
+    public void addTask(Task task){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String command = String.format(
+                "INSERT INTO %s (%s, %s, %s, %s, %s) VALUES (%s, %s, %s, %s, %s)",
+                ID, OUTLINE, EXTRA_DETAILS, CREATION_DATE, DUE_DATE, COMPLETE_STATE,
+                task.getOutline(), task.getExtraDetails(), task.getFormattedCreationDate(),
+                task.getDueDate(), task.isComplete()
+        );
+        db.compileStatement(command);
+        db.execSQL(command);
+        db.close();
     }
 }
