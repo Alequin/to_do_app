@@ -9,7 +9,6 @@ import java.util.Calendar;
  * Created by james on 06/07/2017.
  */
 
-
 public class Task {
 
     private int id;

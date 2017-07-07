@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
@@ -32,7 +33,7 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
             view = LayoutInflater.from(getContext()).inflate(R.layout.item_of_task_list, parent, false);
         }
 
-        Task task = getItem(position);
+        final Task task = getItem(position);
 
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.check_box_task_list_item);
         TextView outline = (TextView) view.findViewById(R.id.task_outline_task_list_item);
@@ -43,6 +44,14 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
         String dueDateText = String.format("%s: %s",
                 getContext().getString(R.string.due_date), task.getFormattedDueDate());
         dueDate.setText(dueDateText);
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                task.setStatus(isChecked);
+                task.save();
+            }
+        });
 
         return view;
     }
