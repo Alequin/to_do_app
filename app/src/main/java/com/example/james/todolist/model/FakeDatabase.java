@@ -1,5 +1,7 @@
 package com.example.james.todolist.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -20,6 +22,7 @@ public class FakeDatabase {
     }
 
     public static void add(int index, Task task){
+        Log.d("app-debug", task.getOutline() + ": " + task.isComplete());
         tasks.add(index, task);
     }
 
