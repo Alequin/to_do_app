@@ -16,7 +16,11 @@ public class TaskList extends AppCompatActivity {
         setContentView(R.layout.activity_task_list);
 
         FakeDatabase.buildDatabase();
+        
+        prepareListView();
+    }
 
+    private void prepareListView(){
         ListView list = (ListView) findViewById(R.id.main_list_task_list_activity);
         TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, FakeDatabase.queryDatabase());
         list.setAdapter(taskAdapter);
