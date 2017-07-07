@@ -1,6 +1,8 @@
 package com.example.james.todolist.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -46,16 +48,19 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         super(context, NAME, null, VERSION);
     }
 
-    public void addTask(Task task){
+    public long addTask(Task task){
         SQLiteDatabase db = this.getReadableDatabase();
-        String command = String.format(
-                "INSERT INTO %s (%s, %s, %s, %s, %s) VALUES (%s, %s, %s, %s, %s)",
-                ID, OUTLINE, EXTRA_DETAILS, CREATION_DATE, DUE_DATE, COMPLETE_STATE,
-                task.getOutline(), task.getExtraDetails(), task.getFormattedCreationDate(),
-                task.getDueDate(), task.isComplete()
-        );
-        db.compileStatement(command);
-        db.execSQL(command);
+
+        ContentValues values = new ContentValues();
+        values.put(OUTLINE, task.getOutline());
+        values.put(EXTRA_DETAILS, task.getExtraDetails());
+        values.put(CREATION_DATE, task.getFormattedCreationDate());
+        values.put(DUE_DATE, task.getFormattedDueDate());
+        values.put(COMPLETE_STATE, task.isComplete());
+
+        long taskId = db.insert(TASK_TABLE_NAME, null, values);
+
         db.close();
+        return taskId;
     }
 }
