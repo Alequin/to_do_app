@@ -104,11 +104,19 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
     public void updateTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = getTaskContentValues(task);
-        String whereClause = String.format(
-                "%s = %s", ID, task.getId()
+        int completeState = task.isComplete() ? 1 : 0;
+        SQLiteStatement command = db.compileStatement(
+            String.format("UPDATE %s SET %s = '%s', %s = '%s', %s = '%s', %s = '%s', %s = %s WHERE id = %s",
+                    TASK_TABLE_NAME,
+                    OUTLINE, task.getOutline(), EXTRA_DETAILS, task.getExtraDetails(),
+                    CREATION_DATE, DateManager.formatDateForSQL(task.getCreationDate()),
+                    DUE_DATE, DateManager.formatDateForSQL(task.getDueDate()),
+                    COMPLETE_STATE, completeState,
+                    task.getId()
+            )
         );
-        db.update(TASK_TABLE_NAME, values, whereClause, null);
+        command.execute();
+        db.close();
     }
 
     private ContentValues getTaskContentValues(Task task){

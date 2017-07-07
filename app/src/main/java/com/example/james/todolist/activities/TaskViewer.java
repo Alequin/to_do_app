@@ -43,6 +43,7 @@ public class TaskViewer extends AppCompatActivity {
         creationDate.setText(creationDateText);
         String dueDateText = String.format(dateLayout, getString(R.string.due_date), currentTask.getFormattedDueDate());
         dueDate.setText(dueDateText);
+        extraDetails.setText(currentTask.getExtraDetails());
     }
 
     public void onClickUpdateButton(View view){
