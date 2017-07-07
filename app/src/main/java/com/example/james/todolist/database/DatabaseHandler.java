@@ -1,10 +1,7 @@
 package com.example.james.todolist.database;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.example.james.todolist.model.FakeDatabase;
 import com.example.james.todolist.model.Task;
 
 import java.util.ArrayList;

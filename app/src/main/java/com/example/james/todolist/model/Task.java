@@ -1,8 +1,7 @@
 package com.example.james.todolist.model;
 
-import android.app.Application;
-
 import com.example.james.todolist.database.DatabaseHandler;
+import com.example.james.todolist.database.FakeDatabase;
 import com.example.james.todolist.helper.DateManager;
 
 import java.io.Serializable;
