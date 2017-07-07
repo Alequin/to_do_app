@@ -9,7 +9,7 @@ import java.util.Calendar;
 
 public class FakeDatabase {
 
-    public static ArrayList<Task> tasks;
+    public static ArrayList<Task> tasks = new ArrayList<>();
 
     public static ArrayList<Task> queryDatabase(){
         return tasks == null ? new ArrayList<Task>() : tasks;
