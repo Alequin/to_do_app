@@ -78,6 +78,13 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         return taskList;
     }
 
+    public void deleteAllTasks(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(String.format(
+                "DELETE FROM %s", TASK_TABLE_NAME
+        ));
+    }
+
     public long addTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
