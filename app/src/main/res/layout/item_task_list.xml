@@ -6,7 +6,7 @@
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@id/check_box_task_list_item"
-        android:layout_width="40dp"
+        android:layout_width="@dimen/element_height_list_item"
         android:layout_height="@dimen/element_height_list_item"
         android:layout_margin="@dimen/element_margin_list_item"
         app:layout_constraintTop_toTopOf="parent" 
@@ -14,7 +14,7 @@
         android:gravity="center"/>
     
     <TextView
-        android:id="@id/task_outline_text_task_list_item"
+        android:id="@id/task_outline_task_list_item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/element_height_list_item"
@@ -29,7 +29,8 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
         android:layout_margin="@dimen/element_margin_list_item"
         app:layout_constraintTop_toBottomOf="@id/check_box_task_list_item"
         app:layout_constraintLeft_toLeftOf="parent"

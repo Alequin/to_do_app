@@ -5,6 +5,8 @@
 
     <item name="check_box_task_list_item" type="id"/>
 
-    <item name="task_outline_text_task_list_item" type="id"/>
+    <item name="task_outline_task_list_item" type="id"/>
+
+    <item name="task_due_date_task_list_item" type="id"/>
 
 </resources>
