@@ -9,4 +9,8 @@
 
     <item name="due_date_info_view_task_viewer_activity" type="id"/>
 
+    <item name="extra_details_view_task_viewer_activity" type="id"/>
+
+    <item name="update_button_task_viewer_activity" type="id"/>
+
 </resources>
