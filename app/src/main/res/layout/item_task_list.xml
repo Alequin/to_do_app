@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@id/check_box_task_list_item"
         android:layout_width="@dimen/element_height_list_item"
         android:layout_height="@dimen/element_height_list_item"
         android:layout_margin="@dimen/element_margin_list_item"
         app:layout_constraintTop_toTopOf="parent" 
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:gravity="center"/>
+        app:layout_constraintLeft_toLeftOf="parent"/>
     
     <TextView
         android:id="@id/task_outline_task_list_item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/element_height_list_item"
-        android:layout_margin="@dimen/element_margin_list_item"
+        android:layout_marginTop="@dimen/element_margin_list_item"
+        android:layout_marginBottom="@dimen/element_margin_list_item"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/check_box_task_list_item"
         app:layout_constraintRight_toRightOf="parent"
@@ -31,9 +32,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minHeight="20dp"
-        android:layout_margin="@dimen/element_margin_list_item"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/element_margin_list_item"
+        android:layout_marginBottom="@dimen/element_margin_list_item"
         app:layout_constraintTop_toBottomOf="@id/check_box_task_list_item"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Due Date: 01/01/2017"/>
-
 </android.support.constraint.ConstraintLayout>
