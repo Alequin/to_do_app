@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.james.todolist.model.Task;
 
+import java.util.ArrayList;
+
 /**
  * Created by james on 07/07/2017.
  */
@@ -26,6 +28,10 @@ public class DatabaseHandler {
 
     public static DatabaseHandler getDatabase(){
         return dbHandler;
+    }
+
+    public ArrayList<Task> getAllTasks(){
+        return database.getAllTasks();
     }
 
     public long addTask(Task task){
