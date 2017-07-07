@@ -20,12 +20,12 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
     private static final String TASK_TABLE_NAME = "task_table_name";
 
     // Columns
-    private static final String ID = "id";
-    private static final String OUTLINE = "outline";
-    private static final String EXTRA_DETAILS = "extra_details";
-    private static final String CREATION_DATE = "creation_date";
-    private static final String DUE_DATE = "due_date";
-    private static final String COMPLETE_STATE = "complete_state";
+    public static final String ID = "id";
+    public static final String OUTLINE = "outline";
+    public static final String EXTRA_DETAILS = "extra_details";
+    public static final String CREATION_DATE = "creation_date";
+    public static final String DUE_DATE = "due_date";
+    public static final String COMPLETE_STATE = "complete_state";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
