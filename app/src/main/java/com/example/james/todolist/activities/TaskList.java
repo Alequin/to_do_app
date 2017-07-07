@@ -1,5 +1,6 @@
 package com.example.james.todolist.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,11 @@ import com.example.james.todolist.activities.adapter.TaskListArrayAdapter;
 import com.example.james.todolist.model.FakeDatabase;
 import com.example.james.todolist.model.Task;
 
+import java.io.Serializable;
+
 public class TaskList extends AppCompatActivity {
+
+    public static final String TASK_EXTRA = "task_extra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,9 @@ public class TaskList extends AppCompatActivity {
     }
 
     public void onClickListView(View view){
-
+        Serializable task = (Serializable) view.getTag();
+        Intent intent = new Intent(this, TaskViewer.class);
+        intent.putExtra(TASK_EXTRA, task);
+        startActivity(intent);
     }
 }

@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.TaskViewer"
-            android:parentActivityName=".activities.TaskList"></activity>
+            android:parentActivityName=".activities.TaskList"
+            android:label="@string/task_viewer_lable"></activity>
     </application>
 
 </manifest>
