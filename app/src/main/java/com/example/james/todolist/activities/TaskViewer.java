@@ -29,7 +29,11 @@ public class TaskViewer extends AppCompatActivity {
 
         checkBox.setChecked(task.isComplete());
         outline.setText(task.getOutline());
-        creationDate.setText(task.getFormattedCreationDate());
-        dueDate.setText(task.getFormattedDueDate());
+
+        String dateLayout = "%s: %s";
+        String creationDateText = String.format(dateLayout, getString(R.string.creation_date), task.getFormattedCreationDate());
+        creationDate.setText(creationDateText);
+        String dueDateText = String.format(dateLayout, getString(R.string.due_date), task.getFormattedDueDate());
+        dueDate.setText(dueDateText);
     }
 }

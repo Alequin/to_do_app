@@ -5,11 +5,7 @@
 
     <item name="outline_text_view_task_viewer_activity" type="id"/>
 
-    <item name="creation_date_title_view_task_viewer_activity" type="id"/>
-
     <item name="creation_date_info_view_task_viewer_activity" type="id"/>
-
-    <item name="due_date_title_view_task_viewer_activity" type="id"/>
 
     <item name="due_date_info_view_task_viewer_activity" type="id"/>
 
