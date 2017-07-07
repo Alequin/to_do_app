@@ -80,6 +80,7 @@
 
     <Button
         android:id="@id/update_button_task_viewer_activity"
+        android:onClick="onClickUpdateButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
