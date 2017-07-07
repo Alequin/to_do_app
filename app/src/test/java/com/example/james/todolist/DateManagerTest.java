@@ -44,4 +44,21 @@ public class DateManagerTest {
         String expected = "01/01/2017";
         assertEquals(expected, DateManager.formatDate(cal));
     }
+
+    @Test
+    public void canFormatDateForSQL(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(2017, 5, 1);
+        String expected = "2017-05-01";
+        assertEquals(expected, DateManager.formatDateForSQL(cal));
+    }
+
+    @Test
+    public void canGetCalendarObjFromSqlFormattedDate(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(2017, 5, 1);
+        String formattedDate = DateManager.formatDateForSQL(cal);
+        Calendar expected = Calendar.getInstance();
+        assertEquals(expected, DateManager.getCalendarFromSqlDate(formattedDate));
+    }
 }
