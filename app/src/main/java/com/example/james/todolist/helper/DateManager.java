@@ -30,4 +30,22 @@ public class DateManager {
     private static boolean isYearValid(int year){
         return !(year < 1000 || year > 9999);
     }
+
+    public static String formatDateForSQL(Calendar cal) {
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        return String.format("%s-%02d-%02d", year, month, day);
+    }
+
+    public static Calendar getCalendarFromSqlDate(String formattedDate) {
+        String[] splitDate = formattedDate.split("-");
+        Calendar cal = Calendar.getInstance();
+        cal.set(
+                Integer.parseInt(splitDate[2]),
+                Integer.parseInt(splitDate[1]),
+                Integer.parseInt(splitDate[0])
+        );
+        return cal;
+    }
 }
