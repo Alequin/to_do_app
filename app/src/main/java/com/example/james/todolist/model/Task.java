@@ -2,6 +2,7 @@ package com.example.james.todolist.model;
 
 import com.example.james.todolist.helper.DateManager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -9,7 +10,7 @@ import java.util.Calendar;
  * Created by james on 06/07/2017.
  */
 
-public class Task {
+public class Task implements Serializable{
 
     private int id;
     private String outline;
