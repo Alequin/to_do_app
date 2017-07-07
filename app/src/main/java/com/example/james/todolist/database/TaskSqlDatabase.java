@@ -30,9 +30,9 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
 
         String createTableCommand = String.format(
                 "CREATE TABLE %s(" +
-                    "%s INTEGER PRIMARY KEY AUTOINCREMENT)" +
-                    "%s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER",
-            ID, OUTLINE, EXTRA_DETAILS, CREATION_DATE, DUE_DATE, COMPLETE_STATE
+                    "%s INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "%s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER);",
+            TASK_TABLE_NAME, ID, OUTLINE, EXTRA_DETAILS, CREATION_DATE, DUE_DATE, COMPLETE_STATE
         );
         db.execSQL(createTableCommand);
     }
