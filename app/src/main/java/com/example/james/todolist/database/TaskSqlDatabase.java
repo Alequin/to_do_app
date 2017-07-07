@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 /**
@@ -54,8 +55,8 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(OUTLINE, task.getOutline());
         values.put(EXTRA_DETAILS, task.getExtraDetails());
-        values.put(CREATION_DATE, task.getFormattedCreationDate());
-        values.put(DUE_DATE, task.getFormattedDueDate());
+        values.put(CREATION_DATE, DateManager.formatDateForSQL(task.getCreationDate()));
+        values.put(DUE_DATE, DateManager.formatDateForSQL(task.getDueDate()));
         values.put(COMPLETE_STATE, task.isComplete());
 
         long taskId = db.insert(TASK_TABLE_NAME, null, values);

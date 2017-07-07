@@ -24,7 +24,7 @@ public class Task implements Serializable{
 
     private static String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
 
-    public Task(int id, String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
+    public Task(long id, String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
         this.id = id;
         this.outline = outline;
         this.extraDetails = extraDetails;

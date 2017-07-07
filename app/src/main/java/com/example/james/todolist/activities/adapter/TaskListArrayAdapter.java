@@ -5,20 +5,16 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
 import com.example.james.todolist.database.TaskSqlDatabase;
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by james on 07/07/2017.
@@ -40,8 +36,6 @@ public class TaskListArrayAdapter extends SimpleCursorAdapter{
             view = LayoutInflater.from(currentContext).inflate(R.layout.item_of_task_list, parent, false);
         }
 
-
-
         final Task task = (Task) getItem(position);
 
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.check_box_task_list_item);
@@ -51,7 +45,7 @@ public class TaskListArrayAdapter extends SimpleCursorAdapter{
         checkBox.setChecked(task.isComplete());
         outline.setText(task.getOutline());
         String dueDateText = String.format("%s: %s",
-                getContext().getString(R.string.due_date), task.getFormattedDueDate());
+                currentContext.getString(R.string.due_date), task.getFormattedDueDate());
         dueDate.setText(dueDateText);
 
         checkBox.setTag(task);
@@ -64,8 +58,14 @@ public class TaskListArrayAdapter extends SimpleCursorAdapter{
         long id = cursor.getLong(cursor.getColumnIndex(TaskSqlDatabase.ID));
         String outline = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.OUTLINE));
         String extraDetails = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.EXTRA_DETAILS));
-//        String cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.CREATION_DATE));
-//        String cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.DUE_DATE));
+
+        String creationDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.CREATION_DATE));
+        Calendar creationDate = DateManager.getCalendarFromSqlDate(creationDateText);
+        String dueDateText = cursor.getString(cursor.getColumnIndex(TaskSqlDatabase.DUE_DATE));
+        Calendar dueDate = DateManager.getCalendarFromSqlDate(creationDateText);
+
         int completeState = cursor.getInt(cursor.getColumnIndex(TaskSqlDatabase.COMPLETE_STATE));
+
+        return new Task(id, outline, extraDetails, creationDate, dueDate, false);
     }
 }
