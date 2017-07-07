@@ -25,6 +25,8 @@ public class TaskList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
+        DatabaseHandler.getDatabase().seedDate();
+
         prepareListView();
     }
 

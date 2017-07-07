@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.james.todolist.model.FakeDatabase;
 import com.example.james.todolist.model.Task;
 
 import java.util.ArrayList;
@@ -36,6 +37,14 @@ public class DatabaseHandler {
 
     public long addTask(Task task){
         return database.addTask(task);
+    }
+
+    public void seedDate(){
+        database.deleteAllTasks();
+        FakeDatabase.buildDatabase();
+        for(Task task : FakeDatabase.queryDatabase()){
+            addTask(task);
+        }
     }
     
 }
