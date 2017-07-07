@@ -94,16 +94,32 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
     public long addTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues values = getTaskContentValues(task);
+        long taskId = db.insert(TASK_TABLE_NAME, null, values);
+
+        db.close();
+        return taskId;
+    }
+
+    public void updateTask(Task task){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = getTaskContentValues(task);
+        String whereClause = String.format(
+                "%s = %s", ID, task.getId()
+        );
+        db.update(TASK_TABLE_NAME, values, whereClause, null);
+    }
+
+    private ContentValues getTaskContentValues(Task task){
         ContentValues values = new ContentValues();
+
         values.put(OUTLINE, task.getOutline());
         values.put(EXTRA_DETAILS, task.getExtraDetails());
         values.put(CREATION_DATE, DateManager.formatDateForSQL(task.getCreationDate()));
         values.put(DUE_DATE, DateManager.formatDateForSQL(task.getDueDate()));
         values.put(COMPLETE_STATE, task.isComplete());
 
-        long taskId = db.insert(TASK_TABLE_NAME, null, values);
-
-        db.close();
-        return taskId;
+        return values;
     }
 }

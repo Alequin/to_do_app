@@ -47,7 +47,8 @@ public class Task implements Serializable{
     }
 
     public void update(){
-
+        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
+        dbHandler.updateTask(this);
     }
 
     public void delete(){
