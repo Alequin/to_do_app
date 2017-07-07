@@ -46,9 +46,6 @@ public class DateManager {
                 Integer.parseInt(splitDate[1]),
                 Integer.parseInt(splitDate[2])
         );
-        System.out.println(Integer.parseInt(splitDate[0]));
-        System.out.println(Integer.parseInt(splitDate[1]));
-        System.out.println(Integer.parseInt(splitDate[2]));
         return cal;
     }
 }
