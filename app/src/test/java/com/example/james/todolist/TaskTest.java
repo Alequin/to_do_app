@@ -56,6 +56,17 @@ public class TaskTest {
     }
 
     @Test
+    public void canSetCorrectDate(){
+        task1.setCreationDate(1, 1, 2017);
+        task1.setDueDate(5,5,2018);
+        String expectedCreationDate = "01/01/2017";
+        String expectedDueDate = "05/05/2018";
+
+        assertEquals(expectedCreationDate, task1.getFormattedCreationDate());
+        assertEquals(expectedDueDate, task1.getFormattedDueDate());
+    }
+
+    @Test
     public void cannotSetOutOfRangeDay(){
         boolean pass = false;
         try{
