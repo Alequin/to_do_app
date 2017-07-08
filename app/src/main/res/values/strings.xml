@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">To Do List</string>
-    <string name="task_viewer_lable">Task</string>
+    <string name="task_viewer_label">Task</string>
 
     <string name="due_date">Due Date</string>
     <string name="creation_date">Creation Date</string>
     <string name="update">Update</string>
-    <string name="extra_details_hint">Enter any extra details</string>
+    <string name="extra_details_hint">Enter any extra details\nChanges will be saved</string>
     <string name="delete">Delete</string>
     <string name="new_task_label">New Task</string>
     <string name="due_date_button_hint">Click to select a due date</string>
     <string name="select_date">Select Date</string>
-    <string name="invalid_date_message">The date selected cannot be before today</string>
+    <string name="warning_invalid_date_message">The date selected cannot be before today</string>
     <string name="warning_must_provide_outline_text">A task must at least have an outline</string>
 </resources>

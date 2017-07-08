@@ -55,7 +55,7 @@ public class DateActivity extends AppCompatActivity {
         Calendar selected = getCalendarFromDatePicker();
 
         if(selected.before(today)){
-            Toast toast = Toast.makeText(this, getString(R.string.invalid_date_message), Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
             toast.show();
             return;
         }else{

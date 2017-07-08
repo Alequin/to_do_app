@@ -20,7 +20,7 @@
 
         <activity
             android:name=".activities.TaskViewerActivity"
-            android:label="@string/task_viewer_lable"
+            android:label="@string/task_viewer_label"
             android:parentActivityName=".activities.TaskListActivity" />
 
         <activity
