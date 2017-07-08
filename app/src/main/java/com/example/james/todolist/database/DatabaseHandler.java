@@ -24,6 +24,10 @@ public class DatabaseHandler {
         dbHandler = new DatabaseHandler(new TaskSqlDatabase(context));
     }
 
+    public void close(){
+        database.close();
+    }
+
     public static DatabaseHandler getDatabase(){
         return dbHandler;
     }
