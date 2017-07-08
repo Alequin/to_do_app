@@ -14,7 +14,7 @@
         android:layout_above="@id/tick_button_date_activity">
 
         <CalendarView
-            android:id="@id/date_picker_date_activity"
+            android:id="@id/calendar_date_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

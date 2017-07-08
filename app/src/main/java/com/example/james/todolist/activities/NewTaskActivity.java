@@ -1,6 +1,7 @@
 package com.example.james.todolist.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +38,7 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     public void onClickDueDateButton(View view){
-        Intent intent = new Intent(this, CalendarViewActivity.class);
+        Intent intent = new Intent(this, DateActivity.class);
         Calendar cal = taskToMake.getDueDate();
         intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
         intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));

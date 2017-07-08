@@ -3,6 +3,8 @@
 
     <item name="date_picker_date_activity" type="id"/>
 
+    <item name="calendar_date_activity" type="id"/>
+
     <item name="tick_button_date_activity" type="id"/>
 
 </resources>
