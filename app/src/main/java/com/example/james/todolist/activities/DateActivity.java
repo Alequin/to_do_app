@@ -97,7 +97,7 @@ public class DateActivity extends AppCompatActivity {
     private Calendar getCalendarFromDatePicker(){
 
         int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth()+1;
+        int month = datePicker.getMonth();
         int year = datePicker.getYear();
 
         Calendar input = Calendar.getInstance();
@@ -108,7 +108,7 @@ public class DateActivity extends AppCompatActivity {
     private Intent bundleDateValues(Calendar cal){
         Intent intent = new Intent();
         intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
-        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
+        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH)+1);
         intent.putExtra(YEAR_EXTRA, cal.get(Calendar.YEAR));
         return intent;
     }
