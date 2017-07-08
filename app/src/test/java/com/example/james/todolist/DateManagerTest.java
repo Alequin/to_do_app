@@ -40,7 +40,7 @@ public class DateManagerTest {
     @Test
     public void canFormatDate(){
         Calendar cal = Calendar.getInstance();
-        cal.set(2017, 1, 1);
+        cal.set(2017, 0, 1);
         String expected = "01/01/2017";
         assertEquals(expected, DateManager.formatDate(cal));
     }

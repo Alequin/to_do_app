@@ -49,9 +49,9 @@ public class TaskTest {
 
     @Test
     public void canGetFormattedDates(){
-        String expected = "13/07/2017";
+        String expected = "13/08/2017";
         assertEquals(expected, task1.getFormattedDueDate());
-        expected = "06/07/2017";
+        expected = "06/08/2017";
         assertEquals(expected, task1.getFormattedCreationDate());
     }
 
