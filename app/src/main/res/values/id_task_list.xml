@@ -9,4 +9,6 @@
 
     <item name="task_due_date_task_list_item" type="id"/>
 
+    <item name="add_button_task_list_activity" type="id"/>
+
 </resources>

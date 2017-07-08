@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +9,9 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_above="@id/tick_button_date_activity">
 
         <DatePicker
             android:id="@id/date_picker_date_activity"
@@ -26,9 +26,9 @@
     <ImageView
         android:id="@id/tick_button_date_activity"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="@dimen/lower_screen_button_height"
+        android:layout_alignParentBottom="true"
         style="@style/tick_button"
         android:onClick="onClickSelectDate"/>
 
-</LinearLayout>
+</RelativeLayout>
