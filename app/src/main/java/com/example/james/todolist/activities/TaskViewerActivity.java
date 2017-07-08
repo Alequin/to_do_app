@@ -5,21 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.james.todolist.R;
 import com.example.james.todolist.model.Task;
-import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-public class TaskViewer extends AppCompatActivity {
+public class TaskViewerActivity extends AppCompatActivity {
 
     private CheckBox checkBox;
     private EditText extraDetails;
@@ -31,7 +24,7 @@ public class TaskViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_viewer);
 
-        currentTask = (Task) getIntent().getSerializableExtra(TaskList.TASK_EXTRA);
+        currentTask = (Task) getIntent().getSerializableExtra(TaskListActivity.TASK_EXTRA);
 
         TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
         outline.setText(currentTask.getOutline());
@@ -57,7 +50,7 @@ public class TaskViewer extends AppCompatActivity {
         if(item.getItemId() == R.id.bin_icon_task_viewer_activity){
             currentTask.delete();
             currentTask = null;
-            setResult(TaskList.UPDATE_LIST_RESULT_CODE);
+            setResult(TaskListActivity.UPDATE_LIST_RESULT_CODE);
             finish();
             return true;
         }

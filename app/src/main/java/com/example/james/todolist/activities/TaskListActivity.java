@@ -14,7 +14,7 @@ import com.example.james.todolist.model.Task;
 
 import java.io.Serializable;
 
-public class TaskList extends AppCompatActivity {
+public class TaskListActivity extends AppCompatActivity {
 
     public static final String TASK_EXTRA = "task_extra";
     public static final int UPDATE_LIST_REQUEST_CODE = 0;
@@ -49,7 +49,7 @@ public class TaskList extends AppCompatActivity {
 
     public void onClickListView(View view){
         Serializable task = (Serializable) view.getTag();
-        Intent intent = new Intent(this, TaskViewer.class);
+        Intent intent = new Intent(this, TaskViewerActivity.class);
         intent.putExtra(TASK_EXTRA, task);
         startActivityForResult(intent, UPDATE_LIST_REQUEST_CODE);
     }

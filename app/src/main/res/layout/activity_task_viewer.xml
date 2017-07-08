@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.james.todolist.activities.TaskViewer">
+    tools:context="com.example.james.todolist.activities.TaskViewerActivity">
 
     <CheckBox
         android:id="@id/check_box_task_viewer_activity"
