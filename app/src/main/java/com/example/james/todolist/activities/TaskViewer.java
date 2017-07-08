@@ -51,11 +51,6 @@ public class TaskViewer extends AppCompatActivity {
         currentTask.update();
     }
 
-    public void onClickUpdateButton(View view){
-        currentTask.setExtraDetails(extraDetails.getText().toString());
-        currentTask.update();
-    }
-
     @Override
     public void onPause() {
         currentTask.setExtraDetails(extraDetails.getText().toString());
