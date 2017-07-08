@@ -32,6 +32,10 @@ public class DatabaseHandler {
         return dbHandler;
     }
 
+    public Task findById(long id){
+        return database.findById(id);
+    }
+
     public ArrayList<Task> getAllTasks(){
         return database.getAllTasks();
     }

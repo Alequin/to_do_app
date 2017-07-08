@@ -53,6 +53,21 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         super(context, NAME, null, VERSION);
     }
 
+    public Task findById(long id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String command = String.format(
+            "SELECT * FROM %s WHERE id = %s",
+                TASK_TABLE_NAME, id);
+
+        Cursor cursor = db.rawQuery(command, null);
+        Task task = mapCursorPositionToTask(0, cursor);
+
+        cursor.close();
+        db.close();
+        return task;
+    }
+
     public ArrayList<Task> getAllTasks(){
         SQLiteDatabase db = this.getWritableDatabase();
         String command = String.format(
