@@ -52,11 +52,15 @@ public class DatabaseHandler {
         database.deleteTask(task);
     }
 
+    public void deleteAllTasks() {
+        database.deleteAllTasks();
+    }
+
     public void seed(int times){
         database.deleteAllTasks();
         for(int j = 0; j<times; j++) {
             FakeDatabase.buildDatabase();
         }
     }
-    
+
 }

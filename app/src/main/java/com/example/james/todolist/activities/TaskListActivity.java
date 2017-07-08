@@ -3,6 +3,9 @@ package com.example.james.todolist.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -27,9 +30,27 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-        //DatabaseHandler.getDatabase().seed(100);
+        DatabaseHandler.getDatabase().seed(100);
 
         listView = (ListView) findViewById(R.id.main_list_task_list_activity);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.task_list_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
+            DatabaseHandler db = DatabaseHandler.getDatabase();
+            db.deleteAllTasks();
+            updateListView();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void onClickCheckBox(View view){

@@ -13,4 +13,6 @@
     <string name="select_date">Select Date</string>
     <string name="warning_invalid_date_message">The date selected cannot be before today</string>
     <string name="warning_must_provide_outline_text">A task must at least have an outline</string>
+    <string name="delete_all">Delete All</string>
+    <string name="close">Close</string>
 </resources>
