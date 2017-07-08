@@ -18,6 +18,8 @@ public class TaskListActivity extends AppCompatActivity {
 
     public static final String TASK_EXTRA = "task_extra";
 
+    private static int lastScrollPosition = 0;
+
     private ListView listView;
 
     @Override
@@ -50,8 +52,15 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        lastScrollPosition = listView.getFirstVisiblePosition();
+        super.onPause();
+    }
+
+    @Override
     protected void onResume() {
         updateListView();
+        listView.setSelection(lastScrollPosition);
         super.onResume();
     }
 
