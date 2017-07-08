@@ -55,7 +55,10 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
 
     public ArrayList<Task> getAllTasks(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(String.format("SELECT * FROM %s", TASK_TABLE_NAME), null);
+        String command = String.format(
+            "SELECT * FROM %s ORDER BY %s ASC", TASK_TABLE_NAME, DUE_DATE
+        );
+        Cursor cursor = db.rawQuery(command, null);
 
         final int length = cursor.getCount();
         ArrayList<Task> taskList = new ArrayList<>(length);
