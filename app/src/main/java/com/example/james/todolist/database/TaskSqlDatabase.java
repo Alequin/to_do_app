@@ -64,6 +64,7 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
             taskList.add(task);
         }
 
+        db.close();
         return taskList;
     }
 
@@ -101,6 +102,18 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         return taskId;
     }
 
+    private ContentValues getTaskContentValues(Task task){
+        ContentValues values = new ContentValues();
+
+        values.put(OUTLINE, task.getOutline());
+        values.put(EXTRA_DETAILS, task.getExtraDetails());
+        values.put(CREATION_DATE, DateManager.formatDateForSQL(task.getCreationDate()));
+        values.put(DUE_DATE, DateManager.formatDateForSQL(task.getDueDate()));
+        values.put(COMPLETE_STATE, task.isComplete());
+
+        return values;
+    }
+
     public void updateTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -119,15 +132,4 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
-    private ContentValues getTaskContentValues(Task task){
-        ContentValues values = new ContentValues();
-
-        values.put(OUTLINE, task.getOutline());
-        values.put(EXTRA_DETAILS, task.getExtraDetails());
-        values.put(CREATION_DATE, DateManager.formatDateForSQL(task.getCreationDate()));
-        values.put(DUE_DATE, DateManager.formatDateForSQL(task.getDueDate()));
-        values.put(COMPLETE_STATE, task.isComplete());
-
-        return values;
-    }
 }
