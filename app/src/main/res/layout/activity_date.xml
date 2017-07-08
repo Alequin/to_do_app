@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <DatePicker
+        android:id="@id/date_picker_date_activity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"/>
