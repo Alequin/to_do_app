@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.james.todolist.activities.DateActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_above="@id/tick_button_date_activity">
+
+        <DatePicker
+            android:id="@id/date_picker_date_activity"
+            style="@style/DialogTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#fff"/>
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@id/tick_button_date_activity"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lower_screen_button_height"
+        android:layout_alignParentBottom="true"
+        style="@style/tick_button"
+        android:onClick="onClickSelectDate"/>
+
+</RelativeLayout>
