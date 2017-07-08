@@ -15,6 +15,8 @@ import com.example.james.todolist.database.TaskSqlDatabase;
 import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -23,6 +25,12 @@ import java.util.Calendar;
  */
 
 public class TaskListArrayAdapter extends ArrayAdapter<Task>{
+
+    private Task task;
+
+    private CheckBox checkBox;
+    private TextView outline;
+    private TextView dueDate;
 
     public TaskListArrayAdapter(Context context, ArrayList<Task> taskList){
         super(context, 0, taskList);
@@ -35,11 +43,11 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
             view = LayoutInflater.from(getContext()).inflate(R.layout.item_of_task_list, parent, false);
         }
 
-        final Task task = getItem(position);
+        task = getItem(position);
 
-        CheckBox checkBox = (CheckBox) view.findViewById(R.id.check_box_task_list_item);
-        TextView outline = (TextView) view.findViewById(R.id.task_outline_task_list_item);
-        TextView dueDate = (TextView) view.findViewById(R.id.task_due_date_task_list_item);
+        checkBox = (CheckBox) view.findViewById(R.id.check_box_task_list_item);
+        outline = (TextView) view.findViewById(R.id.task_outline_task_list_item);
+        dueDate = (TextView) view.findViewById(R.id.task_due_date_task_list_item);
 
         checkBox.setChecked(task.isComplete());
         outline.setText(task.getOutline());
