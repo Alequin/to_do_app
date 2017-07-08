@@ -74,7 +74,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 int day = bundleDueDate.getInt(DateActivity.DAY_EXTRA);
                 int month = bundleDueDate.getInt(DateActivity.MONTH_EXTRA);
                 int year = bundleDueDate.getInt(DateActivity.YEAR_EXTRA);
-                taskToMake.setDueDate(day, month, year);
+                taskToMake.setDueDate(year, month, day);
 
                 dueDateButton.setText(
                     String.format("%s: %s",

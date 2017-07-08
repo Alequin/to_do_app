@@ -34,8 +34,8 @@ public class TaskTest {
 
     @Test
     public void canCheckIfTaskIsDue__IsNotOverdue(){
-        task1.setCreationDate(1, 1, 2017);
-        task1.setDueDate(1, 2, 2017);
+        task1.setCreationDate(2017, 1, 1);
+        task1.setDueDate(2017, 2, 1);
         assertEquals(true, task1.isOverdue());
     }
 
@@ -57,8 +57,8 @@ public class TaskTest {
 
     @Test
     public void canSetCorrectDate(){
-        task1.setCreationDate(1, 1, 2017);
-        task1.setDueDate(5,5,2018);
+        task1.setCreationDate(2017, 1, 1);
+        task1.setDueDate(2018,5,5);
         String expectedCreationDate = "01/01/2017";
         String expectedDueDate = "05/05/2018";
 
@@ -70,7 +70,7 @@ public class TaskTest {
     public void cannotSetOutOfRangeDay(){
         boolean pass = false;
         try{
-            task1.setCreationDate(0, 06, 2017);
+            task1.setCreationDate(2017, 6, 0);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -78,7 +78,7 @@ public class TaskTest {
 
         pass = false;
         try{
-            task1.setDueDate(32, 06, 2017);
+            task1.setDueDate(2017, 6, 32);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -89,7 +89,7 @@ public class TaskTest {
     public void cannotSetOutOfRangeMonth(){
         boolean pass = false;
         try{
-            task1.setCreationDate(1, 0, 2017);
+            task1.setCreationDate(2017, 0, 1);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -97,7 +97,7 @@ public class TaskTest {
 
         pass = false;
         try{
-            task1.setDueDate(1, 32, 2017);
+            task1.setDueDate(2017, 32, 1);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -108,7 +108,7 @@ public class TaskTest {
     public void cannotSetOutOfRangeYear(){
         boolean pass = false;
         try{
-            task1.setCreationDate(1, 06, 999);
+            task1.setCreationDate(999, 6, 1);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -116,7 +116,7 @@ public class TaskTest {
 
         pass = false;
         try{
-            task1.setDueDate(1, 06, 10_000);
+            task1.setDueDate(10_000, 6, 1);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -127,7 +127,7 @@ public class TaskTest {
     public void cannotSetDueDateThatIsBeforeCreationDate(){
         boolean pass = false;
         try{
-            task1.setDueDate(5, 7, 2017);
+            task1.setDueDate(2017, 7, 5);
         }catch(IllegalArgumentException ex){
            pass = true;
         }

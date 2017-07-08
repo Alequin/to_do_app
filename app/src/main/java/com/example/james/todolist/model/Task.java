@@ -91,8 +91,8 @@ public class Task implements Serializable{
         return DateManager.formatDate(creationDate);
     }
 
-    public void setCreationDate(int day, int month, int year) {
-        if(!DateManager.isDateValid(day, month, year)){
+    public void setCreationDate(int year, int month, int day) {
+        if(!DateManager.isDateValid(year, month, day)){
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
@@ -107,8 +107,8 @@ public class Task implements Serializable{
         return DateManager.formatDate(dueDate);
     }
 
-    public void setDueDate(int day, int month, int year) {
-        if(!DateManager.isDateValid(day, month, year)){
+    public void setDueDate(int year, int month, int day) {
+        if(!DateManager.isDateValid(year, month, day)){
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }

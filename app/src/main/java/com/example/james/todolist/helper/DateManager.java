@@ -16,7 +16,7 @@ public class DateManager {
         return String.format("%02d/%02d/%s", day, month, year);
     }
 
-    public static boolean isDateValid(int day, int month, int year) {
+    public static boolean isDateValid(int year, int month, int day) {
         return isDayValid(day) && isMonthValid(month) && isYearValid(year);
     }
 
@@ -45,7 +45,7 @@ public class DateManager {
         int day = Integer.parseInt(splitDate[2]);
         int month = Integer.parseInt(splitDate[1]);
         int year = Integer.parseInt(splitDate[0]);
-        if(!isDateValid(day, month,year)){
+        if(!isDateValid(year, month, day)){
             throw new IllegalArgumentException(
                     String.format("Invalid date entered: day - %s, month - %s, year - %s",
                     day, month, year)

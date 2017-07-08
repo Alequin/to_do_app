@@ -17,24 +17,24 @@ public class DateManagerTest {
 
     @Test
     public void canValidateInputDate(){
-        assertEquals(true, DateManager.isDateValid(1, 1, 2017));
+        assertEquals(true, DateManager.isDateValid(2017, 1, 1));
     }
     @Test
     public void canValidateInputDate__DayWrong(){
-        assertEquals(false, DateManager.isDateValid(0, 6, 2017));
-        assertEquals(false, DateManager.isDateValid(32, 6, 2017));
+        assertEquals(false, DateManager.isDateValid(2017, 6, 0));
+        assertEquals(false, DateManager.isDateValid(2017, 6, 32));
     }
 
     @Test
     public void canValidateInputDate__MonthWrong(){
-        assertEquals(false, DateManager.isDateValid(1, 0, 2017));
-        assertEquals(false, DateManager.isDateValid(1, 13, 2017));
+        assertEquals(false, DateManager.isDateValid(2017, 0, 1));
+        assertEquals(false, DateManager.isDateValid(2017, 13, 1));
     }
 
     @Test
     public void canValidateInputDate__YearWrong(){
-        assertEquals(false, DateManager.isDateValid(1, 6, 999));
-        assertEquals(false, DateManager.isDateValid(1, 6, 10_000));
+        assertEquals(false, DateManager.isDateValid(999, 6, 1));
+        assertEquals(false, DateManager.isDateValid(10_000, 6, 1));
     }
 
     @Test
