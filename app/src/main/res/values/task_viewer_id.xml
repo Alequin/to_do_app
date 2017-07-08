@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <item name="bin_icon_task_viewer_activity" type="id"/>
 
     <item name="check_box_task_viewer_activity" type="id"/>
 
