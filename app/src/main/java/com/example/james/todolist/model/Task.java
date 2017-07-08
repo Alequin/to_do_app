@@ -100,6 +100,7 @@ public class Task implements Serializable{
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
+        //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
         creationDate.set(year, month-1, day);
     }
 
@@ -116,7 +117,7 @@ public class Task implements Serializable{
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
-
+        //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
         this.dueDate.set(year, month-1, day);
 
         if(dueDate.before(creationDate)){
