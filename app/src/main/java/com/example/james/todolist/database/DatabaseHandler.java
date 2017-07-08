@@ -44,6 +44,10 @@ public class DatabaseHandler {
         database.updateTask(task);
     }
 
+    public void deleteTask(Task task){
+        database.deleteTask(task);
+    }
+
     public void seed(){
         database.deleteAllTasks();
         FakeDatabase.buildDatabase();

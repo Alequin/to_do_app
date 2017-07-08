@@ -90,6 +90,7 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         db.execSQL(String.format(
                 "DELETE FROM %s", TASK_TABLE_NAME
         ));
+        db.close();
     }
 
     public long addTask(Task task){
@@ -132,4 +133,11 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteTask(Task task){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(String.format(
+                "DELETE FROM %s WHERE id = %s", TASK_TABLE_NAME, task.getId()
+        ));
+        db.close();
+    }
 }

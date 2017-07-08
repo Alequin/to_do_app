@@ -51,7 +51,8 @@ public class Task implements Serializable{
     }
 
     public void delete(){
-
+        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
+        dbHandler.deleteTask(this);
     }
 
     public long getId(){

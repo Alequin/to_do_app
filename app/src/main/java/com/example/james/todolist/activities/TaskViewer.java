@@ -56,6 +56,8 @@ public class TaskViewer extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == R.id.bin_icon_task_viewer_activity){
             currentTask.delete();
+            currentTask = null;
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -74,9 +76,11 @@ public class TaskViewer extends AppCompatActivity {
     
     @Override
     public void onPause() {
-        currentTask.setStatus(checkBox.isChecked());
-        currentTask.setExtraDetails(extraDetails.getText().toString());
-        currentTask.update();
+        if(currentTask != null){
+            currentTask.setStatus(checkBox.isChecked());
+            currentTask.setExtraDetails(extraDetails.getText().toString());
+            currentTask.update();
+        }
         super.onPause();
     }
 }
