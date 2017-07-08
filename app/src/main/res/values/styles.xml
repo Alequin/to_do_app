@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DialogTheme" parent="AppTheme">
+        <item name="android:headerBackground">@color/colorPrimary</item>
+    </style>
+
 </resources>
