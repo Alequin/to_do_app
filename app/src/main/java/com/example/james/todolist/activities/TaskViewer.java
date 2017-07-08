@@ -46,6 +46,11 @@ public class TaskViewer extends AppCompatActivity {
         extraDetails.setText(currentTask.getExtraDetails());
     }
 
+    public void onClickCheckBox(View view){
+        currentTask.setStatus(checkBox.isChecked());
+        currentTask.update();
+    }
+
     public void onClickUpdateButton(View view){
         currentTask.setExtraDetails(extraDetails.getText().toString());
         currentTask.update();

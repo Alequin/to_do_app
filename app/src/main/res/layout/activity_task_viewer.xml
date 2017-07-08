@@ -14,7 +14,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"/>
+        android:layout_marginStart="15dp"
+        android:onClick="onClickCheckBox"/>
 
     <TextView
         android:id="@id/outline_text_view_task_viewer_activity"
