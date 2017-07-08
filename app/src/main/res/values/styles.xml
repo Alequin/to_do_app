@@ -17,5 +17,5 @@
         <item name="android:src">@drawable/tick</item>
         <item name="android:padding">6dp</item>
     </style>
-    
+
 </resources>

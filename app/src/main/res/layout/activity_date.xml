@@ -7,14 +7,23 @@
     tools:context="com.example.james.todolist.activities.DateActivity"
     android:orientation="vertical">
 
-    <DatePicker
-        android:id="@id/date_picker_date_activity"
-        style="@style/DialogTheme"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9" />
+        android:layout_weight="9">
+
+        <DatePicker
+            android:id="@id/date_picker_date_activity"
+            style="@style/DialogTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
 
     <ImageView
+        android:id="@id/tick_button_date_activity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
