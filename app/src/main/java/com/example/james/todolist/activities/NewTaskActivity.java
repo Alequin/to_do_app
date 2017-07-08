@@ -29,9 +29,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
 
-        Calendar date1 = Calendar.getInstance();
-        Calendar date2 = Calendar.getInstance();
-        taskToMake = new Task("", "", date1, date2, false);
+        taskToMake = new Task("", "", false);
     }
 
     public void onClickDueDateButton(View view){
