@@ -54,7 +54,7 @@
             android:layout_height="0dp"
             android:layout_weight="15"
             android:background="@drawable/edit_text_border"
-            android:hint="@string/extra_details_hint"
+            android:hint="@string/extra_details_enter_hint"
             android:padding="15dp"
             android:gravity="start"/>
 

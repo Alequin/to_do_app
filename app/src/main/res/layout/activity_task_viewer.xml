@@ -75,7 +75,7 @@
         android:layout_marginBottom="20dp"
         android:padding="15dp"
         android:gravity="start"
-        android:hint="@string/extra_details_hint"
+        android:hint="@string/extra_details_save_hint"
         android:background="@drawable/edit_text_border"/>
 
 
