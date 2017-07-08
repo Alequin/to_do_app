@@ -1,6 +1,7 @@
 package com.example.james.todolist.helper;
 
 import java.util.Calendar;
+import java.util.regex.Pattern;
 
 /**
  * Created by james on 06/07/2017.
@@ -39,13 +40,20 @@ public class DateManager {
     }
 
     public static Calendar getCalendarFromSqlDate(String formattedDate) {
+
         String[] splitDate = formattedDate.split("-");
+        int day = Integer.parseInt(splitDate[2]);
+        int month = Integer.parseInt(splitDate[1]);
+        int year = Integer.parseInt(splitDate[0]);
+        if(!isDateValid(day, month,year)){
+            throw new IllegalArgumentException(
+                    String.format("Invalid date entered: day - %s, month - %s, year - %s",
+                    day, month, year)
+            );
+        }
+
         Calendar cal = Calendar.getInstance();
-        cal.set(
-                Integer.parseInt(splitDate[0]),
-                Integer.parseInt(splitDate[1]),
-                Integer.parseInt(splitDate[2])
-        );
+        cal.set(year, month, day);
         return cal;
     }
 }

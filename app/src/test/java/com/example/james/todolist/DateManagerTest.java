@@ -60,4 +60,61 @@ public class DateManagerTest {
         String formattedDate = DateManager.formatDateForSQL(cal);
         assert(cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
     }
+
+    @Test
+    public void cannotConvertTextDateToCalendarWhenInputWrong__DayWrong(){
+        boolean pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("2017-05-0");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+
+        pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("2017-05-32");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+    }
+
+    @Test
+    public void cannotConvertTextDateToCalendarWhenInputWrong__MonthWrong(){
+        boolean pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("2017-0-01");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+
+        pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("2017-13-01");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+    }
+
+    @Test
+    public void cannotConvertTextDateToCalendarWhenInputWrong__YearWrong(){
+        boolean pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("999-05-01");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+
+        pass = false;
+        try{
+            DateManager.getCalendarFromSqlDate("10000-05-01");
+        }catch(IllegalArgumentException ex){
+            pass = true;
+        }
+        assertEquals(true, pass);
+    }
 }
