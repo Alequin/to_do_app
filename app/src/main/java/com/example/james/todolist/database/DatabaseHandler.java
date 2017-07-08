@@ -52,11 +52,10 @@ public class DatabaseHandler {
         database.deleteTask(task);
     }
 
-    public void seed(){
+    public void seed(int times){
         database.deleteAllTasks();
-        FakeDatabase.buildDatabase();
-        for(Task task : FakeDatabase.queryDatabase()){
-            addTask(task);
+        for(int j = 0; j<times; j++) {
+            FakeDatabase.buildDatabase();
         }
     }
     
