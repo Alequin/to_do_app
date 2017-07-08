@@ -12,9 +12,8 @@ import com.example.james.todolist.R;
 import com.example.james.todolist.helper.DateManager;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class DateActivity extends AppCompatActivity {
+public class CalendarViewActivity extends AppCompatActivity {
 
     public static final String DAY_EXTRA = "day_extra";
     public static final String MONTH_EXTRA = "month_extra";
@@ -25,7 +24,7 @@ public class DateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date);
+        setContentView(R.layout.activity_calendar_view);
         hideActionBar();
 
         datePicker = (CalendarView) findViewById(R.id.date_picker_date_activity);

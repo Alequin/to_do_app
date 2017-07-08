@@ -37,7 +37,7 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     public void onClickDueDateButton(View view){
-        Intent intent = new Intent(this, DateActivity.class);
+        Intent intent = new Intent(this, CalendarViewActivity.class);
         Calendar cal = taskToMake.getDueDate();
         intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
         intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
@@ -76,9 +76,9 @@ public class NewTaskActivity extends AppCompatActivity {
         if(requestCode == SET_DUE_DATE_REQUEST_CODE){
             if(resultCode == SET_DUE_DATE_RESULT_CODE){
                 Bundle bundleDueDate = data.getExtras();
-                int day = bundleDueDate.getInt(DateActivity.DAY_EXTRA);
-                int month = bundleDueDate.getInt(DateActivity.MONTH_EXTRA);
-                int year = bundleDueDate.getInt(DateActivity.YEAR_EXTRA);
+                int day = bundleDueDate.getInt(CalendarViewActivity.DAY_EXTRA);
+                int month = bundleDueDate.getInt(CalendarViewActivity.MONTH_EXTRA);
+                int year = bundleDueDate.getInt(CalendarViewActivity.YEAR_EXTRA);
                 taskToMake.setDueDate(year, month, day);
 
                 dueDateButton.setText(
