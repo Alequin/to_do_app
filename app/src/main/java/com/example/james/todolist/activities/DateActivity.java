@@ -53,6 +53,7 @@ public class DateActivity extends AppCompatActivity {
         int day = extras.getInt(NewTaskActivity.DAY_EXTRA, today.get(Calendar.DAY_OF_MONTH));
         int month = extras.getInt(NewTaskActivity.MONTH_EXTRA, today.get(Calendar.MONTH));
         int year = extras.getInt(NewTaskActivity.YEAR_EXTRA, today.get(Calendar.YEAR));
+
         if(datePicker != null){
             datePicker.init(year, month, day, null);
         }else{
@@ -70,7 +71,6 @@ public class DateActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
     }
-
 
     public void onClickSelectDate(View view){
 
@@ -97,7 +97,7 @@ public class DateActivity extends AppCompatActivity {
     private Calendar getCalendarFromDatePicker(){
 
         int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth()+1;
+        int month = datePicker.getMonth();
         int year = datePicker.getYear();
 
         Calendar input = Calendar.getInstance();
@@ -108,7 +108,7 @@ public class DateActivity extends AppCompatActivity {
     private Intent bundleDateValues(Calendar cal){
         Intent intent = new Intent();
         intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
-        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
+        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH)+1);
         intent.putExtra(YEAR_EXTRA, cal.get(Calendar.YEAR));
         return intent;
     }
