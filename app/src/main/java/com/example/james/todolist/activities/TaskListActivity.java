@@ -27,15 +27,7 @@ public class TaskListActivity extends AppCompatActivity {
 
         //DatabaseHandler.getDatabase().seed(100);
 
-        prepareListView();
-    }
-
-    private void prepareListView(){
-        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
-        TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, dbHandler.getAllTasks());
-
         listView = (ListView) findViewById(R.id.main_list_task_list_activity);
-        listView.setAdapter(taskAdapter);
     }
 
     public void onClickCheckBox(View view){
