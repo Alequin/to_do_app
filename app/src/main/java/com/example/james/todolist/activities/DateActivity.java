@@ -1,6 +1,7 @@
 package com.example.james.todolist.activities;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,10 @@ import java.util.Calendar;
 
 public class DateActivity extends AppCompatActivity {
 
+    public static final String DAY_EXTRA = "day_extra";
+    public static final String MONTH_EXTRA = "month_extra";
+    public static final String YEAR_EXTRA = "year_extra";
+
     private DatePicker datePicker;
 
     @Override
@@ -24,6 +29,16 @@ public class DateActivity extends AppCompatActivity {
         datePicker = (DatePicker) findViewById(R.id.date_picker_date_activity);
     }
 
+    private void hideActionBar(){
+        ActionBar bar = getActionBar();
+        if(bar != null){
+            bar.hide();
+        }else{
+            getSupportActionBar().hide();
+        }
+    }
+
+
     public void onClickSelectDate(View view){
 
         Calendar today = Calendar.getInstance();
@@ -34,16 +49,9 @@ public class DateActivity extends AppCompatActivity {
             toast.show();
             return;
         }else{
-
-        }
-    }
-
-    private void hideActionBar(){
-        ActionBar bar = getActionBar();
-        if(bar != null){
-            bar.hide();
-        }else{
-            getSupportActionBar().hide();
+            bundleDateValues(selected);
+            setResult(NewTaskActivity.SET_DUE_DATE_RESULT_CODE);
+            finish();
         }
     }
 
@@ -56,5 +64,12 @@ public class DateActivity extends AppCompatActivity {
         Calendar input = Calendar.getInstance();
         input.set(year, month, day);
         return input;
+    }
+
+    private void bundleDateValues(Calendar cal){
+        Intent intent = getIntent();
+        intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
+        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
+        intent.putExtra(DAY_EXTRA, cal.get(Calendar.YEAR));
     }
 }
