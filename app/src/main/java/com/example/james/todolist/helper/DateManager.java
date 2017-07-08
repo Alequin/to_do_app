@@ -3,6 +3,7 @@ package com.example.james.todolist.helper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.regex.Pattern;
 
 /**
@@ -62,7 +63,12 @@ public class DateManager {
     public static Calendar getCalendarFromLong(long dateAsLong){
         Date date = new Date(dateAsLong);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateAsText = sdf.format(date);
-        return getCalendarFromSqlDate(dateAsText);
+
+        String[] splitDate = sdf.format(date).split("-");
+        int day = Integer.parseInt(splitDate[2]);
+        int month = Integer.parseInt(splitDate[1]);
+        int year = Integer.parseInt(splitDate[0]);
+
+        return new GregorianCalendar(year, month-1, day);
     }
 }

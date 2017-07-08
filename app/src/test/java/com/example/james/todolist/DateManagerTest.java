@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -116,5 +117,14 @@ public class DateManagerTest {
             pass = true;
         }
         assertEquals(true, pass);
+    }
+
+    @Test
+    public void canGetCalendarObjFromLongValue(){
+        Date date = new Date();
+        Calendar expected = Calendar.getInstance();
+        assertEquals(expected.get(Calendar.DAY_OF_MONTH), DateManager.getCalendarFromLong(date.getTime()).get(Calendar.DAY_OF_MONTH));
+        assertEquals(expected.get(Calendar.MONTH), DateManager.getCalendarFromLong(date.getTime()).get(Calendar.MONTH));
+        assertEquals(expected.get(Calendar.YEAR), DateManager.getCalendarFromLong(date.getTime()).get(Calendar.YEAR));
     }
 }
