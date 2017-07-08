@@ -15,7 +15,7 @@ public class DateManager {
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
-        return String.format("%02d/%02d/%s", day, month, year);
+        return String.format("%02d/%02d/%s", day, month+1, year);
     }
 
     public static boolean isDateValid(int year, int month, int day) {
@@ -62,6 +62,7 @@ public class DateManager {
     public static Calendar getCalendarFromLong(long dateAsLong){
         Date date = new Date(dateAsLong);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return getCalendarFromSqlDate(sdf.format(date));
+        String dateAsText = sdf.format(date);
+        return getCalendarFromSqlDate(dateAsText);
     }
 }

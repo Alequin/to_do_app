@@ -100,7 +100,7 @@ public class Task implements Serializable{
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
-        creationDate.set(year, month, day);
+        creationDate.set(year, month-1, day);
     }
 
     public Calendar getDueDate() {
@@ -117,7 +117,7 @@ public class Task implements Serializable{
             throw new IllegalArgumentException(message);
         }
 
-        this.dueDate.set(year, month, day);
+        this.dueDate.set(year, month-1, day);
 
         if(dueDate.before(creationDate)){
             throw new IllegalArgumentException("Due date cannot be before the creation date");

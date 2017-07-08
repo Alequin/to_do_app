@@ -38,7 +38,8 @@ public class DateActivity extends AppCompatActivity {
         int day = extras.getInt(NewTaskActivity.DAY_EXTRA, today.get(Calendar.DAY_OF_MONTH));
         int month = extras.getInt(NewTaskActivity.MONTH_EXTRA, today.get(Calendar.MONTH));
         int year = extras.getInt(NewTaskActivity.YEAR_EXTRA, today.get(Calendar.YEAR));
-        Calendar cal = new GregorianCalendar(year, month, day);
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
         datePicker.setDate(cal.getTimeInMillis());
     }
 
