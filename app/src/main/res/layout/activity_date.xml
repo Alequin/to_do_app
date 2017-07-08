@@ -4,10 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.james.todolist.activities.DateActivity">
+    tools:context="com.example.james.todolist.activities.DateActivity"
+    android:orientation="vertical">
 
     <DatePicker
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="@string/select_date"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:onClick="onClickSelectDate"/>
 
 </LinearLayout>
