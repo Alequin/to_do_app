@@ -82,6 +82,7 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
             taskList.add(task);
         }
 
+        cursor.close();
         db.close();
         return taskList;
     }
