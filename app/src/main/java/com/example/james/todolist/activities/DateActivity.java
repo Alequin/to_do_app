@@ -26,8 +26,8 @@ public class DateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_date);
         hideActionBar();
 
-        datePicker = (DatePicker) findViewById(R.id.date_picker_date_activity);
-        prepareDatePicker();
+//        datePicker = (DatePicker) findViewById(R.id.date_picker_date_activity);
+//        prepareDatePicker();
     }
 
     private void prepareDatePicker(){

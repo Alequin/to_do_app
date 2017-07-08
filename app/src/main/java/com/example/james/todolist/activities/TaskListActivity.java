@@ -30,7 +30,7 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-        DatabaseHandler.getDatabase().seed(100);
+        //DatabaseHandler.getDatabase().seed(100);
 
         listView = (ListView) findViewById(R.id.main_list_task_list_activity);
     }

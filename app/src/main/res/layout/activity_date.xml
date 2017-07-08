@@ -13,14 +13,10 @@
         android:background="@color/colorPrimary"
         android:layout_above="@id/tick_button_date_activity">
 
-        <DatePicker
-            android:id="@id/date_picker_date_activity"
-            style="@style/DialogTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#fff"/>
-
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 
     <ImageView
