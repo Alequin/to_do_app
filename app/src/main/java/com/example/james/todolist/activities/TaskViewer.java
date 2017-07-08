@@ -29,21 +29,27 @@ public class TaskViewer extends AppCompatActivity {
 
         currentTask = (Task) getIntent().getSerializableExtra(TaskList.TASK_EXTRA);
 
-        checkBox = (CheckBox) findViewById(R.id.check_box_task_viewer_activity);
         TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
+        outline.setText(currentTask.getOutline());
+
+        prepareDateViews();
+
+        checkBox = (CheckBox) findViewById(R.id.check_box_task_viewer_activity);
+        checkBox.setChecked(currentTask.isComplete());
+
+        extraDetails = (EditText) findViewById(R.id.extra_details_view_task_viewer_activity);
+        extraDetails.setText(currentTask.getExtraDetails());
+    }
+
+    private void prepareDateViews(){
         TextView creationDate = (TextView) findViewById(R.id.creation_date_info_view_task_viewer_activity);
         TextView dueDate = (TextView) findViewById(R.id.due_date_info_view_task_viewer_activity);
-        extraDetails = (EditText) findViewById(R.id.extra_details_view_task_viewer_activity);
-
-        checkBox.setChecked(currentTask.isComplete());
-        outline.setText(currentTask.getOutline());
 
         String dateLayout = "%s: %s";
         String creationDateText = String.format(dateLayout, getString(R.string.creation_date), currentTask.getFormattedCreationDate());
         creationDate.setText(creationDateText);
         String dueDateText = String.format(dateLayout, getString(R.string.due_date), currentTask.getFormattedDueDate());
         dueDate.setText(dueDateText);
-        extraDetails.setText(currentTask.getExtraDetails());
     }
     
     @Override
