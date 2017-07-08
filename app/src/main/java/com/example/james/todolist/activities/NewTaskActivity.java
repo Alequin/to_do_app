@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.james.todolist.R;
 import com.example.james.todolist.model.Task;
@@ -30,12 +32,37 @@ public class NewTaskActivity extends AppCompatActivity {
         Calendar date1 = Calendar.getInstance();
         Calendar date2 = Calendar.getInstance();
         taskToMake = new Task("", "", date1, date2, false);
-
     }
 
     public void onClickDueDateButton(View view){
         Intent intent = new Intent(this, DateActivity.class);
         startActivityForResult(intent, SET_DUE_DATE_REQUEST_CODE);
+    }
+
+    public void onClickMakeTask(View view){
+
+        TextView outlineView = (TextView) findViewById(R.id.enter_outline_new_task_activity);
+        String outlineText = outlineView.getText().toString();
+
+        if(outlineText == null || outlineText.isEmpty()){
+            String message = getString(R.string.warning_must_provide_outline_text);
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        TextView extraDetailsView = (TextView) findViewById(R.id.extra_details_new_task_activity);
+        String extraDetailsText = extraDetailsView.getText().toString();
+        if(extraDetailsText == null){
+            extraDetailsText = "";
+        }
+
+        taskToMake.setOutline(outlineText);
+        taskToMake.setExtraDetails(extraDetailsText);
+
+        taskToMake.save();
+
+        setResult(TaskListActivity.UPDATE_LIST_RESULT_CODE);
+        finish();
     }
 
     @Override

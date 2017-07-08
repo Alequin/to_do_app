@@ -5,4 +5,6 @@
 
     <item name="due_date_new_task_activity" type="id" />
 
+    <item name="extra_details_new_task_activity" type="id"/>
+
 </resources>
