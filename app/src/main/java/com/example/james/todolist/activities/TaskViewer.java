@@ -57,6 +57,7 @@ public class TaskViewer extends AppCompatActivity {
         if(item.getItemId() == R.id.bin_icon_task_viewer_activity){
             currentTask.delete();
             currentTask = null;
+            setResult(TaskList.UPDATE_LIST_RESULT_CODE);
             finish();
             return true;
         }
