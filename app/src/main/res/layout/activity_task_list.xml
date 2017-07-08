@@ -19,6 +19,7 @@
         android:layout_weight="1"
         android:padding="7.5dp"
         android:background="@color/colorPrimary"
-        android:src="@drawable/add"/>
+        android:src="@drawable/add"
+        android:onClick="onClickAddButton"/>
 
 </LinearLayout>

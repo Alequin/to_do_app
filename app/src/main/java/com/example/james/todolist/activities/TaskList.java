@@ -54,6 +54,10 @@ public class TaskList extends AppCompatActivity {
         startActivityForResult(intent, UPDATE_LIST_REQUEST_CODE);
     }
 
+    public void onClickAddButton(View view){
+
+    }
+
     private void updateListView(){
         DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
         TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, dbHandler.getAllTasks());
