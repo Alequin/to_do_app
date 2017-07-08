@@ -61,7 +61,6 @@ public class NewTaskActivity extends AppCompatActivity {
 
         taskToMake.save();
 
-        setResult(TaskListActivity.UPDATE_LIST_RESULT_CODE);
         finish();
     }
 

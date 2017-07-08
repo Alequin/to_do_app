@@ -17,8 +17,6 @@ import java.io.Serializable;
 public class TaskListActivity extends AppCompatActivity {
 
     public static final String TASK_EXTRA = "task_extra";
-    public static final int UPDATE_LIST_REQUEST_CODE = 0;
-    public static final int UPDATE_LIST_RESULT_CODE = 1;
 
     private ListView listView;
 
@@ -27,7 +25,7 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-        DatabaseHandler.getDatabase().seed(1000);
+        //DatabaseHandler.getDatabase().seed(200);
 
         prepareListView();
     }
@@ -51,29 +49,23 @@ public class TaskListActivity extends AppCompatActivity {
         Serializable task = (Serializable) view.getTag();
         Intent intent = new Intent(this, TaskViewerActivity.class);
         intent.putExtra(TASK_EXTRA, task);
-        startActivityForResult(intent, UPDATE_LIST_REQUEST_CODE);
+        startActivity(intent);
     }
 
     public void onClickAddButton(View view){
         Intent intent = new Intent(this, NewTaskActivity.class);
-        startActivityForResult(intent, UPDATE_LIST_REQUEST_CODE);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        updateListView();
+        super.onResume();
     }
 
     private void updateListView(){
         DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
         TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, dbHandler.getAllTasks());
         listView.setAdapter(taskAdapter);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if(requestCode == UPDATE_LIST_REQUEST_CODE){
-            if(resultCode == UPDATE_LIST_RESULT_CODE){
-                updateListView();
-            }
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
