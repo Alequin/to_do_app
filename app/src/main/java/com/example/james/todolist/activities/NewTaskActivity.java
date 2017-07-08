@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.james.todolist.R;
 import com.example.james.todolist.model.Task;
@@ -17,10 +18,14 @@ public class NewTaskActivity extends AppCompatActivity {
 
     private Task taskToMake;
 
+    private Button dueDateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+
+        dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
 
         Calendar date1 = Calendar.getInstance();
         Calendar date2 = Calendar.getInstance();
@@ -38,11 +43,16 @@ public class NewTaskActivity extends AppCompatActivity {
 
         if(requestCode == SET_DUE_DATE_REQUEST_CODE){
             if(resultCode == SET_DUE_DATE_RESULT_CODE){
-                Bundle dueDateBundle = data.getExtras();
-                int day = dueDateBundle.getInt(DateActivity.DAY_EXTRA);
-                int month = dueDateBundle.getInt(DateActivity.MONTH_EXTRA);
-                int year = dueDateBundle.getInt(DateActivity.YEAR_EXTRA);
+                Bundle bundleDueDate = data.getExtras();
+                int day = bundleDueDate.getInt(DateActivity.DAY_EXTRA);
+                int month = bundleDueDate.getInt(DateActivity.MONTH_EXTRA);
+                int year = bundleDueDate.getInt(DateActivity.YEAR_EXTRA);
                 taskToMake.setDueDate(day, month, year);
+
+                dueDateButton.setText(
+                    String.format("%s: %s",
+                        getString(R.string.due_date), taskToMake.getFormattedDueDate())
+                );
             }
         }
 

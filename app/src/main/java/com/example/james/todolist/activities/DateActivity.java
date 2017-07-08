@@ -49,8 +49,9 @@ public class DateActivity extends AppCompatActivity {
             toast.show();
             return;
         }else{
-            bundleDateValues(selected);
-            setResult(NewTaskActivity.SET_DUE_DATE_RESULT_CODE);
+            int resultCode = NewTaskActivity.SET_DUE_DATE_RESULT_CODE;
+            Intent dateDetails = bundleDateValues(selected);
+            setResult(resultCode, dateDetails);
             finish();
         }
     }
@@ -66,10 +67,11 @@ public class DateActivity extends AppCompatActivity {
         return input;
     }
 
-    private void bundleDateValues(Calendar cal){
-        Intent intent = getIntent();
+    private Intent bundleDateValues(Calendar cal){
+        Intent intent = new Intent();
         intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
         intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
-        intent.putExtra(DAY_EXTRA, cal.get(Calendar.YEAR));
+        intent.putExtra(YEAR_EXTRA, cal.get(Calendar.YEAR));
+        return intent;
     }
 }
