@@ -18,6 +18,10 @@ public class NewTaskActivity extends AppCompatActivity {
     public static final int SET_DUE_DATE_REQUEST_CODE = 2;
     public static final int SET_DUE_DATE_RESULT_CODE = 3;
 
+    public static final String DAY_EXTRA = "day_extra";
+    public static final String MONTH_EXTRA = "month_extra";
+    public static final String YEAR_EXTRA = "year_extra";
+
     private Task taskToMake;
 
     private Button dueDateButton;
@@ -34,6 +38,10 @@ public class NewTaskActivity extends AppCompatActivity {
 
     public void onClickDueDateButton(View view){
         Intent intent = new Intent(this, DateActivity.class);
+        Calendar cal = taskToMake.getDueDate();
+        intent.putExtra(DAY_EXTRA, cal.get(Calendar.DAY_OF_MONTH));
+        intent.putExtra(MONTH_EXTRA, cal.get(Calendar.MONTH));
+        intent.putExtra(YEAR_EXTRA, cal.get(Calendar.YEAR));
         startActivityForResult(intent, SET_DUE_DATE_REQUEST_CODE);
     }
 
