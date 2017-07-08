@@ -8,4 +8,5 @@
     <string name="extra_details_hint">Enter any extra details</string>
     <string name="delete">Delete</string>
     <string name="new_task_label">New Task</string>
+    <string name="due_date_button_hint">Click to select a due date</string>
 </resources>
