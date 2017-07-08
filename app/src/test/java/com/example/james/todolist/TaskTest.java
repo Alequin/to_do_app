@@ -122,4 +122,15 @@ public class TaskTest {
         }
         assertEquals(true, pass);
     }
+
+    @Test
+    public void cannotSetDueDateThatIsBeforeCreationDate(){
+        boolean pass = false;
+        try{
+            task1.setDueDate(5, 7, 2017);
+        }catch(IllegalArgumentException ex){
+           pass = true;
+        }
+        assertEquals(true, pass);
+    }
 }
