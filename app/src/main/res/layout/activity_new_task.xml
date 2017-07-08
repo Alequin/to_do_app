@@ -25,13 +25,15 @@
         android:layout_weight="0.5" />
 
     <Button
+        android:id="@id/due_date_new_task_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:background="@drawable/edit_text_border"
         android:hint="@string/due_date_button_hint"
         android:gravity="center_vertical"
-        android:paddingLeft="15dp"/>
+        android:paddingLeft="15dp"
+        android:onClick="onClickDueDateButton"/>
 
     <Space
         android:layout_width="match_parent"
