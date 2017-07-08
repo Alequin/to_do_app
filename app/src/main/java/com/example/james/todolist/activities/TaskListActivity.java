@@ -55,7 +55,8 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     public void onClickAddButton(View view){
-
+        Intent intent = new Intent(this, NewTaskActivity.class);
+        startActivityForResult(intent, UPDATE_LIST_REQUEST_CODE);
     }
 
     private void updateListView(){
