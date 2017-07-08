@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.DateManager;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class DateActivity extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class DateActivity extends AppCompatActivity {
     public static final String MONTH_EXTRA = "month_extra";
     public static final String YEAR_EXTRA = "year_extra";
 
-    private DatePicker datePicker;
+    private CalendarView datePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,8 @@ public class DateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_date);
         hideActionBar();
 
-//        datePicker = (DatePicker) findViewById(R.id.date_picker_date_activity);
-//        prepareDatePicker();
+        datePicker = (CalendarView) findViewById(R.id.date_picker_date_activity);
+        prepareDatePicker();
     }
 
     private void prepareDatePicker(){
@@ -36,7 +38,8 @@ public class DateActivity extends AppCompatActivity {
         int day = extras.getInt(NewTaskActivity.DAY_EXTRA, today.get(Calendar.DAY_OF_MONTH));
         int month = extras.getInt(NewTaskActivity.MONTH_EXTRA, today.get(Calendar.MONTH));
         int year = extras.getInt(NewTaskActivity.YEAR_EXTRA, today.get(Calendar.YEAR));
-        datePicker.init(year, month, day, null);
+        Calendar cal = new GregorianCalendar(year, month, day);
+        datePicker.setDate(cal.getTimeInMillis());
     }
 
     private void hideActionBar(){
@@ -52,7 +55,7 @@ public class DateActivity extends AppCompatActivity {
     public void onClickSelectDate(View view){
 
         Calendar today = Calendar.getInstance();
-        Calendar selected = getCalendarFromDatePicker();
+        Calendar selected = DateManager.getCalendarFromLong(datePicker.getDate());
 
         if(selected.before(today)){
             Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
@@ -64,17 +67,6 @@ public class DateActivity extends AppCompatActivity {
             setResult(resultCode, dateDetails);
             finish();
         }
-    }
-
-    private Calendar getCalendarFromDatePicker(){
-
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year = datePicker.getYear();
-
-        Calendar input = Calendar.getInstance();
-        input.set(year, month, day);
-        return input;
     }
 
     private Intent bundleDateValues(Calendar cal){

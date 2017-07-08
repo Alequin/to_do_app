@@ -1,6 +1,8 @@
 package com.example.james.todolist.helper;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -55,5 +57,11 @@ public class DateManager {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, day);
         return cal;
+    }
+
+    public static Calendar getCalendarFromLong(long dateAsLong){
+        Date date = new Date(dateAsLong);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return getCalendarFromSqlDate(sdf.format(date));
     }
 }
