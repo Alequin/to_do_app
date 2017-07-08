@@ -23,7 +23,7 @@ public class FakeDatabase {
         tasks.add(task);
     }
 
-    public static void add(int index, Task task){
+    public static void update(int index, Task task){
         Log.d("app-debug", task.getOutline() + ": " + task.isComplete());
         tasks.add(index, task);
     }

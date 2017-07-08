@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.james.todolist.activities.NewTaskActivity"
-    android:orientation="vertical">
+    tools:context="com.example.james.todolist.activities.NewTaskActivity">
 
     <LinearLayout
+        android:id="@id/input_layout_new_task_activity"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/submit_button_new_task_activity"
         android:paddingTop="5dp"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
@@ -59,10 +60,11 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@id/submit_button_new_task_activity"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         style="@style/tick_button"
         android:onClick="onClickMakeTask"/>
 
-</LinearLayout>
+</RelativeLayout>
