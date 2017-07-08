@@ -36,6 +36,10 @@ public class Task implements Serializable{
         this(0, outline, extraDetails, creationDate, dueDate, status);
     }
 
+    public Task(String outline, String extraDetails, boolean status){
+        this(0, outline, extraDetails, Calendar.getInstance(), Calendar.getInstance(), status);
+    }
+
     public static ArrayList<Task> get_all(){
         return FakeDatabase.queryDatabase();
     }
