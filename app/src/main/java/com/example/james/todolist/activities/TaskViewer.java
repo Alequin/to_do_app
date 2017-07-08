@@ -45,14 +45,10 @@ public class TaskViewer extends AppCompatActivity {
         dueDate.setText(dueDateText);
         extraDetails.setText(currentTask.getExtraDetails());
     }
-
-    public void onClickCheckBox(View view){
-        currentTask.setStatus(checkBox.isChecked());
-        currentTask.update();
-    }
-
+    
     @Override
     public void onPause() {
+        currentTask.setStatus(checkBox.isChecked());
         currentTask.setExtraDetails(extraDetails.getText().toString());
         currentTask.update();
         super.onPause();
