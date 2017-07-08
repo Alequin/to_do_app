@@ -15,6 +15,13 @@ import com.example.james.todolist.helper.DateManager;
 
 import java.util.Calendar;
 
+/* This activity uses one of two layouts depending on version because...
+    - On versions 21 and below the DatePicker defaults to a spinner selector
+    Which looks wrong.
+    - On versions 22 and above the Calendar does not return the selected date
+    and instead returns the current date.
+*/
+
 public class DateActivity extends AppCompatActivity {
 
     public static final String DAY_EXTRA = "day_extra";
