@@ -1,5 +1,6 @@
 package com.example.james.todolist.activities;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,9 +9,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.UnitConverter;
 import com.example.james.todolist.model.Task;
 
 public class TaskViewerActivity extends AppCompatActivity {
@@ -27,7 +30,7 @@ public class TaskViewerActivity extends AppCompatActivity {
 
         currentTask = (Task) getIntent().getSerializableExtra(TaskListActivity.TASK_EXTRA);
 
-        TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
+        final TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
         outline.setText(currentTask.getOutline());
 
         prepareDateViews();
@@ -37,6 +40,17 @@ public class TaskViewerActivity extends AppCompatActivity {
 
         extraDetails = (EditText) findViewById(R.id.extra_details_view_task_viewer_activity);
         extraDetails.setText(currentTask.getExtraDetails());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int height = outline.getHeight();
+//                int heightInDp = UnitConverter.dpToPixel( (float) height);
+
+                ScrollView scrollView = (ScrollView) findViewById(R.id.outline_scroll_view_task_viewer_activity);
+
+            }
+        }, 30);
     }
 
     @Override

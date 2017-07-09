@@ -8,35 +8,42 @@
 
     <CheckBox
         android:id="@id/check_box_task_viewer_activity"
-        android:layout_width="@dimen/element_height_list_item"
-        android:layout_height="@dimen/element_height_list_item"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"/>
 
-    <TextView
-        android:id="@id/outline_text_view_task_viewer_activity"
+    <ScrollView
+        android:id="@id/outline_scroll_view_task_viewer_activity"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/element_height_list_item"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/check_box_task_viewer_activity"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginEnd="20dp"
-        android:gravity="center_vertical"
-        android:text="Outline"
-        android:textColor="#000"
-        android:textSize="20sp"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/check_box_task_viewer_activity"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@id/outline_text_view_task_viewer_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/element_height_list_item"
+            android:gravity="center_vertical"
+            android:text="WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+            android:textColor="#000"
+            android:textSize="20sp"/>
+
+    </ScrollView>
 
     <TextView
         android:id="@id/creation_date_info_view_task_viewer_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/outline_text_view_task_viewer_activity"
+        app:layout_constraintTop_toBottomOf="@+id/outline_scroll_view_task_viewer_activity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="30dp"
@@ -50,7 +57,7 @@
         android:id="@id/due_date_info_view_task_viewer_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/creation_date_info_view_task_viewer_activity"
+        app:layout_constraintTop_toBottomOf="@+id/creation_date_info_view_task_viewer_activity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="30dp"
@@ -63,7 +70,7 @@
         android:id="@id/extra_details_view_task_viewer_activity"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/due_date_info_view_task_viewer_activity"
+        app:layout_constraintTop_toBottomOf="@+id/due_date_info_view_task_viewer_activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
