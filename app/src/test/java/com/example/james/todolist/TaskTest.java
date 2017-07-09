@@ -141,7 +141,7 @@ public class TaskTest {
     public void cannotSetDueDateThatIsBeforeCreationDate(){
         boolean pass = false;
 
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = task1.getCreationDate();
         cal.add(Calendar.DAY_OF_MONTH, -1);
 
         try{

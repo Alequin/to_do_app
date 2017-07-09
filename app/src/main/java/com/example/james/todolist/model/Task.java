@@ -21,7 +21,8 @@ public class Task implements Serializable{
     private Calendar dueDate;
     private boolean status;
 
-    private static String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
+    private static final String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
+    private static final String dueDateToEarlyErrorMessage = "Due date cannot be before the creation date";
 
     public Task(long id, String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
         this.id = id;
@@ -118,6 +119,9 @@ public class Task implements Serializable{
 
     public void setDueDate(Calendar dueDate){
         this.dueDate = dueDate;
+        if(dueDate.before(creationDate)){
+            throw new IllegalArgumentException(dueDateToEarlyErrorMessage);
+        }
     }
 
     public void setDueDate(int year, int month, int day) {
@@ -129,7 +133,7 @@ public class Task implements Serializable{
         this.dueDate.set(year, month, day);
 
         if(dueDate.before(creationDate)){
-            throw new IllegalArgumentException("Due date cannot be before the creation date");
+            throw new IllegalArgumentException(dueDateToEarlyErrorMessage);
         }
     }
 
