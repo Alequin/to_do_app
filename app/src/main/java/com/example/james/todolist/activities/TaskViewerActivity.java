@@ -35,7 +35,7 @@ public class TaskViewerActivity extends AppCompatActivity {
 
         currentTask = (Task) getIntent().getSerializableExtra(TaskListActivity.TASK_EXTRA);
 
-        final TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
+        TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
         outline.setText(currentTask.getOutline());
 
         prepareDateViews();
@@ -46,10 +46,21 @@ public class TaskViewerActivity extends AppCompatActivity {
         extraDetails = (EditText) findViewById(R.id.extra_details_view_task_viewer_activity);
         extraDetails.setText(currentTask.getExtraDetails());
 
-        new Handler().postDelayed(new Runnable() {
+        setHeightOfScrollView();
+    }
+
+    private void setHeightOfScrollView(){
+        final Handler handler = new Handler();
+        final TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
+        final int delay = 2;
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 int heightInPixles = outline.getHeight();
+                if(heightInPixles == 0){
+                    handler.postDelayed(this, delay);
+                    return;
+                }
                 DisplayMetrics dm = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(dm);
                 float height = UnitConverter.pixelToDp(dm, heightInPixles);
@@ -61,12 +72,11 @@ public class TaskViewerActivity extends AppCompatActivity {
                 if(height > 40 && height < maxHeight){
                     params.height = heightInPixles;
                 }else if(height >= maxHeight){
-                    int maxHeightInPixels = getResources().getDimensionPixelOffset(R.dimen.outline_max_height_in_viewer);
-                    params.height = maxHeightInPixels;
+                    params.height = getResources().getDimensionPixelOffset(R.dimen.outline_max_height_in_viewer);
                 }
                 scrollView.setLayoutParams(params);
             }
-        }, 30);
+        }, delay);
     }
 
     @Override
