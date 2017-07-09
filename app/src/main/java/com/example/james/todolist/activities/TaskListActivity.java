@@ -3,6 +3,7 @@ package com.example.james.todolist.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -83,8 +84,10 @@ public class TaskListActivity extends AppCompatActivity {
     protected void onResume() {
         DatabaseHandler db = DatabaseHandler.getDatabase();
         if(!db.isOpen()){
+            Log.d("app-debug", "init database");
             DatabaseHandler.init(this);
         }
+        Log.d("app-debug", "update list");
         updateListView();
         listView.setSelection(lastScrollPosition);
         super.onResume();

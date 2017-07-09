@@ -24,7 +24,7 @@
             android:name=".activities.NewTaskActivity"
             android:label="@string/new_task_label"
             android:parentActivityName=".activities.TaskListActivity" />
-        <activity android:name=".activities.DateActivity"></activity>
+        <activity android:name=".activities.DateActivity" />
     </application>
 
 </manifest>
