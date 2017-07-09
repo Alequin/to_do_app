@@ -23,7 +23,6 @@ public class TaskTest {
         Calendar today = Calendar.getInstance();
 
         Calendar due = Calendar.getInstance();
-        due.set(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
         due.add(Calendar.DAY_OF_MONTH, 5);
 
         task1 = new Task("finish project", "complete the to do list app", today, due, false);
@@ -60,9 +59,16 @@ public class TaskTest {
 
     @Test
     public void canGetFormattedDates(){
-        String expected = "13/08/2017";
+        Calendar due = task1.getDueDate();
+        String expected = String.format("%02d/%02d/%s",
+                due.get(Calendar.DAY_OF_MONTH), due.get(Calendar.MONTH)+1, due.get(Calendar.YEAR)
+        );
         assertEquals(expected, task1.getFormattedDueDate());
-        expected = "06/08/2017";
+
+        Calendar creation = task1.getCreationDate();
+        expected = String.format("%02d/%02d/%s",
+                creation.get(Calendar.DAY_OF_MONTH), creation.get(Calendar.MONTH)+1, creation.get(Calendar.YEAR)
+        );
         assertEquals(expected, task1.getFormattedCreationDate());
     }
 
@@ -134,8 +140,20 @@ public class TaskTest {
     @Test
     public void cannotSetDueDateThatIsBeforeCreationDate(){
         boolean pass = false;
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+
         try{
-            task1.setDueDate(2017, 7, 5);
+            task1.setDueDate(cal);
+        }catch(IllegalArgumentException ex){
+           pass = true;
+        }
+        assertEquals(true, pass);
+
+        pass = false;
+        try{
+            task1.setDueDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
         }catch(IllegalArgumentException ex){
            pass = true;
         }
