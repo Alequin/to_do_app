@@ -31,19 +31,19 @@ public class DateManagerTest {
         }
     }
     @Test
-    public void canValidateInputDate__DayWrong(){
+    public void cannotValidateInputDate__DayWrong(){
         assertEquals(false, DateManager.isDateValid(2017, 6, 0));
         assertEquals(false, DateManager.isDateValid(2017, 6, 32));
     }
 
     @Test
-    public void canValidateInputDate__MonthWrong(){
+    public void cannotValidateInputDate__MonthWrong(){
         assertEquals(false, DateManager.isDateValid(2017, 0, 1));
         assertEquals(false, DateManager.isDateValid(2017, 13, 1));
     }
 
     @Test
-    public void canValidateInputDate__YearWrong(){
+    public void cannotValidateInputDate__YearWrong(){
         assertEquals(false, DateManager.isDateValid(999, 6, 1));
         assertEquals(false, DateManager.isDateValid(10_000, 6, 1));
     }
