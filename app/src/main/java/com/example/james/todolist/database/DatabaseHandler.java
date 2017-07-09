@@ -64,6 +64,10 @@ public class DatabaseHandler {
         database.deleteTask(task);
     }
 
+    public void deleteOverdueTasks(){
+        database.deleteOverdueTasks();
+    }
+
     public void deleteAllTasks() {
         database.deleteAllTasks();
     }

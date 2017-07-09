@@ -152,6 +152,18 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteOverdueTasks() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Calendar cal = Calendar.getInstance();
+        String todayAsText = DateManager.formatDateForSQL(cal);
+        db.execSQL(
+            String.format(
+                "DELETE FROM %s WHERE %s < '%s'", TASK_TABLE_NAME, DUE_DATE, todayAsText
+            )
+        );
+        db.close();
+    }
+
     public void deleteTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(String.format(
@@ -159,4 +171,5 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         ));
         db.close();
     }
+
 }
