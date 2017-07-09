@@ -18,11 +18,15 @@ public class DateManagerTest {
 
     @Test
     public void canValidateInputDate(){
-        for(int j=0; j<12; j++){
+        int min = 0;
+        int max = 11;
+        for(int j=min; j<=max; j++){
             assertEquals(true, DateManager.isDateValid(2017, j, 1));
         }
 
-        for(int j=1; j<=31; j++){
+        min = 1;
+        max = 31;
+        for(int j=min; j<=max; j++){
             assertEquals(true, DateManager.isDateValid(2017, 6, j));
         }
     }
