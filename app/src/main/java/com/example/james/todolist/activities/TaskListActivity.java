@@ -32,7 +32,7 @@ public class TaskListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-        //DatabaseHandler.getDatabase().seed(100);
+        DatabaseHandler.getDatabase().seed(100);
 
         listView = (ListView) findViewById(R.id.main_list_task_list_activity);
     }
@@ -46,8 +46,12 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
-            DatabaseHandler db = DatabaseHandler.getDatabase();
+        DatabaseHandler db = DatabaseHandler.getDatabase();
+        if(item.getItemId() == R.id.delete_overdue_menu_task_list_activity){
+            db.deleteOverdueTasks();
+            updateListView();
+            return true;
+        }if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
             db.deleteAllTasks();
             updateListView();
             return true;
@@ -84,10 +88,8 @@ public class TaskListActivity extends AppCompatActivity {
     protected void onResume() {
         DatabaseHandler db = DatabaseHandler.getDatabase();
         if(!db.isOpen()){
-            Log.d("app-debug", "init database");
             DatabaseHandler.init(this);
         }
-        Log.d("app-debug", "update list");
         updateListView();
         listView.setSelection(lastScrollPosition);
         super.onResume();

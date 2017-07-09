@@ -15,4 +15,5 @@
     <string name="warning_must_provide_outline_text">A task must at least have an outline</string>
     <string name="delete_all">Delete All</string>
     <string name="close">Close</string>
+    <string name="delete_overdue">Delete Overdue Tasks</string>
 </resources>
