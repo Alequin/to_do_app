@@ -69,13 +69,30 @@ public class TaskTest {
     @Test
     public void canSetCorrectDate(){
 
-        task1.setCreationDate(2017, 1, 1);
-        task1.setDueDate(2018,5,5);
-        String expectedCreationDate = "01/01/2017";
-        String expectedDueDate = "05/05/2018";
+        for(int j=0; j<12; j++){
+            helperCanSetCorrectDate(2017, j, 1);
+        }
 
-        assertEquals(expectedCreationDate, task1.getFormattedCreationDate());
-        assertEquals(expectedDueDate, task1.getFormattedDueDate());
+        for(int j=1; j<=31; j++){
+            helperCanSetCorrectDate(2017, 0, j);
+        }
+    }
+
+    private void helperCanSetCorrectDate(int year, int month, int day){
+        task1.setCreationDate(year, month, day);
+        task1.setDueDate(year+1,month, day);
+
+        Calendar creation = task1.getCreationDate();
+        Calendar due = task1.getDueDate();
+
+        assertEquals(year, creation.get(Calendar.YEAR));
+        assertEquals(year+1, due.get(Calendar.YEAR));
+
+        assertEquals(month, creation.get(Calendar.MONTH));
+        assertEquals(month, due.get(Calendar.MONTH));
+
+        assertEquals(day, creation.get(Calendar.DAY_OF_MONTH));
+        assertEquals(day, due.get(Calendar.DAY_OF_MONTH));
     }
 
     @Test
