@@ -38,8 +38,8 @@ public class DateManagerTest {
 
     @Test
     public void cannotValidateInputDate__MonthWrong(){
-        assertEquals(false, DateManager.isDateValid(2017, 0, 1));
-        assertEquals(false, DateManager.isDateValid(2017, 13, 1));
+        assertEquals(false, DateManager.isDateValid(2017, -1, 1));
+        assertEquals(false, DateManager.isDateValid(2017, 12, 1));
     }
 
     @Test
