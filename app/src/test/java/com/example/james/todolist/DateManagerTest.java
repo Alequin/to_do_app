@@ -18,7 +18,13 @@ public class DateManagerTest {
 
     @Test
     public void canValidateInputDate(){
-        assertEquals(true, DateManager.isDateValid(2017, 1, 1));
+        for(int j=0; j<12; j++){
+            assertEquals(true, DateManager.isDateValid(2017, j, 1));
+        }
+
+        for(int j=1; j<=31; j++){
+            assertEquals(true, DateManager.isDateValid(2017, 6, j));
+        }
     }
     @Test
     public void canValidateInputDate__DayWrong(){
@@ -59,60 +65,53 @@ public class DateManagerTest {
         Calendar cal = Calendar.getInstance();
         cal.set(2017, 5, 1);
         String formattedDate = DateManager.formatDateForSQL(cal);
-        assert(cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
+        assertEquals(true, cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__DayWrong(){
-        boolean pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-05-0");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-00");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-32");
 
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-05-32");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-0");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-000");
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__MonthWrong(){
-        boolean pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-0-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-00-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-13-01");
 
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-13-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017--01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-0-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-000-01");
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__YearWrong(){
+        helperCannotConvertTextDateToCalendarWhenInputWrong("999-06-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("10000-06-01");
+    }
+
+    @Test
+    public void cannotConvertTextDateToCalendarWhenInputWrong__FormatWrong() {
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01-01-2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01-2017-01");
+
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01/01/2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01/2017/01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017/01/01");
+
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01.01.2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01.201701");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017.01.01");
+    }
+
+    private void helperCannotConvertTextDateToCalendarWhenInputWrong(String input){
         boolean pass = false;
         try{
-            DateManager.getCalendarFromSqlDate("999-05-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
-
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("10000-05-01");
+            DateManager.getCalendarFromSqlDate("input");
         }catch(IllegalArgumentException ex){
             pass = true;
         }
