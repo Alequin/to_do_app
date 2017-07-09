@@ -95,6 +95,10 @@ public class Task implements Serializable{
         return DateManager.formatDate(creationDate);
     }
 
+    public void setCreationDate(Calendar creationDate){
+        this.creationDate = creationDate;
+    }
+
     public void setCreationDate(int year, int month, int day) {
         if(!DateManager.isDateValid(year, month, day)){
             String message = String.format(invalidDateErrorMessage, day, month, year);
@@ -110,6 +114,10 @@ public class Task implements Serializable{
 
     public String getFormattedDueDate() {
         return DateManager.formatDate(dueDate);
+    }
+
+    public void setDueDate(Calendar dueDate){
+        this.dueDate = dueDate;
     }
 
     public void setDueDate(int year, int month, int day) {
