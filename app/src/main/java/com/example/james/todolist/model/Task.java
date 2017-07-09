@@ -21,7 +21,8 @@ public class Task implements Serializable{
     private Calendar dueDate;
     private boolean status;
 
-    private static String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
+    private static final String invalidDateErrorMessage = "Invalid date entered: day - %s, month - %s, year - %s";
+    private static final String dueDateToEarlyErrorMessage = "Due date cannot be before the creation date";
 
     public Task(long id, String outline, String extraDetails, Calendar creationDate, Calendar dueDate, boolean status){
         this.id = id;
@@ -75,7 +76,7 @@ public class Task implements Serializable{
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setCompleteStatus(boolean status) {
         this.status = status;
     }
 
@@ -95,13 +96,17 @@ public class Task implements Serializable{
         return DateManager.formatDate(creationDate);
     }
 
+    public void setCreationDate(Calendar creationDate){
+        this.creationDate = creationDate;
+    }
+
     public void setCreationDate(int year, int month, int day) {
         if(!DateManager.isDateValid(year, month, day)){
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
         //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
-        creationDate.set(year, month-1, day);
+        creationDate.set(year, month, day);
     }
 
     public Calendar getDueDate() {
@@ -112,16 +117,23 @@ public class Task implements Serializable{
         return DateManager.formatDate(dueDate);
     }
 
+    public void setDueDate(Calendar dueDate){
+        this.dueDate = dueDate;
+        if(dueDate.before(creationDate)){
+            throw new IllegalArgumentException(dueDateToEarlyErrorMessage);
+        }
+    }
+
     public void setDueDate(int year, int month, int day) {
         if(!DateManager.isDateValid(year, month, day)){
             String message = String.format(invalidDateErrorMessage, day, month, year);
             throw new IllegalArgumentException(message);
         }
         //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
-        this.dueDate.set(year, month-1, day);
+        this.dueDate.set(year, month, day);
 
         if(dueDate.before(creationDate)){
-            throw new IllegalArgumentException("Due date cannot be before the creation date");
+            throw new IllegalArgumentException(dueDateToEarlyErrorMessage);
         }
     }
 

@@ -70,7 +70,7 @@ public class TaskViewerActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         if(currentTask != null){
-            currentTask.setStatus(checkBox.isChecked());
+            currentTask.setCompleteStatus(checkBox.isChecked());
             currentTask.setExtraDetails(extraDetails.getText().toString());
             currentTask.update();
         }

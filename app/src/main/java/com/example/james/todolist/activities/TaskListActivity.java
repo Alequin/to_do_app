@@ -16,8 +16,6 @@ import com.example.james.todolist.database.DatabaseHandler;
 import com.example.james.todolist.model.Task;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class TaskListActivity extends AppCompatActivity {
 
@@ -58,7 +56,7 @@ public class TaskListActivity extends AppCompatActivity {
     public void onClickCheckBox(View view){
         CheckBox checkBox = (CheckBox) view;
         Task task = (Task) view.getTag();
-        task.setStatus(checkBox.isChecked());
+        task.setCompleteStatus(checkBox.isChecked());
         task.update();
     }
 

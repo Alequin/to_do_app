@@ -18,22 +18,32 @@ public class DateManagerTest {
 
     @Test
     public void canValidateInputDate(){
-        assertEquals(true, DateManager.isDateValid(2017, 1, 1));
+        int min = 0;
+        int max = 11;
+        for(int j=min; j<=max; j++){
+            assertEquals(true, DateManager.isDateValid(2017, j, 1));
+        }
+
+        min = 1;
+        max = 31;
+        for(int j=min; j<=max; j++){
+            assertEquals(true, DateManager.isDateValid(2017, 6, j));
+        }
     }
     @Test
-    public void canValidateInputDate__DayWrong(){
+    public void cannotValidateInputDate__DayWrong(){
         assertEquals(false, DateManager.isDateValid(2017, 6, 0));
         assertEquals(false, DateManager.isDateValid(2017, 6, 32));
     }
 
     @Test
-    public void canValidateInputDate__MonthWrong(){
+    public void cannotValidateInputDate__MonthWrong(){
         assertEquals(false, DateManager.isDateValid(2017, 0, 1));
         assertEquals(false, DateManager.isDateValid(2017, 13, 1));
     }
 
     @Test
-    public void canValidateInputDate__YearWrong(){
+    public void cannotValidateInputDate__YearWrong(){
         assertEquals(false, DateManager.isDateValid(999, 6, 1));
         assertEquals(false, DateManager.isDateValid(10_000, 6, 1));
     }
@@ -49,70 +59,68 @@ public class DateManagerTest {
     @Test
     public void canFormatDateForSQL(){
         Calendar cal = Calendar.getInstance();
-        cal.set(2017, 5, 1);
+        cal.set(2017, 4, 1);
         String expected = "2017-05-01";
         assertEquals(expected, DateManager.formatDateForSQL(cal));
     }
 
     @Test
     public void canGetCalendarObjFromSqlFormattedDate(){
-        Calendar cal = Calendar.getInstance();
-        cal.set(2017, 5, 1);
-        String formattedDate = DateManager.formatDateForSQL(cal);
-        assert(cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
+        Calendar expected = Calendar.getInstance();
+        expected.set(2017, 5, 1);
+
+        String formattedDate = DateManager.formatDateForSQL(expected);
+        Calendar result = DateManager.getCalendarFromSqlDate(formattedDate);
+
+        assertEquals(expected.get(Calendar.DAY_OF_MONTH), result.get(Calendar.DAY_OF_MONTH));
+        assertEquals(expected.get(Calendar.MONTH), result.get(Calendar.MONTH));
+        assertEquals(expected.get(Calendar.YEAR), result.get(Calendar.YEAR));
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__DayWrong(){
-        boolean pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-05-0");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-00");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-32");
 
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-05-32");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-0");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-05-000");
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__MonthWrong(){
-        boolean pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-0-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-00-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-13-01");
 
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("2017-13-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017--01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-0-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017-000-01");
     }
 
     @Test
     public void cannotConvertTextDateToCalendarWhenInputWrong__YearWrong(){
+        helperCannotConvertTextDateToCalendarWhenInputWrong("999-06-01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("10000-06-01");
+    }
+
+    @Test
+    public void cannotConvertTextDateToCalendarWhenInputWrong__FormatWrong() {
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01-01-2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01-2017-01");
+
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01/01/2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01/2017/01");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017/01/01");
+
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01.01.2017");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("01.201701");
+        helperCannotConvertTextDateToCalendarWhenInputWrong("2017.01.01");
+    }
+
+    private void helperCannotConvertTextDateToCalendarWhenInputWrong(String input){
         boolean pass = false;
         try{
-            DateManager.getCalendarFromSqlDate("999-05-01");
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
-
-        pass = false;
-        try{
-            DateManager.getCalendarFromSqlDate("10000-05-01");
+            DateManager.getCalendarFromSqlDate("input");
         }catch(IllegalArgumentException ex){
             pass = true;
         }
