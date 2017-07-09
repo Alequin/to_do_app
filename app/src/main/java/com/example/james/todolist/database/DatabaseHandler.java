@@ -15,17 +15,29 @@ public class DatabaseHandler {
     private static DatabaseHandler dbHandler;
 
     private TaskSqlDatabase database;
+    private boolean open;
 
     private DatabaseHandler(TaskSqlDatabase database){
         this.database = database;
+        open = true;
     }
 
     public static void init(Context context){
         dbHandler = new DatabaseHandler(new TaskSqlDatabase(context));
     }
 
+    public void open(Context context){
+        init(context);
+    }
+
+    public boolean isOpen(){
+        return open;
+    }
+
     public void close(){
         database.close();
+        database = null;
+        open = false;
     }
 
     public static DatabaseHandler getDatabase(){

@@ -3,6 +3,7 @@ package com.example.james.todolist.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import com.example.james.todolist.R;
 import com.example.james.todolist.activities.adapter.TaskListArrayAdapter;
 import com.example.james.todolist.database.DatabaseHandler;
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 import java.io.Serializable;
@@ -80,9 +82,21 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        DatabaseHandler db = DatabaseHandler.getDatabase();
+        if(!db.isOpen()){
+            Log.d("app-debug", "init database");
+            DatabaseHandler.init(this);
+        }
+        Log.d("app-debug", "update list");
         updateListView();
         listView.setSelection(lastScrollPosition);
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        DatabaseHandler.getDatabase().close();
+        super.onDestroy();
     }
 
     private void updateListView(){

@@ -55,6 +55,7 @@ public class DateActivity extends AppCompatActivity {
         int year = extras.getInt(NewTaskActivity.YEAR_EXTRA, today.get(Calendar.YEAR));
 
         if(datePicker != null){
+            datePicker.setMinDate(today.getTimeInMillis());
             datePicker.init(year, month, day, null);
         }else{
             Calendar cal = Calendar.getInstance();
