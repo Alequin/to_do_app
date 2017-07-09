@@ -1,25 +1,16 @@
 package com.example.james.todolist.activities;
 
-import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
-import com.example.james.todolist.helper.UnitConverter;
 import com.example.james.todolist.model.Task;
 
 public class TaskViewerActivity extends AppCompatActivity {

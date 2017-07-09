@@ -27,7 +27,7 @@
         app:layout_constraintLeft_toRightOf="@+id/check_box_task_viewer_activity"
         app:layout_constraintRight_toRightOf="parent"
         android:minHeight="@dimen/element_height_list_item"
-        android:maxHeight="@dimen/outline_max_height_in_viewer"
+        android:maxLines="4"
         android:scrollbars="vertical"
         android:gravity="center_vertical"
         android:text="WWWWWWWWWWW"
