@@ -82,7 +82,7 @@ public class TaskListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         DatabaseHandler db = DatabaseHandler.getDatabase();
-        if(db.isOpen()){
+        if(!db.isOpen()){
             DatabaseHandler.init(this);
         }
         updateListView();
