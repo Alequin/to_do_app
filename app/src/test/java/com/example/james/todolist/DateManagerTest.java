@@ -59,17 +59,22 @@ public class DateManagerTest {
     @Test
     public void canFormatDateForSQL(){
         Calendar cal = Calendar.getInstance();
-        cal.set(2017, 5, 1);
+        cal.set(2017, 4, 1);
         String expected = "2017-05-01";
         assertEquals(expected, DateManager.formatDateForSQL(cal));
     }
 
     @Test
     public void canGetCalendarObjFromSqlFormattedDate(){
-        Calendar cal = Calendar.getInstance();
-        cal.set(2017, 5, 1);
-        String formattedDate = DateManager.formatDateForSQL(cal);
-        assertEquals(true, cal.equals(DateManager.getCalendarFromSqlDate(formattedDate)));
+        Calendar expected = Calendar.getInstance();
+        expected.set(2017, 5, 1);
+
+        String formattedDate = DateManager.formatDateForSQL(expected);
+        Calendar result = DateManager.getCalendarFromSqlDate(formattedDate);
+
+        assertEquals(expected.get(Calendar.DAY_OF_MONTH), result.get(Calendar.DAY_OF_MONTH));
+        assertEquals(expected.get(Calendar.MONTH), result.get(Calendar.MONTH));
+        assertEquals(expected.get(Calendar.YEAR), result.get(Calendar.YEAR));
     }
 
     @Test

@@ -39,7 +39,7 @@ public class DateManager {
 
     public static String formatDateForSQL(Calendar cal) {
         int day = cal.get(Calendar.DAY_OF_MONTH);
-        int month = cal.get(Calendar.MONTH);
+        int month = cal.get(Calendar.MONTH)+1;
         int year = cal.get(Calendar.YEAR);
         return String.format("%s-%02d-%02d", year, month, day);
     }
