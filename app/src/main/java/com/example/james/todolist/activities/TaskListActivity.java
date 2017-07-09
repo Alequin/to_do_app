@@ -46,16 +46,21 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+        
         DatabaseHandler db = DatabaseHandler.getDatabase();
-        if(item.getItemId() == R.id.delete_overdue_menu_task_list_activity){
-            db.deleteOverdueTasks();
-            updateListView();
-            return true;
-        }if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
-            db.deleteAllTasks();
-            updateListView();
-            return true;
+        switch (item.getItemId()){
+
+            case R.id.delete_overdue_menu_task_list_activity:
+                db.deleteOverdueTasks();
+                updateListView();
+                return true;
+
+            case R.id.delete_all_menu_task_list_activity:
+                db.deleteAllTasks();
+                updateListView();
+                return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
