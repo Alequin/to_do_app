@@ -86,7 +86,6 @@ public class DateActivity extends AppCompatActivity {
         if(selected.before(today)){
             Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
             toast.show();
-            return;
         }else{
             int resultCode = NewTaskActivity.SET_DUE_DATE_RESULT_CODE;
             Intent dateDetails = bundleDateValues(selected);

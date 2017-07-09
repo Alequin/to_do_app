@@ -1,16 +1,24 @@
 package com.example.james.todolist.activities;
 
+import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.UnitConverter;
 import com.example.james.todolist.model.Task;
 
 public class TaskViewerActivity extends AppCompatActivity {
@@ -37,6 +45,38 @@ public class TaskViewerActivity extends AppCompatActivity {
 
         extraDetails = (EditText) findViewById(R.id.extra_details_view_task_viewer_activity);
         extraDetails.setText(currentTask.getExtraDetails());
+
+        setHeightOfScrollView();
+    }
+
+    private void setHeightOfScrollView(){
+        final Handler handler = new Handler();
+        final TextView outline = (TextView) findViewById(R.id.outline_text_view_task_viewer_activity);
+        final int delay = 2;
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int heightInPixles = outline.getHeight();
+                if(heightInPixles == 0){
+                    handler.postDelayed(this, delay);
+                    return;
+                }
+                DisplayMetrics dm = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(dm);
+                float height = UnitConverter.pixelToDp(dm, heightInPixles);
+
+                ScrollView scrollView = (ScrollView) findViewById(R.id.outline_scroll_view_task_viewer_activity);
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
+
+                float maxHeight = getResources().getDimension(R.dimen.outline_max_height_in_viewer);
+                if(height > 40 && height < maxHeight){
+                    params.height = heightInPixles;
+                }else if(height >= maxHeight){
+                    params.height = getResources().getDimensionPixelOffset(R.dimen.outline_max_height_in_viewer);
+                }
+                scrollView.setLayoutParams(params);
+            }
+        }, delay);
     }
 
     @Override
@@ -48,16 +88,20 @@ public class TaskViewerActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == android.R.id.home){
-            finish();
-            return true;
+
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+            case R.id.bin_icon_task_viewer_activity:
+                currentTask.delete();
+                currentTask = null;
+                finish();
+                return true;
         }
-        if(item.getItemId() == R.id.bin_icon_task_viewer_activity){
-            currentTask.delete();
-            currentTask = null;
-            finish();
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -50,7 +50,14 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
         dueDate = (TextView) view.findViewById(R.id.task_due_date_task_list_item);
 
         checkBox.setChecked(task.isComplete());
-        outline.setText(task.getOutline());
+
+        String taskOutline = task.getOutline();
+        int max = 50;
+        if(taskOutline.length() > max){
+            taskOutline = taskOutline.substring(0, max) + "...";
+        }
+
+        outline.setText(taskOutline);
         String dueDateText = String.format("%s: %s",
                 getContext().getString(R.string.due_date), task.getFormattedDueDate()
         );

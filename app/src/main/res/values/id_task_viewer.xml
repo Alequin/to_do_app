@@ -5,6 +5,8 @@
 
     <item name="check_box_task_viewer_activity" type="id"/>
 
+    <item name="outline_scroll_view_task_viewer_activity" type="id"/>
+
     <item name="outline_text_view_task_viewer_activity" type="id"/>
 
     <item name="creation_date_info_view_task_viewer_activity" type="id"/>
