@@ -24,8 +24,13 @@ public class DatabaseHandler {
         dbHandler = new DatabaseHandler(new TaskSqlDatabase(context));
     }
 
+    public void open(Context context){
+        init(context);
+    }
+
     public void close(){
         database.close();
+        database = null;
     }
 
     public static DatabaseHandler getDatabase(){
