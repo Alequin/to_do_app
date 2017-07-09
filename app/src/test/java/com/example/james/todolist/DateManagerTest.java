@@ -3,7 +3,6 @@ package com.example.james.todolist;
 import com.example.james.todolist.helper.DateManager;
 
 import org.junit.Test;
-import org.junit.Before;
 
 import java.util.Calendar;
 import java.util.Date;

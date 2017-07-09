@@ -3,7 +3,6 @@ package com.example.james.todolist.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 import com.example.james.todolist.R;
 import com.example.james.todolist.activities.adapter.TaskListArrayAdapter;
 import com.example.james.todolist.database.DatabaseHandler;
-import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 import java.io.Serializable;
