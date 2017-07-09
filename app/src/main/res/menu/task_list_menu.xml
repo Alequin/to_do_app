@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@id/delete_overdue_menu_task_list_activity"
+        android:title="@string/delete_overdue"/>
+
+    <item
         android:id="@id/delete_all_menu_task_list_activity"
         android:title="@string/delete_all"/>
 

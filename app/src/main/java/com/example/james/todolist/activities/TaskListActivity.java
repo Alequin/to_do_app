@@ -46,7 +46,10 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
+        if(item.getItemId() == R.id.delete_overdue_menu_task_list_activity){
+            
+            return true;
+        }if(item.getItemId() == R.id.delete_all_menu_task_list_activity){
             DatabaseHandler db = DatabaseHandler.getDatabase();
             db.deleteAllTasks();
             updateListView();
@@ -84,10 +87,8 @@ public class TaskListActivity extends AppCompatActivity {
     protected void onResume() {
         DatabaseHandler db = DatabaseHandler.getDatabase();
         if(!db.isOpen()){
-            Log.d("app-debug", "init database");
             DatabaseHandler.init(this);
         }
-        Log.d("app-debug", "update list");
         updateListView();
         listView.setSelection(lastScrollPosition);
         super.onResume();

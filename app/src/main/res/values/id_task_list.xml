@@ -13,4 +13,6 @@
 
     <item name="delete_all_menu_task_list_activity" type="id"/>
 
+    <item name="delete_overdue_menu_task_list_activity" type="id"/>
+
 </resources>
