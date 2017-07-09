@@ -76,7 +76,7 @@ public class Task implements Serializable{
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setCompleteStatus(boolean status) {
         this.status = status;
     }
 
