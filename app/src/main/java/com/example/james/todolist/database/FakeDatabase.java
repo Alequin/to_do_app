@@ -24,7 +24,6 @@ public class FakeDatabase {
     }
 
     public static void update(int index, Task task){
-        Log.d("app-debug", task.getOutline() + ": " + task.isComplete());
         tasks.add(index, task);
     }
 
