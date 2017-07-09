@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.IllegalFormatException;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -44,9 +46,13 @@ public class DateManager {
 
     public static Calendar getCalendarFromSqlDate(String formattedDate) {
 
+        if(!isDateInSqlFormat(formattedDate)){
+           throw new IllegalArgumentException("Date format is not yyyy-mm-dd: " + formattedDate);
+        }
+
         String[] splitDate = formattedDate.split("-");
         int day = Integer.parseInt(splitDate[2]);
-        int month = Integer.parseInt(splitDate[1]);
+        int month = Integer.parseInt(splitDate[1])-1;
         int year = Integer.parseInt(splitDate[0]);
         if(!isDateValid(year, month, day)){
             throw new IllegalArgumentException(
@@ -70,5 +76,11 @@ public class DateManager {
         int year = Integer.parseInt(splitDate[0]);
 
         return new GregorianCalendar(year, month-1, day);
+    }
+
+    private static boolean isDateInSqlFormat(String date){
+        Pattern ptrn = Pattern.compile("^\\d\\d\\d\\d-\\d\\d-\\d\\d$");
+        Matcher match = ptrn.matcher(date);
+        return match.find();
     }
 }
