@@ -97,47 +97,26 @@ public class TaskTest {
 
     @Test
     public void cannotSetOutOfRangeDay(){
-        boolean pass = false;
-        try{
-            task1.setCreationDate(2017, 6, 0);
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
-
-        pass = false;
-        try{
-            task1.setDueDate(2017, 6, 32);
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotSetWrongDate(2017, 6, 0);
+        helperCannotSetWrongDate(2017, 6, 32);
     }
 
     @Test
     public void cannotSetOutOfRangeMonth(){
-        boolean pass = false;
-        try{
-            task1.setCreationDate(2017, 0, 1);
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
-
-        pass = false;
-        try{
-            task1.setDueDate(2017, 32, 1);
-        }catch(IllegalArgumentException ex){
-            pass = true;
-        }
-        assertEquals(true, pass);
+        helperCannotSetWrongDate(2017, -1, 1);
+        helperCannotSetWrongDate(2017, 12, 1);
     }
 
     @Test
     public void cannotSetOutOfRangeYear(){
+        helperCannotSetWrongDate(999, 6, 1);
+        helperCannotSetWrongDate(10_000, 6, 1);
+    }
+
+    private void helperCannotSetWrongDate(int year, int month, int day){
         boolean pass = false;
         try{
-            task1.setCreationDate(999, 6, 1);
+            task1.setCreationDate(year, month, day);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
@@ -145,7 +124,7 @@ public class TaskTest {
 
         pass = false;
         try{
-            task1.setDueDate(10_000, 6, 1);
+            task1.setDueDate(year, month, day);
         }catch(IllegalArgumentException ex){
             pass = true;
         }
