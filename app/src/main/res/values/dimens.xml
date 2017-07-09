@@ -13,5 +13,6 @@
 
     <dimen name="lower_screen_button_height">50dp</dimen>
 
-    <dimen name="outline_max_height_in_viewer">175dp</dimen>
+    <dimen name="outline_max_height_in_viewer">100dp</dimen>
+
 </resources>

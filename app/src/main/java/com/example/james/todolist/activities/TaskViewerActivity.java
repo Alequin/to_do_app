@@ -1,12 +1,17 @@
 package com.example.james.todolist.activities;
 
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -44,11 +49,22 @@ public class TaskViewerActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                int height = outline.getHeight();
-//                int heightInDp = UnitConverter.dpToPixel( (float) height);
+                int heightInPixles = outline.getHeight();
+                DisplayMetrics dm = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(dm);
+                float height = UnitConverter.pixelToDp(dm, heightInPixles);
 
                 ScrollView scrollView = (ScrollView) findViewById(R.id.outline_scroll_view_task_viewer_activity);
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) scrollView.getLayoutParams();
 
+                float maxHeight = getResources().getDimension(R.dimen.outline_max_height_in_viewer);
+                if(height > 40 && height < maxHeight){
+                    params.height = heightInPixles;
+                }else if(height >= maxHeight){
+                    int maxHeightInPixels = getResources().getDimensionPixelOffset(R.dimen.outline_max_height_in_viewer);
+                    params.height = maxHeightInPixels;
+                }
+                scrollView.setLayoutParams(params);
             }
         }, 30);
     }
