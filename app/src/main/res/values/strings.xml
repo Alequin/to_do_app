@@ -16,4 +16,5 @@
     <string name="delete_all">Delete All</string>
     <string name="close">Close</string>
     <string name="delete_overdue">Delete Overdue Tasks</string>
+    <string name="enter_task_hint">Enter your task</string>
 </resources>

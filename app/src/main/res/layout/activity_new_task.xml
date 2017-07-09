@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:maxLines="@integer/outline_edit_text_max_lines"/>
+            android:maxLines="@integer/outline_edit_text_max_lines"
+            android:hint="@string/enter_task_hint"/>
 
         <Space
             android:layout_width="match_parent"
