@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.Before;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
 
@@ -19,23 +20,33 @@ public class TaskTest {
 
     @Before
     public void setup(){
-        Calendar creationDate = Calendar.getInstance();
-        creationDate.set(2017, 7, 6);
+        Calendar today = Calendar.getInstance();
+
         Calendar due = Calendar.getInstance();
-        due.set(2017, 7, 13);
+        due.set(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+        due.add(Calendar.DAY_OF_MONTH, 5);
 
-        task1 = new Task("finish project", "complete the to do list app", creationDate, due, false);
-    }
-
-    @Test
-    public void canCheckIfTaskIsDue__IsOverdue(){
-        assertEquals(false, task1.isOverdue());
+        task1 = new Task("finish project", "complete the to do list app", today, due, false);
     }
 
     @Test
     public void canCheckIfTaskIsDue__IsNotOverdue(){
-        task1.setCreationDate(2017, 1, 1);
-        task1.setDueDate(2017, 2, 1);
+        assertEquals(false, task1.isOverdue());
+    }
+
+    @Test
+    public void canCheckIfTaskIsDue__DateMatch(){
+        task1.setDueDate(Calendar.getInstance());
+        assertEquals(false, task1.isOverdue());
+    }
+
+    @Test
+    public void canCheckIfTaskIsDue__IsOverdue(){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        //creation date set as well as due date cannot be before creation date
+        task1.setCreationDate(cal);
+        task1.setDueDate(cal);
         assertEquals(true, task1.isOverdue());
     }
 
