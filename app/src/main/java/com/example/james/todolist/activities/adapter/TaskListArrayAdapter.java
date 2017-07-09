@@ -1,24 +1,17 @@
 package com.example.james.todolist.activities.adapter;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.james.todolist.R;
-import com.example.james.todolist.database.TaskSqlDatabase;
-import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by james on 07/07/2017.
