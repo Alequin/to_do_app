@@ -28,7 +28,7 @@ public class DateManager {
     }
 
     private static boolean isMonthValid(int month){
-        return !(month < 1 || month > 12);
+        return !(month < 0 || month > 11);
     }
 
     private static boolean isYearValid(int year){

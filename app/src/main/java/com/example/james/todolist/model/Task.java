@@ -105,7 +105,7 @@ public class Task implements Serializable{
             throw new IllegalArgumentException(message);
         }
         //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
-        creationDate.set(year, month-1, day);
+        creationDate.set(year, month, day);
     }
 
     public Calendar getDueDate() {
@@ -126,7 +126,7 @@ public class Task implements Serializable{
             throw new IllegalArgumentException(message);
         }
         //Month is reduced by one as Calendar obj months go from 0 - 11 not 1 - 12
-        this.dueDate.set(year, month-1, day);
+        this.dueDate.set(year, month, day);
 
         if(dueDate.before(creationDate)){
             throw new IllegalArgumentException("Due date cannot be before the creation date");

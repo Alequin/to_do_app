@@ -68,6 +68,7 @@ public class TaskTest {
 
     @Test
     public void canSetCorrectDate(){
+
         task1.setCreationDate(2017, 1, 1);
         task1.setDueDate(2018,5,5);
         String expectedCreationDate = "01/01/2017";
