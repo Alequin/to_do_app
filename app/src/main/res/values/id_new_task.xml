@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="input_layout_new_task_activity" type="id"/>"
+    <item name="input_layout_new_task_activity" type="id"/>
 
     <item name="enter_outline_new_task_activity" type="id" />
 
@@ -9,6 +9,10 @@
 
     <item name="extra_details_new_task_activity" type="id"/>
 
-    <item name="submit_button_new_task_activity" type="id"/>"
+    <item name="submit_button_new_task_activity" type="id"/>
+
+    <item name="land_left_layout_new_task_activity" type="id"/>
+
+    <item name="land_right_layout_new_task_activity" type="id"/>
 
 </resources>
