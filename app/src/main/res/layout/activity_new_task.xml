@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:maxLines="@integer/outline_edit_text_max_lines"
+            android:textSize="@dimen/large_text_size"
             android:hint="@string/enter_task_hint"/>
 
         <Space
@@ -41,7 +42,8 @@
             android:background="@drawable/edit_text_border"
             android:hint="@string/due_date_button_hint"
             android:gravity="center_vertical"
-            android:paddingLeft="15dp"
+            android:padding="15dp"
+            android:textSize="@dimen/medium_text_size"
             android:onClick="onClickDueDateButton"/>
 
         <Space
@@ -56,6 +58,7 @@
             android:layout_weight="15"
             android:background="@drawable/edit_text_border"
             android:hint="@string/extra_details_enter_hint"
+            android:textSize="@dimen/large_text_size"
             android:padding="15dp"
             android:gravity="start"/>
 
