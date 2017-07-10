@@ -25,7 +25,7 @@
         app:layout_constraintLeft_toRightOf="@id/check_box_task_list_item"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="center_vertical"
-        android:textSize="17sp"
+        android:textSize="@dimen/task_text_size_list_view"
         android:textColor="#000"
         android:text="This is a task"/>
 
