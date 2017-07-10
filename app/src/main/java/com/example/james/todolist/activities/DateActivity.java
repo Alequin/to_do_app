@@ -34,7 +34,8 @@ public class DateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+        int screenCode = getResources().getInteger(R.integer.screen_code);
+        if(screenCode > 1 && Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
             setContentView(R.layout.activity_date);
         }else{
             setContentView(R.layout.activity_calendar_view);
