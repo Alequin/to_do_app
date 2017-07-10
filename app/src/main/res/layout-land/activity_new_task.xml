@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.james.todolist.activities.NewTaskActivity">
+
+    <LinearLayout
+        android:id="@id/input_layout_new_task_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/submit_button_new_task_activity"
+        android:paddingTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@id/enter_outline_new_task_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="@integer/outline_edit_text_max_lines"
+            android:hint="@string/enter_task_hint"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <Button
+            android:id="@id/due_date_new_task_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/due_date_button_hint"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:onClick="onClickDueDateButton"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <EditText
+            android:id="@id/extra_details_new_task_activity"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:background="@drawable/edit_text_border"
+            android:hint="@string/extra_details_enter_hint"
+            android:padding="15dp"
+            android:gravity="start"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/submit_button_new_task_activity"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/lower_screen_button_height"
+        android:layout_alignParentBottom="true"
+        style="@style/tick_button"
+        android:onClick="onClickMakeTask"/>
+
+</RelativeLayout>
