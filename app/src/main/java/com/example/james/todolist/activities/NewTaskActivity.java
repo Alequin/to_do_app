@@ -119,34 +119,9 @@ public class NewTaskActivity extends AppCompatActivity {
         taskToMake.setOutline(outlineText);
         taskToMake.setExtraDetails(extraDetailsText);
 
-        int currentOrientation = getResources().getConfiguration().orientation;
-        if(Configuration.ORIENTATION_LANDSCAPE == currentOrientation){
-            Calendar selected = getSelectedDateWhenLandscape();
-            if(selected != null){
-                taskToMake.setDueDate(selected);
-            }else{
-                return;
-            }
-        }
-
         taskToMake.save();
 
         finish();
-    }
-
-    private Calendar getSelectedDateWhenLandscape(){
-        calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
-
-        Calendar today = Calendar.getInstance();
-        Calendar selected = DateManager.getCalendarFromLong(calendar.getDate());
-
-        if(selected.before(today)){
-            Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
-            toast.show();
-            return null;
-        }else{
-            return selected;
-        }
     }
 
     @Override
@@ -185,17 +160,8 @@ public class NewTaskActivity extends AppCompatActivity {
         calendar.setDate(dueDate.getTimeInMillis());
     }
 
-
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
-//        if(calendar != null){
-//            Calendar dueDate = DateManager.getCalendarFromLong(calendar.getDate());
-//            String s = DateManager.formatDate(dueDate);
-//            taskToMake.setDueDate(dueDate);
-//        }
-
         outState.putSerializable(TASK_SAVE, taskToMake);
         super.onSaveInstanceState(outState);
     }
