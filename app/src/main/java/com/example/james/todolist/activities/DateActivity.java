@@ -81,12 +81,6 @@ public class DateActivity extends AppCompatActivity {
             selected = getCalendarFromDatePicker();
         }else{
             selected = DateManager.getCalendarFromLong(calendar.getDate());
-            // For reasons unknown when the variables 'selected' and 'today' are
-            // compared using the method 'Calendar.before' and the dates are
-            // the same the return value is true (which would signify the current
-            // date is before the current date). This only occurs with the calendar view
-            // Today is modified to compensate.
-            today.add(Calendar.DAY_OF_MONTH, -1);
         }
 
         if(selected.before(today)){
