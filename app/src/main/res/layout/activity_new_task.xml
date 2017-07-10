@@ -12,12 +12,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_above="@id/submit_button_new_task_activity"
-        android:paddingTop="5dp"
-        android:paddingLeft="20dp"
-        android:paddingStart="20dp"
-        android:paddingRight="20dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="20dp"
+        android:padding="@dimen/enter_extra_edit_text_padding"
         android:orientation="vertical">
 
         <EditText
@@ -26,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:maxLines="@integer/outline_edit_text_max_lines"
-            android:textSize="@dimen/large_text_size"
+            android:textSize="@dimen/medium_text_size"
             android:hint="@string/enter_task_hint"/>
 
         <Space
@@ -58,7 +53,7 @@
             android:layout_weight="15"
             android:background="@drawable/edit_text_border"
             android:hint="@string/extra_details_enter_hint"
-            android:textSize="@dimen/large_text_size"
+            android:textSize="@dimen/medium_text_size"
             android:padding="15dp"
             android:gravity="start"/>
 

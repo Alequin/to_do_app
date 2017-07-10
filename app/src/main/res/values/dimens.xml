@@ -7,10 +7,11 @@
 
     <dimen name="small_text_size">15sp</dimen>
 
+    <dimen name="enter_extra_edit_text_padding">10dp</dimen>
 
     <dimen name="date_info_text_size_task_viewer">16sp</dimen>
 
-    <dimen name="check_box_element_height">60dp</dimen>
+    <dimen name="check_box_element_height">40dp</dimen>
 
     <dimen name="element_margin_list_item">5dp</dimen>
 

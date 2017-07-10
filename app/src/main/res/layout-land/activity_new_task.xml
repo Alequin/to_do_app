@@ -35,8 +35,7 @@
             android:gravity="start"
             android:hint="@string/extra_details_enter_hint"
             android:padding="15dp" />
-
-
+        
     </LinearLayout>
 
     <FrameLayout
