@@ -66,8 +66,7 @@ public class NewTaskActivity extends AppCompatActivity {
         }
 
         if(calendar != null){
-            Calendar dueDate = taskToMake.getDueDate();
-            calendar.setDate(dueDate.getTimeInMillis());
+            setDateSelectedOnCalendar(taskToMake);
         }
     }
 
@@ -158,6 +157,11 @@ public class NewTaskActivity extends AppCompatActivity {
         String dateText = task.getFormattedDueDate();
         String output = String.format("%s: %s", dueDateLabel, dateText);
         dueDateButton.setText(output);
+    }
+
+    private void setDateSelectedOnCalendar(Task task){
+        Calendar dueDate = task.getDueDate();
+        calendar.setDate(dueDate.getTimeInMillis());
     }
 
     @Override
