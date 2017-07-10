@@ -59,12 +59,10 @@
 
     <ImageView
         android:id="@id/submit_button_new_task_activity"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/lower_screen_button_height"
+        style="@style/tick_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        style="@style/tick_button"
         android:onClick="onClickMakeTask"/>
 
 </android.support.constraint.ConstraintLayout>

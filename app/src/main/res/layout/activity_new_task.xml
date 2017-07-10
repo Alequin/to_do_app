@@ -63,10 +63,8 @@
 
     <ImageView
         android:id="@id/submit_button_new_task_activity"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/lower_screen_button_height"
-        android:layout_alignParentBottom="true"
         style="@style/tick_button"
+        android:layout_alignParentBottom="true"
         android:onClick="onClickMakeTask"/>
 
 </RelativeLayout>

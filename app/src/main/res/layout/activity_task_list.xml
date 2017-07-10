@@ -15,11 +15,7 @@
 
     <ImageView
         android:id="@id/add_button_task_list_activity"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/lower_screen_button_height"
-        android:padding="7.5dp"
-        android:background="@color/colorPrimary"
-        android:src="@drawable/add"
+        style="@style/add_button"
         android:onClick="onClickAddButton"
         android:layout_alignParentBottom="true"/>
 
