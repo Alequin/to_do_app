@@ -15,4 +15,5 @@
 
     <item name="land_right_layout_new_task_activity" type="id"/>
 
+    <item name="calendar_view_new_task_activity" type="id"/>
 </resources>
