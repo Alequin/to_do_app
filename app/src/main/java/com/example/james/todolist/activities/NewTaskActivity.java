@@ -1,15 +1,18 @@
 package com.example.james.todolist.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 import java.util.Calendar;
@@ -75,9 +78,34 @@ public class NewTaskActivity extends AppCompatActivity {
         taskToMake.setOutline(outlineText);
         taskToMake.setExtraDetails(extraDetailsText);
 
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if(Configuration.ORIENTATION_LANDSCAPE == currentOrientation){
+            Calendar selected = getSelectedDateWhenLandscape();
+            if(selected != null){
+                taskToMake.setDueDate(selected);
+            }else{
+                return;
+            }
+        }
+
         taskToMake.save();
 
         finish();
+    }
+
+    private Calendar getSelectedDateWhenLandscape(){
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
+
+        Calendar today = Calendar.getInstance();
+        Calendar selected = DateManager.getCalendarFromLong(calendar.getDate());
+
+        if(selected.before(today)){
+            Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
+            toast.show();
+            return null;
+        }else{
+            return selected;
+        }
     }
 
     @Override

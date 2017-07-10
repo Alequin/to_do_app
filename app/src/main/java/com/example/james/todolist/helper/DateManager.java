@@ -74,7 +74,9 @@ public class DateManager {
         int month = Integer.parseInt(splitDate[1]);
         int year = Integer.parseInt(splitDate[0]);
 
-        return new GregorianCalendar(year, month-1, day);
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month-1, day);
+        return cal;
     }
 
     private static boolean isDateInSqlFormat(String date){
