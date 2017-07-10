@@ -26,10 +26,6 @@ public class DatabaseHandler {
         dbHandler = new DatabaseHandler(new TaskSqlDatabase(context));
     }
 
-    public void open(Context context){
-        init(context);
-    }
-
     public boolean isOpen(){
         return open;
     }

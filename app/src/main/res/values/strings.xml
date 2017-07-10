@@ -10,7 +10,6 @@
     <string name="extra_details_save_hint">Enter any extra details\nChanges will be saved</string>
     <string name="delete">Delete</string>
     <string name="due_date_button_hint">Click to select a due date</string>
-    <string name="select_date">Select Date</string>
     <string name="warning_invalid_date_message">The date selected cannot be before today</string>
     <string name="warning_must_provide_outline_text">A task must at least have an outline</string>
     <string name="delete_all">Delete All</string>

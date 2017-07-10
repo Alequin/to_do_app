@@ -8,10 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="DialogTheme" parent="AppTheme">
-        <item name="android:headerBackground">@color/colorPrimary</item>
-    </style>
-
     <style name="tick_button">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:src">@drawable/tick</item>
