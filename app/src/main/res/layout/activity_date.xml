@@ -11,6 +11,7 @@
         style="@style/calendar_date_frame">
 
         <DatePicker
+            android:id="@id/date_picker_date_activity"
             style="@style/date_picker"/>
 
     </FrameLayout>
