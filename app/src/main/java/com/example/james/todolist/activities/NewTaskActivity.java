@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.example.james.todolist.R;
 import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 public class NewTaskActivity extends AppCompatActivity {
@@ -26,18 +28,24 @@ public class NewTaskActivity extends AppCompatActivity {
     public static final String MONTH_EXTRA = "month_extra";
     public static final String YEAR_EXTRA = "year_extra";
 
+    private static final String TASK_SAVE = "task_outline_save";
+
     private Task taskToMake;
 
     private Button dueDateButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle inState) {
+        super.onCreate(inState);
         setContentView(R.layout.activity_new_task);
 
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
 
-        taskToMake = new Task("", "", false);
+        if(inState == null){
+            taskToMake = new Task("", "", false);
+        }else{
+            taskToMake = (Task) inState.getSerializable(TASK_SAVE);
+        }
     }
 
     @Override
@@ -127,5 +135,11 @@ public class NewTaskActivity extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(TASK_SAVE, taskToMake);
+        super.onSaveInstanceState(outState);
     }
 }
