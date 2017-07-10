@@ -1,7 +1,5 @@
 package com.example.james.todolist.database;
 
-import android.util.Log;
-
 import com.example.james.todolist.model.Task;
 
 import java.util.ArrayList;
