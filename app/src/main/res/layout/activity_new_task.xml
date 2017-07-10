@@ -59,10 +59,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@id/submit_button_new_task_activity"
-        style="@style/tick_button"
-        android:layout_alignParentBottom="true"
-        android:onClick="onClickMakeTask"/>
-
 </RelativeLayout>
