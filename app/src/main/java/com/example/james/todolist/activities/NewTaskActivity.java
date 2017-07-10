@@ -2,6 +2,7 @@ package com.example.james.todolist.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,11 +48,24 @@ public class NewTaskActivity extends AppCompatActivity {
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
         calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
 
+        if(calendar != null){
+            setListenerOnCalendarView(calendar);
+        }
+
         if(inState == null){
             taskToMake = new Task("", "", false);
         }else{
             buildLayoutFromSavedState(inState);
         }
+    }
+
+    private void setListenerOnCalendarView(CalendarView view){
+        view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                taskToMake.setDueDate(year, month, dayOfMonth);
+            }
+        });
     }
 
     private void buildLayoutFromSavedState(Bundle inState){
@@ -105,34 +119,9 @@ public class NewTaskActivity extends AppCompatActivity {
         taskToMake.setOutline(outlineText);
         taskToMake.setExtraDetails(extraDetailsText);
 
-        int currentOrientation = getResources().getConfiguration().orientation;
-        if(Configuration.ORIENTATION_LANDSCAPE == currentOrientation){
-            Calendar selected = getSelectedDateWhenLandscape();
-            if(selected != null){
-                taskToMake.setDueDate(selected);
-            }else{
-                return;
-            }
-        }
-
         taskToMake.save();
 
         finish();
-    }
-
-    private Calendar getSelectedDateWhenLandscape(){
-        calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
-
-        Calendar today = Calendar.getInstance();
-        Calendar selected = DateManager.getCalendarFromLong(calendar.getDate());
-
-        if(selected.before(today)){
-            Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
-            toast.show();
-            return null;
-        }else{
-            return selected;
-        }
     }
 
     @Override
@@ -173,12 +162,6 @@ public class NewTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
-        if(calendar != null){
-            Calendar dueDate = DateManager.getCalendarFromLong(calendar.getDate());
-            taskToMake.setDueDate(dueDate);
-        }
-
         outState.putSerializable(TASK_SAVE, taskToMake);
         super.onSaveInstanceState(outState);
     }
