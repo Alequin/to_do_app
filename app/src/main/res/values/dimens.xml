@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="large_text_size">20sp</dimen>
+
+    <dimen name="medium_text_size">16sp</dimen>
+
+    <dimen name="small_text_size">15sp</dimen>
+
+
     <dimen name="date_info_text_size_task_viewer">16sp</dimen>
 
-    <dimen name="element_height_list_item">40dp</dimen>
+    <dimen name="check_box_element_height">60dp</dimen>
 
     <dimen name="element_margin_list_item">5dp</dimen>
 

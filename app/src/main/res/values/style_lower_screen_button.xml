@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="lower_screen_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/lower_screen_button_height</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="tick_button" parent="lower_screen_button">
+        <item name="android:padding">6dp</item>
+        <item name="android:src">@drawable/tick</item>
+    </style>
+
+    <style name="add_button" parent="lower_screen_button">
+        <item name="android:padding">10dp</item>
+        <item name="android:src">@drawable/add</item>
+    </style>
+
+</resources>
