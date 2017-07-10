@@ -138,14 +138,21 @@ public class NewTaskActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(requestCode == SET_DUE_DATE_REQUEST_CODE){
-            if(resultCode == SET_DUE_DATE_RESULT_CODE){
+        if (requestCode == SET_DUE_DATE_REQUEST_CODE) {
+            if (resultCode == SET_DUE_DATE_RESULT_CODE) {
+
                 Bundle bundleDueDate = data.getExtras();
                 int day = bundleDueDate.getInt(DateActivity.DAY_EXTRA);
                 int month = bundleDueDate.getInt(DateActivity.MONTH_EXTRA);
                 int year = bundleDueDate.getInt(DateActivity.YEAR_EXTRA);
                 taskToMake.setDueDate(year, month, day);
-                setDueDateButtonText(taskToMake);
+
+                if(dueDateButton != null){
+                    setDueDateButtonText(taskToMake);
+                }
+                if(calendar != null){
+                    setDateSelectedOnCalendar(taskToMake);
+                }
             }
         }
 
