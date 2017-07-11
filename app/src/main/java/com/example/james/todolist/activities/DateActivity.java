@@ -1,9 +1,11 @@
 package com.example.james.todolist.activities;
 
 import android.app.ActionBar;
-import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +40,7 @@ public class DateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         boolean screenTooSmall = TaskListApplication.screenSizeCode() < 360;
-        if(screenTooSmall && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP){
+        if(screenTooSmall || Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP){
             setContentView(R.layout.activity_calendar_view);
         }else{
             setContentView(R.layout.activity_date);
@@ -48,6 +50,7 @@ public class DateActivity extends AppCompatActivity {
 
         datePicker = (DatePicker) findViewById(R.id.date_picker_date_activity);
         calendar = (CalendarView) findViewById(R.id.calendar_date_activity);
+
         prepareView();
     }
 
@@ -58,13 +61,11 @@ public class DateActivity extends AppCompatActivity {
         int month = extras.getInt(NewTaskActivity.MONTH_EXTRA, today.get(Calendar.MONTH));
         int year = extras.getInt(NewTaskActivity.YEAR_EXTRA, today.get(Calendar.YEAR));
 
+        setDateChangeListener();
+        setSelectedDate(year, month, day);
+
         if(datePicker != null){
             datePicker.setMinDate(today.getTimeInMillis());
-            datePicker.init(year, month, day, null);
-        }else{
-            Calendar cal = Calendar.getInstance();
-            cal.set(year, month, day);
-            calendar.setDate(cal.getTimeInMillis());
         }
     }
 
@@ -78,35 +79,42 @@ public class DateActivity extends AppCompatActivity {
     }
 
     public void onClickSelectDate(View view){
+        finish();
+    }
 
-        Calendar today = Calendar.getInstance();
-        Calendar selected = null;
+    private void setDateChangeListener(){
         if(datePicker != null){
-            selected = getCalendarFromDatePicker();
-        }else{
-            selected = DateManager.getCalendarFromLong(calendar.getDate());
+            datePicker.init(1990, 6, 6, new DatePicker.OnDateChangedListener() {
+                @Override
+                public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    onDateChange(year, monthOfYear, dayOfMonth);
+                }
+            });
         }
 
-        if(selected.before(today)){
-            Toast toast = Toast.makeText(this, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT);
-            toast.show();
-        }else{
-            int resultCode = NewTaskActivity.SET_DUE_DATE_RESULT_CODE;
-            Intent dateDetails = bundleDateValues(selected);
-            setResult(resultCode, dateDetails);
-            finish();
+        if(calendar != null){
+            calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                @Override
+                public void onSelectedDayChange(@NonNull CalendarView view, int year, int monthOfYear, int dayOfMonth) {
+                    onDateChange(year, monthOfYear, dayOfMonth);
+                }
+            });
         }
     }
 
-    private Calendar getCalendarFromDatePicker(){
+    private void onDateChange(int year, int month, int day){
+        Calendar selected = Calendar.getInstance();
+        selected.set(year, month, day);
 
-        int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year = datePicker.getYear();
-
-        Calendar input = Calendar.getInstance();
-        input.set(year, month, day);
-        return input;
+        if(DateManager.isBeforeToday(selected)){
+            String message = getString(R.string.warning_invalid_date_message);
+            Toast toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+            toast.show();
+            setSelectedDate(Calendar.getInstance());
+        }else{
+            Intent dateDetails = bundleDateValues(selected);
+            setResult(NewTaskActivity.SET_DUE_DATE_RESULT_CODE, dateDetails);
+        }
     }
 
     private Intent bundleDateValues(Calendar cal){
@@ -116,4 +124,44 @@ public class DateActivity extends AppCompatActivity {
         intent.putExtra(YEAR_EXTRA, cal.get(Calendar.YEAR));
         return intent;
     }
+
+    private void setSelectedDate(int year, int month, int day){
+        if(datePicker != null){
+            datePicker.updateDate(year, month, day);
+        }else{
+            Calendar cal = Calendar.getInstance();
+            cal.set(year, month, day);
+            calendar.setDate(cal.getTimeInMillis());
+        }
+    }
+
+    private void setSelectedDate(Calendar cal){
+
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        setSelectedDate(year, month, day);
+    }
+
+//    private Calendar getSelectedDate(){
+//        Calendar selected = null;
+//        if(datePicker != null){
+//            selected = getCalendarFromDatePicker();
+//        }else{
+//            selected = DateManager.getCalendarFromLong(calendar.getDate());
+//        }
+//        return selected;
+//    }
+
+//    private Calendar getCalendarFromDatePicker(){
+//
+//        int day = datePicker.getDayOfMonth();
+//        int month = datePicker.getMonth();
+//        int year = datePicker.getYear();
+//
+//        Calendar input = Calendar.getInstance();
+//        input.set(year, month, day);
+//        return input;
+//    }
 }
