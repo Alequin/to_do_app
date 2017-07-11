@@ -13,9 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:maxLines="@integer/outline_edit_text_max_lines"
-        android:textSize="@dimen/large_text_size"
-        android:hint="@string/enter_task_hint"/>
+        style="@style/task_outline_edit_text"/>
 
     <Space
         android:layout_width="match_parent"
@@ -44,10 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="15"
-        android:background="@drawable/edit_text_border"
-        android:hint="@string/extra_details_enter_hint"
-        android:textSize="@dimen/large_text_size"
-        android:padding="15dp"
-        android:gravity="start"/>
+        style="@style/extra_details_edit_text"/>
 
 </LinearLayout>
