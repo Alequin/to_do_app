@@ -37,7 +37,7 @@ public class DateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        boolean screenTooSmall = TaskListApplication.screenSizeCode() <= TaskListApplication.swTiny();
+        boolean screenTooSmall = TaskListApplication.screenSizeCode() < 360;
         if(screenTooSmall && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP){
             setContentView(R.layout.activity_calendar_view);
         }else{
