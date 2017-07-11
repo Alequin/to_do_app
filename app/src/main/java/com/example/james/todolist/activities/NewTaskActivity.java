@@ -1,5 +1,6 @@
 package com.example.james.todolist.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 import java.util.Calendar;
@@ -67,11 +69,19 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
     private void setListenerOnCalendarView(CalendarView view){
+        final Context currentContext = this;
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                Calendar selected = Calendar.getInstance();
+                selected.set(year, month, dayOfMonth);
 
-                taskToMake.setDueDate(year, month, dayOfMonth);
+                if(!DateManager.isBeforeToday(selected)){
+                    taskToMake.setDueDate(year, month, dayOfMonth);
+                }else{
+                    Toast.makeText(currentContext, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT).show();
+                    calendar.setDate(Calendar.getInstance().getTimeInMillis());
+                }
             }
         });
     }
