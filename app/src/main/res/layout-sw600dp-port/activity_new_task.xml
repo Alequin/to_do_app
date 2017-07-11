@@ -22,17 +22,16 @@
         android:layout_height="0dp"
         android:layout_weight="0.5" />
 
-    <Button
-        android:id="@id/due_date_new_task_activity"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:background="@drawable/edit_text_border"
-        android:hint="@string/due_date_button_hint"
-        android:gravity="center_vertical"
-        android:padding="15dp"
-        android:textSize="@dimen/medium_text_size"
-        android:onClick="onClickDueDateButton"/>
+        android:textSize="@dimen/large_text_size"
+        android:text="@string/due_date"/>
+
+    <CalendarView
+        android:id="@id/calendar_view_new_task_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Space
         android:layout_width="match_parent"

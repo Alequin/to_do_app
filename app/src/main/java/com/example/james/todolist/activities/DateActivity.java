@@ -1,6 +1,7 @@
 package com.example.james.todolist.activities;
 
 import android.app.ActionBar;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.application.TaskListApplication;
 import com.example.james.todolist.helper.DateManager;
 
 import java.util.Calendar;
@@ -34,11 +36,12 @@ public class DateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int screenCode = getResources().getInteger(R.integer.screen_code);
-        if(screenCode > 1 && Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
-            setContentView(R.layout.activity_date);
-        }else{
+
+        boolean screenTooSmall = TaskListApplication.screenSizeCode() < 360;
+        if(screenTooSmall && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP){
             setContentView(R.layout.activity_calendar_view);
+        }else{
+            setContentView(R.layout.activity_date);
         }
 
         hideActionBar();

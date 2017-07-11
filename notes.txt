@@ -1,0 +1,2 @@
+The calendar on the date view activity on version 16 has very small text.
+This is not a issue at version 21. Unsure at what point it becomes an issue.

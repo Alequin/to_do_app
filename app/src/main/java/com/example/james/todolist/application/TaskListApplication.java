@@ -1,7 +1,9 @@
 package com.example.james.todolist.application;
 
 import android.app.Application;
+import android.content.res.Resources;
 
+import com.example.james.todolist.R;
 import com.example.james.todolist.database.DatabaseHandler;
 
 /**
@@ -10,9 +12,21 @@ import com.example.james.todolist.database.DatabaseHandler;
 
 public class TaskListApplication extends Application {
 
+    private static int currentScreenSize;
+
     @Override
     public void onCreate() {
         super.onCreate();
         DatabaseHandler.init(this);
+        setScreenCodes();
+    }
+
+    private void setScreenCodes(){
+        Resources r = getResources();
+        currentScreenSize = r.getInteger(R.integer.screen_code);
+    }
+
+    public static int screenSizeCode(){
+        return currentScreenSize;
     }
 }

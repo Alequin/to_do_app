@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name="screen_code">0</integer>
+    <integer name="screen_code">360</integer>
 
     <integer name="outline_edit_text_max_lines">3</integer>
 
