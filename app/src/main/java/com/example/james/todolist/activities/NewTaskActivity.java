@@ -41,6 +41,11 @@ public class NewTaskActivity extends AppCompatActivity {
         super.onCreate(inState);
         setContentView(R.layout.activity_new_task);
 
+        int screen_code = getResources().getInteger(R.integer.screen_code);
+        if(screen_code > 3){
+            return;
+        }
+
         outlineView = (TextView) findViewById(R.id.enter_outline_new_task_activity);
         extraDetailsView = (TextView) findViewById(R.id.extra_details_new_task_activity);
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);

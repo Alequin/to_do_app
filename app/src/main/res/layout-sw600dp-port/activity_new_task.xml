@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.james.todolist.activities.NewTaskActivity"
+    android:orientation="vertical"
+    android:padding="@dimen/enter_extra_edit_text_padding">
+
+    <EditText
+        android:id="@id/enter_outline_new_task_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:maxLines="@integer/outline_edit_text_max_lines"
+        android:textSize="@dimen/large_text_size"
+        android:hint="@string/enter_task_hint"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/large_text_size"
+        android:text="@string/due_date"/>
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <EditText
+        android:id="@id/extra_details_new_task_activity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:background="@drawable/edit_text_border"
+        android:hint="@string/extra_details_enter_hint"
+        android:textSize="@dimen/large_text_size"
+        android:padding="15dp"
+        android:gravity="start"/>
+
+</LinearLayout>
