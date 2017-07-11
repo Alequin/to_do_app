@@ -4,9 +4,7 @@
     <dimen name="large_text_size">20sp</dimen>
 
     <dimen name="medium_text_size">16sp</dimen>
-
-    <dimen name="small_text_size">15sp</dimen>
-
+    
     <dimen name="enter_extra_edit_text_padding">10dp</dimen>
 
     <dimen name="date_info_text_size_task_viewer">16sp</dimen>
