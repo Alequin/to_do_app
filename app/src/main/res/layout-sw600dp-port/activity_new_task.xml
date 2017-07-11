@@ -29,6 +29,7 @@
         android:text="@string/due_date"/>
 
     <CalendarView
+        android:id="@id/calendar_view_new_task_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
