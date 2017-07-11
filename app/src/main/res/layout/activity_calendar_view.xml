@@ -14,7 +14,8 @@
         <CalendarView
             android:id="@id/calendar_date_activity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dateTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
     </FrameLayout>
 
     <ImageView
