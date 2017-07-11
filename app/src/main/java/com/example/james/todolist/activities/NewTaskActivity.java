@@ -70,6 +70,7 @@ public class NewTaskActivity extends AppCompatActivity {
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+
                 taskToMake.setDueDate(year, month, dayOfMonth);
             }
         });
