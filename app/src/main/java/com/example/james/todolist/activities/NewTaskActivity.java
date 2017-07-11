@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -46,6 +47,8 @@ public class NewTaskActivity extends AppCompatActivity {
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
         calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
 
+        setAllEditTextsOptionButton(EditorInfo.IME_ACTION_DONE);
+
         if(calendar != null){
             setListenerOnCalendarView(calendar);
         }
@@ -55,6 +58,12 @@ public class NewTaskActivity extends AppCompatActivity {
         }else{
             buildLayoutFromSavedState(inState);
         }
+    }
+
+    private void setAllEditTextsOptionButton(int option){
+        //https://stackoverflow.com/questions/6265366/android-soft-keyboard-custom-done-button-text
+        outlineView.setImeOptions(option);
+        extraDetailsView.setImeOptions(option);
     }
 
     private void setListenerOnCalendarView(CalendarView view){
