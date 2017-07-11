@@ -83,4 +83,9 @@ public class DateManager {
         Matcher match = ptrn.matcher(date);
         return match.find();
     }
+
+    public static boolean isBeforeToday(Calendar date){
+        Calendar today = Calendar.getInstance();
+        return date.before(today);
+    }
 }
