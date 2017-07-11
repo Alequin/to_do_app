@@ -143,25 +143,4 @@ public class DateActivity extends AppCompatActivity {
 
         setSelectedDate(year, month, day);
     }
-
-//    private Calendar getSelectedDate(){
-//        Calendar selected = null;
-//        if(datePicker != null){
-//            selected = getCalendarFromDatePicker();
-//        }else{
-//            selected = DateManager.getCalendarFromLong(calendar.getDate());
-//        }
-//        return selected;
-//    }
-
-//    private Calendar getCalendarFromDatePicker(){
-//
-//        int day = datePicker.getDayOfMonth();
-//        int month = datePicker.getMonth();
-//        int year = datePicker.getYear();
-//
-//        Calendar input = Calendar.getInstance();
-//        input.set(year, month, day);
-//        return input;
-//    }
 }
