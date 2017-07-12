@@ -160,8 +160,6 @@ public class DateManagerTest {
         for(int j=min; j<=max; j++){
             helperCanGetNewCalendar(2017, 6, j);
         }
-
-
     }
 
     private void helperCanGetNewCalendar(int year, int month, int day){
@@ -171,5 +169,29 @@ public class DateManagerTest {
         assertEquals(day, cal.get(Calendar.DAY_OF_MONTH));
         assertEquals(month, cal.get(Calendar.MONTH));
         assertEquals(year, cal.get(Calendar.YEAR));
+    }
+
+    @Test
+    public void cannotGetNewCalendar_wrongInput(){
+        helperCannotGetNewCalendar(2017, 6, 0);
+        helperCannotGetNewCalendar(2017, 6, 32);
+
+        helperCannotGetNewCalendar(2017, -1, 1);
+        helperCannotGetNewCalendar(2017, 12, 1);
+
+        helperCannotGetNewCalendar(999, 6, 1);
+        helperCannotGetNewCalendar(10_000, 6, 1);
+    }
+
+    private void helperCannotGetNewCalendar(int year, int month, int day){
+
+        boolean pass = false;
+        try{
+            Calendar cal = DateManager.newCalendar(year, month, day);
+        }catch (IllegalArgumentException ex){
+            pass = true;
+        }
+
+        assertEquals(true, pass);
     }
 }

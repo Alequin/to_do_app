@@ -45,7 +45,7 @@ public class DateManager {
     public static Calendar getCalendarFromSqlDate(String formattedDate) {
 
         if(!isDateInSqlFormat(formattedDate)){
-           throw new IllegalArgumentException("Date format is not yyyy-mm-dd: " + formattedDate);
+
         }
 
         String[] splitDate = formattedDate.split("-");
@@ -86,6 +86,10 @@ public class DateManager {
     }
 
     public static Calendar newCalendar(int year, int month, int day) {
+        if(!isDateValid(year, month, day)){
+            String message = String.format("Input wrong: day - %s  month - %s  year - %s" , day, month, year);
+            throw new IllegalArgumentException();
+        }
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, day);
         return cal;
