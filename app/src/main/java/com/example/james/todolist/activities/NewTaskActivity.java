@@ -1,5 +1,6 @@
 package com.example.james.todolist.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,12 +9,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.james.todolist.R;
+import com.example.james.todolist.helper.DateManager;
 import com.example.james.todolist.model.Task;
 
 import java.util.Calendar;
@@ -46,6 +49,8 @@ public class NewTaskActivity extends AppCompatActivity {
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
         calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
 
+        setAllEditTextsOptionButton(EditorInfo.IME_ACTION_DONE);
+
         if(calendar != null){
             setListenerOnCalendarView(calendar);
         }
@@ -57,11 +62,25 @@ public class NewTaskActivity extends AppCompatActivity {
         }
     }
 
+    private void setAllEditTextsOptionButton(int option){
+        //https://stackoverflow.com/questions/6265366/android-soft-keyboard-custom-done-button-text
+        outlineView.setImeOptions(option);
+        extraDetailsView.setImeOptions(option);
+    }
+
     private void setListenerOnCalendarView(CalendarView view){
+        final Context currentContext = this;
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                taskToMake.setDueDate(year, month, dayOfMonth);
+                Calendar selected = DateManager.newCalendar(year, month, dayOfMonth);
+
+                if(!DateManager.isBeforeToday(selected)){
+                    taskToMake.setDueDate(selected);
+                }else{
+                    Toast.makeText(currentContext, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT).show();
+                    calendar.setDate(Calendar.getInstance().getTimeInMillis());
+                }
             }
         });
     }

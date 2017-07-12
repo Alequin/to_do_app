@@ -22,8 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:maxLines="@integer/outline_edit_text_max_lines"
-            android:hint="@string/enter_task_hint"/>
+            style="@style/task_outline_edit_text"/>
 
         <EditText
             android:id="@id/extra_details_new_task_activity"
@@ -31,10 +30,7 @@
             android:layout_height="0dp"
             android:layout_weight="9"
             android:layout_margin="5dp"
-            android:background="@drawable/edit_text_border"
-            android:gravity="start"
-            android:hint="@string/extra_details_enter_hint"
-            android:padding="15dp" />
+            style="@style/extra_details_edit_text"/>
 
     </LinearLayout>
 
@@ -46,13 +42,14 @@
         app:layout_constraintLeft_toRightOf="@id/land_left_layout_new_task_activity"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="3dp">
+        android:padding="3dp"
+        >
 
         <CalendarView
             android:id="@id/calendar_view_new_task_activity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:datePickerMode="spinner"/>
+            android:layout_height="match_parent"/>
+        <!--wrapping sizes will causes issues on versions older than 23-->
 
     </FrameLayout>
 

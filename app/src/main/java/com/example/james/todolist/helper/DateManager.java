@@ -59,9 +59,7 @@ public class DateManager {
             );
         }
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month, day);
-        return cal;
+        return DateManager.newCalendar(year, month, day);
     }
 
     public static Calendar getCalendarFromLong(long dateAsLong){
@@ -73,14 +71,23 @@ public class DateManager {
         int month = Integer.parseInt(splitDate[1]);
         int year = Integer.parseInt(splitDate[0]);
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(year, month-1, day);
-        return cal;
+        return DateManager.newCalendar(year, month-1, day);
     }
 
     private static boolean isDateInSqlFormat(String date){
         Pattern ptrn = Pattern.compile("^\\d\\d\\d\\d-\\d\\d-\\d\\d$");
         Matcher match = ptrn.matcher(date);
         return match.find();
+    }
+
+    public static boolean isBeforeToday(Calendar date){
+        Calendar today = Calendar.getInstance();
+        return date.before(today);
+    }
+
+    public static Calendar newCalendar(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal;
     }
 }

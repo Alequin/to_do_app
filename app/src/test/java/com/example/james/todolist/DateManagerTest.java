@@ -134,4 +134,42 @@ public class DateManagerTest {
         assertEquals(expected.get(Calendar.MONTH), DateManager.getCalendarFromLong(date.getTime()).get(Calendar.MONTH));
         assertEquals(expected.get(Calendar.YEAR), DateManager.getCalendarFromLong(date.getTime()).get(Calendar.YEAR));
     }
+
+    @Test
+    public void canCheckIfDateIsBeforeToday(){
+        Calendar date = Calendar.getInstance();
+
+        date.add(Calendar.DAY_OF_MONTH, -1);
+        assertEquals(true, DateManager.isBeforeToday(date));
+
+        date.add(Calendar.DAY_OF_MONTH, 2);
+        assertEquals(false, DateManager.isBeforeToday(date));
+    }
+
+    @Test
+    public void canGetNewCalendar(){
+
+        int min = 0;
+        int max = 11;
+        for(int j=min; j<=max; j++){
+            helperCanGetNewCalendar(2017, j, 1);
+        }
+
+        min = 1;
+        max = 31;
+        for(int j=min; j<=max; j++){
+            helperCanGetNewCalendar(2017, 6, j);
+        }
+
+
+    }
+
+    private void helperCanGetNewCalendar(int year, int month, int day){
+
+        Calendar cal = DateManager.newCalendar(year, month, day);
+
+        assertEquals(day, cal.get(Calendar.DAY_OF_MONTH));
+        assertEquals(month, cal.get(Calendar.MONTH));
+        assertEquals(year, cal.get(Calendar.YEAR));
+    }
 }

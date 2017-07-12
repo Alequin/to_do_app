@@ -8,11 +8,13 @@
     android:orientation="vertical">
 
     <FrameLayout
-        style="@style/calendar_date_frame">
+        style="@style/calendar_date_frame"
+        android:layout_above="@id/tick_button_date_activity">
 
         <DatePicker
             android:id="@id/date_picker_date_activity"
-            style="@style/date_picker"/>
+            style="@style/date_picker"
+            />
 
     </FrameLayout>
 
