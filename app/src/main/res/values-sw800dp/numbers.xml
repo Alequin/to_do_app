@@ -3,6 +3,4 @@
 
     <integer name="screen_code_600">800</integer>
 
-    <integer name="outline_max_lines">3</integer>
-
 </resources>
