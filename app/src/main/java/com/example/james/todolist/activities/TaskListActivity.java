@@ -32,6 +32,9 @@ public class TaskListActivity extends AppCompatActivity {
 
         //DatabaseHandler.getDatabase().seed(100);
 
+        Task task = new Task("", null, null, null, false);
+        task.save();
+
         listView = (ListView) findViewById(R.id.main_list_task_list_activity);
     }
 
