@@ -48,7 +48,8 @@
         <CalendarView
             android:id="@id/calendar_view_new_task_activity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
+        <!--wrapping sizes will causes issues on versions older than 23-->
 
     </FrameLayout>
 
