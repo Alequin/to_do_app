@@ -159,4 +159,38 @@ public class TaskTest {
         }
         assertEquals(true, pass);
     }
+
+    @Test
+    public void cannotSaveTaskWhenOutlineHasInvalidInput(){
+        helperCannotSaveTaskWhenOutlineHasInvalidInput(null);
+        helperCannotSaveTaskWhenOutlineHasInvalidInput("");
+    }
+
+    private void helperCannotSaveTaskWhenOutlineHasInvalidInput(String input){
+        boolean pass = false;
+        try{
+            Task task = new Task(null, "", false);
+            task.save();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
+
+    @Test
+    public void cannotUpdateTaskWhenOutlineHasInvalidInput(){
+        helperCannotUpdateTaskWhenOutlineHasInvalidInput(null);
+        helperCannotUpdateTaskWhenOutlineHasInvalidInput("");
+    }
+
+    private void helperCannotUpdateTaskWhenOutlineHasInvalidInput(String input){
+        boolean pass = false;
+        try{
+            Task task = new Task(null, "", false);
+            task.update();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
 }
