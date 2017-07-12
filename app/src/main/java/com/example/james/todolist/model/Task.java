@@ -41,8 +41,9 @@ public class Task implements Serializable{
         this(outline, extraDetails, Calendar.getInstance(), Calendar.getInstance(), status);
     }
 
-    public static ArrayList<Task> get_all(){
-        return FakeDatabase.queryDatabase();
+    public static ArrayList<Task> getAll(){
+        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
+        return dbHandler.getAllTasks();
     }
 
     public void save(){
