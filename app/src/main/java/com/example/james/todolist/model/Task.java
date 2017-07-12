@@ -47,7 +47,7 @@ public class Task implements Serializable{
 
     public void save(){
 
-        if(outline == null || outline.isEmpty()){
+        if(!isOutlineValid()){
             throw new IllegalStateException("Task outline cannot be null or empty when save is called.");
         }
 
@@ -57,12 +57,16 @@ public class Task implements Serializable{
 
     public void update(){
 
-        if(outline == null || outline.isEmpty()){
+        if(!isOutlineValid()){
             throw new IllegalStateException("Task outline cannot be null or empty when update is called.");
         }
 
         DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
         dbHandler.updateTask(this);
+    }
+
+    private boolean isOutlineValid(){
+        return !(outline == null || outline.isEmpty());
     }
 
     public void delete(){
