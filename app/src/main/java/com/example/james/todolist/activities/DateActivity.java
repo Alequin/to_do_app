@@ -54,6 +54,15 @@ public class DateActivity extends AppCompatActivity {
         prepareView();
     }
 
+    private void hideActionBar(){
+        ActionBar bar = getActionBar();
+        if(bar != null){
+            bar.hide();
+        }else{
+            getSupportActionBar().hide();
+        }
+    }
+
     private void prepareView(){
         Calendar today = Calendar.getInstance();
         Bundle extras = getIntent().getExtras();
@@ -69,14 +78,6 @@ public class DateActivity extends AppCompatActivity {
         }
     }
 
-    private void hideActionBar(){
-        ActionBar bar = getActionBar();
-        if(bar != null){
-            bar.hide();
-        }else{
-            getSupportActionBar().hide();
-        }
-    }
 
     public void onClickSelectDate(View view){
         finish();
@@ -124,6 +125,15 @@ public class DateActivity extends AppCompatActivity {
         return intent;
     }
 
+    private void setSelectedDate(Calendar cal){
+
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        setSelectedDate(year, month, day);
+    }
+
     private void setSelectedDate(int year, int month, int day){
         if(datePicker != null){
             datePicker.updateDate(year, month, day);
@@ -133,12 +143,4 @@ public class DateActivity extends AppCompatActivity {
         }
     }
 
-    private void setSelectedDate(Calendar cal){
-
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int month = cal.get(Calendar.MONTH);
-        int year = cal.get(Calendar.YEAR);
-
-        setSelectedDate(year, month, day);
-    }
 }
