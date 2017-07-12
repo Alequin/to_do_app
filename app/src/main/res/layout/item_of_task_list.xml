@@ -5,7 +5,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="onClickListView"
-    android:paddingTop="@dimen/outline_container_padding">
+    android:paddingTop="@dimen/outline_container_padding"
+    android:background="@color/screen_background">
 
     <RelativeLayout
         android:id="@id/outline_container_list_view_activity"

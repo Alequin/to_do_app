@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.james.todolist.activities.TaskViewerActivity">
+    tools:context="com.example.james.todolist.activities.TaskViewerActivity"
+    android:background="@color/screen_background">
 
     <RelativeLayout
         android:id="@id/outline_container_task_viewer_activity"
