@@ -103,8 +103,7 @@ public class DateActivity extends AppCompatActivity {
     }
 
     private void onDateChange(int year, int month, int day){
-        Calendar selected = Calendar.getInstance();
-        selected.set(year, month, day);
+        Calendar selected = DateManager.newCalendar(year, month, day);
 
         if(DateManager.isBeforeToday(selected)){
             String message = getString(R.string.warning_invalid_date_message);
@@ -129,8 +128,7 @@ public class DateActivity extends AppCompatActivity {
         if(datePicker != null){
             datePicker.updateDate(year, month, day);
         }else{
-            Calendar cal = Calendar.getInstance();
-            cal.set(year, month, day);
+            Calendar cal = DateManager.newCalendar(year, month, day);
             calendar.setDate(cal.getTimeInMillis());
         }
     }

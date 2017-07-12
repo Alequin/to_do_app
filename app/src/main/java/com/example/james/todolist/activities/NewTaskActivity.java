@@ -73,11 +73,10 @@ public class NewTaskActivity extends AppCompatActivity {
         view.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Calendar selected = Calendar.getInstance();
-                selected.set(year, month, dayOfMonth);
+                Calendar selected = DateManager.newCalendar(year, month, dayOfMonth);
 
                 if(!DateManager.isBeforeToday(selected)){
-                    taskToMake.setDueDate(year, month, dayOfMonth);
+                    taskToMake.setDueDate(selected);
                 }else{
                     Toast.makeText(currentContext, getString(R.string.warning_invalid_date_message), Toast.LENGTH_SHORT).show();
                     calendar.setDate(Calendar.getInstance().getTimeInMillis());
