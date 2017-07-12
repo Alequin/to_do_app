@@ -88,4 +88,10 @@ public class DateManager {
         Calendar today = Calendar.getInstance();
         return date.before(today);
     }
+
+    public static Calendar newCalendar(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal;
+    }
 }
