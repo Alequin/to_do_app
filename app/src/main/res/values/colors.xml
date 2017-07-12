@@ -10,4 +10,6 @@
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#8aaef2</color>
 
+    <color name="screen_background">#fff</color>
+
 </resources>

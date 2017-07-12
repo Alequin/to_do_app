@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.james.todolist.activities.NewTaskActivity"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@color/screen_background">
 
     <LinearLayout
         android:id="@id/land_left_layout_new_task_activity"

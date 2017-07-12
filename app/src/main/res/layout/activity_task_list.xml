@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.james.todolist.activities.TaskListActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/screen_background">
 
     <ListView
         android:id="@id/main_list_task_list_activity"
