@@ -45,7 +45,7 @@ public class TaskListArrayAdapter extends ArrayAdapter<Task>{
         checkBox.setChecked(task.isComplete());
 
         String taskOutline = task.getOutline();
-        int max = 50;
+        int max = 25;
         if(taskOutline.length() > max){
             taskOutline = taskOutline.substring(0, max) + "...";
         }

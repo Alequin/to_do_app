@@ -24,7 +24,8 @@
         <activity
             android:name=".activities.NewTaskActivity"
             android:label="@string/new_task_label"
-            android:parentActivityName=".activities.TaskListActivity" />
+            android:parentActivityName=".activities.TaskListActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".activities.DateActivity"
             android:screenOrientation="portrait"/>
     </application>

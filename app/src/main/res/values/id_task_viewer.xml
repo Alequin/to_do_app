@@ -17,4 +17,6 @@
 
     <item name="update_button_task_viewer_activity" type="id"/>
 
+    <item name="outline_container_task_viewer_activity" type="id"/>
+
 </resources>
