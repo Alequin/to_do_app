@@ -19,4 +19,10 @@
 
     <dimen name="lower_screen_button_height">70dp</dimen>
 
+    <dimen name="outline_container_padding">15dp</dimen>
+
+    <dimen name="check_box_left_margin">10dp</dimen>
+
+    <dimen name="check_box_right_margin">15dp</dimen>
+
 </resources>
