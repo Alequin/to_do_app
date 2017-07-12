@@ -118,8 +118,10 @@ public class NewTaskActivity extends AppCompatActivity {
                 return true;
 
             case R.id.tick_new_task_menu_icon:
-                onClickMakeTask();
-                finish();
+                boolean success = onClickMakeTask();
+                if(success){
+                    finish();
+                }
                 return true;
         }
 
@@ -135,13 +137,13 @@ public class NewTaskActivity extends AppCompatActivity {
         startActivityForResult(intent, SET_DUE_DATE_REQUEST_CODE);
     }
 
-    public void onClickMakeTask(){
+    public boolean onClickMakeTask(){
 
         String outlineText = outlineView.getText().toString();
         if(outlineText == null || outlineText.isEmpty()){
             String message = getString(R.string.warning_must_provide_outline_text);
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
 
         String extraDetailsText = extraDetailsView.getText().toString();
@@ -153,6 +155,7 @@ public class NewTaskActivity extends AppCompatActivity {
         taskToMake.setExtraDetails(extraDetailsText);
 
         taskToMake.save();
+        return true;
     }
 
     @Override
