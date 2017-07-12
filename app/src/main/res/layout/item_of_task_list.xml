@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:id="@id/outline_container_list_view_activity"
-        android:layout_width="584dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/outline_container_padding">
 
@@ -29,15 +29,17 @@
 
         <TextView
             android:id="@id/task_outline_task_list_item"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/check_box_element_height"
             android:layout_toRightOf="@id/check_box_task_list_item"
             android:layout_toEndOf="@id/check_box_task_list_item"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:gravity="center_vertical"
             android:textSize="@dimen/large_text_size"
             android:textColor="#000"
-            android:text="This is a task"/>
+            android:text="This is a task WWWWWWWWWWWWW"/>
 
     </RelativeLayout>
 

@@ -40,6 +40,7 @@
             android:gravity="center_vertical"
             android:textSize="@dimen/large_text_size"
             android:textColor="#000"
+            android:maxLines="@integer/outline_max_lines"
             android:text="This is a task"/>
 
     </RelativeLayout>
