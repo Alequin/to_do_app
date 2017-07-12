@@ -29,7 +29,9 @@
     <CalendarView
         android:id="@id/calendar_view_new_task_activity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="350dp"
+        android:weekDayTextAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:dateTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
     <Space
         android:layout_width="match_parent"

@@ -159,4 +159,101 @@ public class TaskTest {
         }
         assertEquals(true, pass);
     }
+
+    @Test
+    public void cannotSaveTaskWhenOutlineHasInvalidInput(){
+        helperCannotSaveTaskWhenOutlineHasInvalidInput(null);
+        helperCannotSaveTaskWhenOutlineHasInvalidInput("");
+    }
+
+    private void helperCannotSaveTaskWhenOutlineHasInvalidInput(String input){
+        boolean pass = false;
+        try{
+            Task task = new Task(input, "", false);
+            task.save();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
+
+    @Test
+    public void cannotUpdateTaskWhenOutlineHasInvalidInput(){
+        helperCannotUpdateTaskWhenOutlineHasInvalidInput(null);
+        helperCannotUpdateTaskWhenOutlineHasInvalidInput("");
+    }
+
+    private void helperCannotUpdateTaskWhenOutlineHasInvalidInput(String input){
+        boolean pass = false;
+        try{
+            Task task = new Task(input, "", false);
+            task.update();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
+
+    @Test
+    public void cannotSaveOrUpdateTaskWhenExtraDetailIsNull(){
+        boolean pass = false;
+        try{
+            Task task = new Task("not null", null, false);
+            task.save();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+
+        pass = false;
+        try{
+            Task task = new Task("not null", null, false);
+            task.update();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
+
+    @Test
+    public void cannotSaveOrUpdateTaskWhenCreationDateIsNull(){
+        boolean pass = false;
+        try{
+            Task task = new Task("not null", "NotNull", null, Calendar.getInstance(), false);
+            task.save();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+
+        pass = false;
+        try{
+            Task task = new Task("not null", "NotNull", null, Calendar.getInstance(), false);
+            task.update();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
+
+    @Test
+    public void cannotSaveOrUpdateTaskWhenDueDateIsNull(){
+        boolean pass = false;
+        try{
+            Task task = new Task("not null", "NotNull", Calendar.getInstance(), null, false);
+            task.save();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+
+        pass = false;
+        try{
+            Task task = new Task("not null", "NotNull", Calendar.getInstance(), null, false);
+            task.update();
+        }catch(IllegalStateException ex){
+            pass = true;
+        }
+        assertEquals(true , pass);
+    }
 }

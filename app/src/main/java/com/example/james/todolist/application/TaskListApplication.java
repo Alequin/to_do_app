@@ -18,10 +18,10 @@ public class TaskListApplication extends Application {
     public void onCreate() {
         super.onCreate();
         DatabaseHandler.init(this);
-        setScreenCodes();
+        setScreenCode();
     }
 
-    private void setScreenCodes(){
+    private void setScreenCode(){
         Resources r = getResources();
         currentScreenSize = r.getInteger(R.integer.screen_code);
     }

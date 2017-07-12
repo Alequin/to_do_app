@@ -45,7 +45,7 @@ public class DateManager {
     public static Calendar getCalendarFromSqlDate(String formattedDate) {
 
         if(!isDateInSqlFormat(formattedDate)){
-
+            throw new IllegalArgumentException("Given date format is wrong");
         }
 
         String[] splitDate = formattedDate.split("-");

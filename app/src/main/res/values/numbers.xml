@@ -3,7 +3,7 @@
 
     <integer name="screen_code">0</integer>
 
-    <integer name="outline_edit_text_max_lines">3</integer>
+    <integer name="outline_max_lines">3</integer>
 
     <integer name="check_box_scale">1</integer>
 

@@ -49,7 +49,7 @@ public class NewTaskActivity extends AppCompatActivity {
         dueDateButton = (Button) findViewById(R.id.due_date_new_task_activity);
         calendar = (CalendarView) findViewById(R.id.calendar_view_new_task_activity);
 
-        setAllEditTextsOptionButton(EditorInfo.IME_ACTION_DONE);
+        setAllEditTextOptionButton(EditorInfo.IME_ACTION_DONE);
 
         if(calendar != null){
             setListenerOnCalendarView(calendar);
@@ -62,7 +62,7 @@ public class NewTaskActivity extends AppCompatActivity {
         }
     }
 
-    private void setAllEditTextsOptionButton(int option){
+    private void setAllEditTextOptionButton(int option){
         //https://stackoverflow.com/questions/6265366/android-soft-keyboard-custom-done-button-text
         outlineView.setImeOptions(option);
         extraDetailsView.setImeOptions(option);
@@ -119,6 +119,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
             case R.id.tick_new_task_menu_icon:
                 onClickMakeTask();
+                finish();
                 return true;
         }
 
@@ -152,8 +153,6 @@ public class NewTaskActivity extends AppCompatActivity {
         taskToMake.setExtraDetails(extraDetailsText);
 
         taskToMake.save();
-
-        finish();
     }
 
     @Override

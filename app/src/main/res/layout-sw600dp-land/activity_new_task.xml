@@ -44,7 +44,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/land_left_layout_new_task_activity"
+        app:layout_constraintLeft_toRightOf="@id/land_left_layout_new_task_activity"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/extra_details_edit_text"/>

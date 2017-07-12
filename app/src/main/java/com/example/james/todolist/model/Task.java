@@ -38,21 +38,36 @@ public class Task implements Serializable{
     }
 
     public Task(String outline, String extraDetails, boolean status){
-        this(0, outline, extraDetails, Calendar.getInstance(), Calendar.getInstance(), status);
+        this(outline, extraDetails, Calendar.getInstance(), Calendar.getInstance(), status);
     }
 
-    public static ArrayList<Task> get_all(){
-        return FakeDatabase.queryDatabase();
+    public static ArrayList<Task> getAll(){
+        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
+        return dbHandler.getAllTasks();
     }
 
     public void save(){
+
+        if(!isTaskStateValid()){
+            throw new IllegalStateException(makeInvalidInputErrorMessage());
+        }
+
         DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
         id = dbHandler.addTask(this);
     }
 
     public void update(){
+
+        if(!isTaskStateValid()){
+            throw new IllegalStateException(makeInvalidInputErrorMessage());
+        }
+
         DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
         dbHandler.updateTask(this);
+    }
+
+    private boolean isTaskStateValid(){
+        return isOutlineValid() && !isExtraDetailNull() && !isDateNull(creationDate) && !isDateNull(dueDate);
     }
 
     public void delete(){
@@ -144,5 +159,50 @@ public class Task implements Serializable{
 
     private Calendar copyCalendarObj(Calendar toCopy){
         return (Calendar) toCopy.clone();
+    }
+
+    private boolean isOutlineValid(){
+        return outline != null && !outline.isEmpty();
+    }
+
+    private boolean isExtraDetailNull(){
+        return extraDetails == null;
+    }
+
+    private boolean isDateNull(Calendar cal){
+        return cal == null;
+    }
+
+    private String makeInvalidInputErrorMessage(){
+
+        String message = "\nError: ";
+
+        if(!isOutlineValid()){
+            message += "Outline: ";
+            if(outline == null){
+                message += "null";
+            }else
+            if(outline.isEmpty()){
+                message += "is empty";
+            }
+            message += "\n";
+        }
+
+        if(isExtraDetailNull()){
+            message += "Extra details: null";
+            message += "\n";
+        }
+
+        if(isDateNull(creationDate)){
+            message += "Creation Date: null";
+            message += "\n";
+        }
+
+        if(isDateNull(dueDate)){
+            message += "Due Date: null";
+            message += "\n";
+        }
+
+        return message;
     }
 }

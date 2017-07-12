@@ -105,8 +105,7 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     private void updateListView(){
-        DatabaseHandler dbHandler = DatabaseHandler.getDatabase();
-        TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, dbHandler.getAllTasks());
+        TaskListArrayAdapter taskAdapter = new TaskListArrayAdapter(this, Task.getAll());
         listView.setAdapter(taskAdapter);
     }
 }

@@ -104,14 +104,6 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         return new Task(id, outline, extraDetails, creationDate, dueDate, completeState);
     }
 
-    public void deleteAllTasks(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(String.format(
-                "DELETE FROM %s", TASK_TABLE_NAME
-        ));
-        db.close();
-    }
-
     public long addTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -152,23 +144,32 @@ public class TaskSqlDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteOverdueTasks() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Calendar cal = Calendar.getInstance();
-        String todayAsText = DateManager.formatDateForSQL(cal);
-        db.execSQL(
-            String.format(
-                "DELETE FROM %s WHERE %s < '%s'", TASK_TABLE_NAME, DUE_DATE, todayAsText
-            )
-        );
-        db.close();
-    }
-
     public void deleteTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(String.format(
                 "DELETE FROM %s WHERE id = %s", TASK_TABLE_NAME, task.getId()
         ));
+        db.close();
+    }
+
+
+    public void deleteAllTasks(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(String.format(
+                "DELETE FROM %s", TASK_TABLE_NAME
+        ));
+        db.close();
+    }
+
+    public void deleteOverdueTasks() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Calendar cal = Calendar.getInstance();
+        String todayAsText = DateManager.formatDateForSQL(cal);
+        db.execSQL(
+                String.format(
+                        "DELETE FROM %s WHERE %s < '%s'", TASK_TABLE_NAME, DUE_DATE, todayAsText
+                )
+        );
         db.close();
     }
 
