@@ -21,9 +21,9 @@
 
     <dimen name="outline_container_padding">5dp</dimen>
 
-    <dimen name="check_box_list_view_left_margin">10dp</dimen>
+    <dimen name="check_box_list_view_left_margin">5dp</dimen>
 
-    <dimen name="check_box_list_view_right_margin">15dp</dimen>
+    <dimen name="check_box_list_view_right_margin">0dp</dimen>
 
     <dimen name="check_box_task_viewer_left_margin">15dp</dimen>
 
