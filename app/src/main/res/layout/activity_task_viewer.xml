@@ -7,6 +7,8 @@
     tools:context="com.example.james.todolist.activities.TaskViewerActivity"
     android:paddingTop="10dp">
 
+    
+
     <CheckBox
         android:id="@id/check_box_task_viewer_activity"
         android:layout_width="40dp"

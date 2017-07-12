@@ -7,7 +7,7 @@
     android:onClick="onClickListView">
 
     <RelativeLayout
-        android:id="@id/outline_container_task_viewer_activity"
+        android:id="@id/outline_container_list_view_activity"
         android:layout_width="584dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/outline_container_padding">
@@ -49,7 +49,7 @@
         android:layout_marginLeft="@dimen/due_date_margin_list_item"
         android:layout_marginStart="@dimen/due_date_margin_list_item"
         android:textSize="@dimen/medium_text_size"
-        app:layout_constraintTop_toBottomOf="@+id/outline_container_task_viewer_activity"
+        app:layout_constraintTop_toBottomOf="@id/outline_container_list_view_activity"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Due Date: 01/01/2017"/>
 
